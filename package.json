@@ -1,0 +1,9 @@
+{
+  "name": "dudozi-workshop-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "build": "npm run check && node scripts/build.mjs"
+  }
+}
