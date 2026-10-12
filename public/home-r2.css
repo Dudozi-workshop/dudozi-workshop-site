@@ -529,3 +529,56 @@
 @media(prefers-reduced-motion:reduce){
   .reveal-item{opacity:1;transform:none;transition:none}
 }
+
+
+/* DZlog product palette aligned with the app theme */
+@media(min-width:1051px){
+  .dzlog-panel{
+    background:linear-gradient(135deg,#fbf7ef 0%,#f5ebdd 54%,#e8eee2 100%);
+  }
+  .dzlog-panel .panel-copy p{color:#6b5b4b}
+  .dzlog-panel .panel-topline strong{color:#2d241c}
+  .dzlog-icon{
+    background:#f5ebdd;
+    color:#4a3c30;
+    box-shadow:inset 0 0 0 1px #eadcc7;
+  }
+  .state-featured{
+    background:#e7eee0;
+    color:#4f6a50;
+  }
+
+  .product-card-featured{
+    background:
+      radial-gradient(circle at 82% 18%,#fffdf4 0 130px,transparent 250px),
+      linear-gradient(140deg,#fbf7ef 0%,#f5ebdd 44%,#e7ede2 100%);
+  }
+  .product-card-featured .overview-index{color:#7b6b5b}
+  .product-card-featured .product-title-row h3{color:#2d241c}
+  .product-card-featured .product-description{color:#6b5b4b}
+  .product-card-featured .product-link{color:#4a604b}
+  .featured-photo{
+    background:
+      linear-gradient(145deg,#eef1db 0 14%,#cad8b8 42%,#99ac87 43% 52%,#eadcc7 73%,#8e715d 100%);
+  }
+  .featured-table{
+    border-color:#b8aa98;
+    background:#fbf7efec;
+  }
+  .featured-table span{
+    background:#f5ebdd;
+    color:#4a3c30;
+    border-color:#d6c8b5;
+  }
+  .featured-table b{
+    color:#2d241c;
+    border-color:#d6c8b5;
+  }
+
+  .product-grigle{
+    background:linear-gradient(145deg,#fffaf5,#f6e7d9);
+  }
+  .product-mylock{
+    background:linear-gradient(145deg,#f8fbfd,#e7eff7);
+  }
+}
