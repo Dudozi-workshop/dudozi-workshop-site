@@ -1403,3 +1403,123 @@
     background:linear-gradient(90deg,#8da08c66,transparent);
   }
 }
+
+
+/* Brand/editorial polish v6 */
+@media(min-width:1051px){
+  .hero,.overview,.studio,.closing{isolation:isolate}
+
+  .hero:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:
+      repeating-linear-gradient(0deg,#6d66540a 0 1px,transparent 1px 5px),
+      repeating-linear-gradient(90deg,#ffffff12 0 1px,transparent 1px 7px);
+    opacity:.2;
+    mix-blend-mode:multiply;
+  }
+
+  .overview:before{
+    content:"SMALL APP COLLECTION  ·  DUDOZI WORKSHOP  ·  2026";
+    position:absolute;
+    top:34px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1460px,calc(100% - 100px));
+    color:#7f897d;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-align:right;
+    border-top:1px solid #aab3a52e;
+    padding-top:11px;
+    z-index:2;
+  }
+  .overview:after{
+    height:170px;
+    background:
+      linear-gradient(180deg,#f7f3eb 0%,#f7f3ebcc 28%,transparent 100%);
+  }
+
+  .section-eyebrow,.eyebrow,.detail-kicker{
+    font-family:"Noto Sans KR",system-ui,sans-serif;
+    font-weight:700;
+    letter-spacing:.2em;
+  }
+
+  .studio-heading-block .serif-accent,
+  .studio-note strong{
+    font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+    font-weight:600;
+  }
+
+  .studio-heading-block .serif-accent{
+    position:relative;
+    padding-right:24px;
+  }
+  .studio-heading-block .serif-accent:after{
+    content:"";
+    position:absolute;
+    width:10px;height:10px;
+    right:1px;top:50%;
+    border-radius:50%;
+    background:#9aaa92;
+    opacity:.52;
+  }
+
+  .studio-note .note-kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .studio-note .note-kicker:after{
+    content:"";
+    width:42px;height:1px;
+    background:#d6e1d450;
+  }
+
+  .product-card-featured:before{
+    content:"";
+    position:absolute;
+    left:22px;top:22px;
+    width:58px;height:18px;
+    background:#d8c7ab78;
+    transform:rotate(-5deg);
+    border-radius:2px;
+    box-shadow:0 2px 5px #6c5b4812;
+    z-index:2;
+  }
+
+  .product-card-secondary:before{
+    content:"";
+    position:absolute;
+    left:20px;top:18px;
+    width:7px;height:7px;
+    border-radius:50%;
+    background:#8c9d8a80;
+    box-shadow:0 0 0 5px #ffffff40;
+    z-index:3;
+  }
+  .product-grigle:before{background:#c8895f88}
+  .product-mylock:before{background:#8599aa88}
+
+  .closing-inner{
+    padding-top:18px;
+  }
+  .closing-inner:before{
+    content:"DUDOZI WORKSHOP / SMALL APPS";
+    position:absolute;
+    left:0;top:-24px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.18em;
+    color:#849184;
+  }
+
+  .footer-main{
+    min-height:58px;
+  }
+}
