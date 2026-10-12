@@ -1523,3 +1523,32 @@
     min-height:58px;
   }
 }
+
+
+/* First-view entrance motion */
+@media(min-width:1051px) and (prefers-reduced-motion:no-preference){
+  .hero-copy{
+    animation:heroCopyIn .72s cubic-bezier(.22,.61,.36,1) both;
+  }
+  .phone-stage{
+    animation:heroPhoneIn .82s .08s cubic-bezier(.22,.61,.36,1) both;
+  }
+  .app-rail .app-panel{
+    animation:heroCardIn .62s cubic-bezier(.22,.61,.36,1) both;
+  }
+  .app-rail .app-panel:nth-child(1){animation-delay:.16s}
+  .app-rail .app-panel:nth-child(2){animation-delay:.23s}
+  .app-rail .app-panel:nth-child(3){animation-delay:.30s}
+}
+@keyframes heroCopyIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+@keyframes heroPhoneIn{
+  from{opacity:0;transform:translateY(26px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+@keyframes heroCardIn{
+  from{opacity:0;transform:translateX(16px)}
+  to{opacity:1;transform:none}
+}
