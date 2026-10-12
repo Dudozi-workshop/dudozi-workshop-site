@@ -940,3 +940,141 @@
     color:#496c4f;
   }
 }
+
+
+/* Workshop editorial redesign v2: reduce generic card layout */
+@media(min-width:1051px){
+  .studio{
+    padding-top:132px;
+    padding-bottom:126px;
+  }
+  .studio-hero{
+    grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+    gap:120px;
+    margin-bottom:72px;
+  }
+  .studio-heading-block{
+    position:relative;
+    padding-left:34px;
+  }
+  .studio-heading-block:before{
+    content:"";
+    position:absolute;
+    left:0;top:13px;
+    width:2px;height:112px;
+    background:linear-gradient(180deg,#6d8b71,#6d8b7100);
+  }
+  .studio-intro{
+    padding-bottom:8px;
+    max-width:500px;
+  }
+
+  .studio-board{
+    display:grid;
+    grid-template-columns:minmax(0,1.12fr) minmax(280px,.8fr) minmax(310px,.9fr);
+    gap:32px;
+    align-items:stretch;
+  }
+
+  .studio-note{
+    min-height:420px;
+    padding:48px 44px 42px;
+    border:0;
+    border-radius:34px 34px 34px 10px;
+    box-shadow:0 30px 64px #344b352f;
+    background:
+      radial-gradient(circle at 82% 12%,#7290732c 0 90px,transparent 210px),
+      linear-gradient(145deg,#3d6246,#2f5138);
+  }
+  .studio-note strong{
+    font-size:36px;
+    line-height:1.5;
+    margin-top:34px;
+  }
+  .studio-note p{
+    max-width:410px;
+    font-size:14px;
+    color:#d6e0d4;
+    margin-bottom:0;
+  }
+
+  .studio-values{
+    min-height:420px;
+    padding:10px 6px;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    background:transparent;
+    justify-content:space-between;
+  }
+  .studio-values:before{
+    display:none;
+  }
+  .studio-values article{
+    position:relative;
+    padding:26px 4px 28px 54px;
+    border-bottom:1px solid #8b9a8a31;
+  }
+  .studio-values article:first-child{
+    border-top:1px solid #8b9a8a31;
+  }
+  .studio-values article>span{
+    position:absolute;
+    left:4px;top:29px;
+    font-size:9px;
+    letter-spacing:.14em;
+    color:#7f907f;
+  }
+  .studio-values h3{
+    font-size:27px;
+    margin:0 0 7px;
+  }
+  .studio-values p{
+    max-width:250px;
+    font-size:13px;
+    line-height:1.7;
+    color:#6d766d;
+  }
+  .studio-values article:hover{
+    padding-left:60px;
+  }
+
+  .studio-making{
+    min-height:420px;
+    padding:34px 30px 30px;
+    border:0;
+    border-radius:6px 28px 28px 28px;
+    box-shadow:0 24px 50px #5f554521;
+    transform:rotate(1.2deg);
+    background:
+      linear-gradient(90deg,#a88c650d 1px,transparent 1px) 0 0/24px 24px,
+      linear-gradient(#a88c650d 1px,transparent 1px) 0 0/24px 24px,
+      linear-gradient(145deg,#faf4e8,#eee1ce);
+  }
+  .studio-making:before{
+    content:"";
+    position:absolute;
+    width:84px;height:20px;
+    top:-9px;left:46%;
+    transform:translateX(-50%) rotate(-4deg);
+    background:#d9cbb5bd;
+    box-shadow:0 2px 5px #5d534623;
+  }
+  .studio-making:after{
+    width:8px;height:8px;
+    top:24px;right:25px;
+  }
+  .making-header{
+    margin-top:6px;
+    margin-bottom:32px;
+  }
+  .making-row{
+    padding:20px 2px;
+  }
+  .making-row strong{
+    font-size:20px;
+  }
+  .making-row span{
+    font-size:11px;
+  }
+}
