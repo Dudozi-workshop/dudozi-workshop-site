@@ -19,8 +19,10 @@ const requiredAssets = [
   'public/styles/base.css',
   'public/styles/components.css',
   'public/home-r2.css',
+  'public/home-visual-r3.css',
   'public/home-r2.js',
   'public/apps/app-detail.css',
+  'public/apps/app-visual-r3.css',
   'public/support.html',
 ];
 
@@ -65,6 +67,7 @@ assert.ok(homepage.indexOf('id="dzlog"') < homepage.indexOf('id="grigle"'));
 assert.ok(homepage.indexOf('id="grigle"') < homepage.indexOf('id="mylock"'));
 assert.ok(homepage.indexOf('id="apps"') < homepage.indexOf('id="studio"'));
 assert.match(homepage, /href="#apps"/, 'Home menu should show overview');
+assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 for (const route of ['/apps/dzlog/', '/apps/grigle/', '/apps/mylock/']) {
   assert.match(homepage, new RegExp('href="' + route + '"'), 'Homepage direct link to ' + route);
 }
@@ -75,10 +78,13 @@ for (const page of pages.slice(1)) {
   assert.match(html, /id="screen-story-title"/, page.label + ': product screenshots concept');
   assert.match(html, /href="\/#apps"/, page.label + ': back to apps');
   assert.match(html, /class="other-app-grid"/, page.label + ': other app discovery');
+  assert.match(html, /app-visual-r3\.css/, page.label + ': shared R3 visual stylesheet');
 }
 
 const stylesheet = readFileSync('public/home-r2.css', 'utf8');
 const detailCss = readFileSync('public/apps/app-detail.css', 'utf8');
+const homeVisualCss = readFileSync('public/home-visual-r3.css', 'utf8');
+const appVisualCss = readFileSync('public/apps/app-visual-r3.css', 'utf8');
 const tokens = readFileSync('public/styles/tokens.css', 'utf8');
 const components = readFileSync('public/styles/components.css', 'utf8');
 const scripts = readFileSync('public/home-r2.js', 'utf8');
@@ -86,11 +92,13 @@ assert.match(stylesheet, /@media\(max-width:760px\)/);
 assert.match(stylesheet, /@media\(max-width:450px\)/);
 assert.match(stylesheet, /prefers-reduced-motion/);
 assert.match(detailCss, /screen-story-grid/);
+assert.match(homeVisualCss, /assets\/podium\.webp/);
+assert.match(appVisualCss, /assets\/podium\.webp/);
 assert.match(tokens, /--color-green/);
 assert.match(components, /\.button/);
 assert.match(scripts, /Escape/);
 
-for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss]]) {
+for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss], ['home-visual-r3.css', homeVisualCss], ['app-visual-r3.css', appVisualCss]]) {
   for (const match of css.matchAll(/url\(['"]?(\/[^)'"]+)['"]?\)/g)) {
     assert.ok(existsSync(resolveAsset(match[1])), file + ': missing referenced asset ' + match[1]);
   }
