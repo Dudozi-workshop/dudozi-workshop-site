@@ -1552,3 +1552,51 @@
   from{opacity:0;transform:translateX(16px)}
   to{opacity:1;transform:none}
 }
+
+
+/* Screenshot-led PC corrections: 1100px headlines and authentic workshop props */
+@media(min-width:1051px) and (max-width:1199px){
+  .hero-copy h1{
+    font-size:clamp(32px,3.05vw,36px);
+    line-height:1.32;
+    letter-spacing:-.072em;
+    white-space:nowrap;
+    text-wrap:nowrap;
+  }
+  .hero-intro{font-size:13px;line-height:1.85}
+  .product-card-featured .product-copy{padding:34px 27px 31px}
+  .product-card-featured .product-tagline{font-size:19px;line-height:1.45}
+  .product-card-featured .product-description{font-size:12px}
+  .product-card-secondary{grid-template-columns:minmax(0,1fr) 155px}
+  .product-card-secondary .product-title-row h3{font-size:23px}
+  .product-card-secondary .product-copy{padding:29px 22px}
+  .product-card-secondary .product-description{font-size:11px}
+}
+
+/* The actual R2 decorative image assets replace flat drawn props. */
+@media(min-width:1200px){
+  .hero-decor-books{
+    width:300px;
+    height:155px;
+    left:-7px;
+    bottom:0;
+    background:url('/assets/desk-books.webp') left top/cover no-repeat!important;
+    opacity:.68;
+    filter:saturate(.72);
+    -webkit-mask-image:linear-gradient(to right,#000 0%,#000 60%,transparent 100%);
+    mask-image:linear-gradient(to right,#000 0%,#000 60%,transparent 100%);
+  }
+  .hero-decor-books:before,.hero-decor-books:after{content:none}
+  .hero-decor-leaf{
+    width:110px;
+    height:280px;
+    right:-8px;
+    top:46px;
+    background:url('/assets/leaf-edge.webp') center/cover no-repeat!important;
+    opacity:.68;
+    filter:saturate(.85);
+    -webkit-mask-image:linear-gradient(to left,#000 55%,transparent 100%);
+    mask-image:linear-gradient(to left,#000 55%,transparent 100%);
+  }
+  .hero-decor-leaf:before,.hero-decor-leaf:after{content:none}
+}
