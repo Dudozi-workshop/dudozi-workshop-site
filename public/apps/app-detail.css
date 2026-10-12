@@ -50,3 +50,164 @@
 .app-mylock .detail-device-screen:after{content:"MON · OCT 12";top:148px;bottom:auto;height:auto;background:none;box-shadow:none;text-align:center;font-size:9px;letter-spacing:.16em}
 @media(max-width:900px){.detail-grid{grid-template-columns:1fr;gap:30px}.detail-stage{min-height:500px}.detail-section-heading{grid-template-columns:1fr;gap:16px}.feature-grid,.flow-grid{grid-template-columns:1fr}.other-app-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.detail-header-inner{min-height:66px}.detail-nav{display:none}.detail-hero{padding:58px 0 66px}.detail-title{font-size:52px}.detail-tagline{font-size:27px}.detail-stage{min-height:440px}.detail-device{transform:scale(.8) rotate(3deg)}.detail-section{padding:72px 0}.detail-footer .shell{flex-direction:column;gap:5px}}
+
+
+/* Detail visual polish: same workshop language as homepage */
+.detail-hero{
+  background:
+    radial-gradient(circle at 72% 16%,#fffaf1 0 12%,transparent 30%),
+    radial-gradient(circle at 92% 70%,var(--app-soft) 0 12%,transparent 32%),
+    linear-gradient(115deg,#fbf7ef 0%,#f7f3ea 52%,#efe9dc 100%);
+}
+.detail-hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(112deg,transparent 0 58%,#fff7 59% 62%,transparent 63% 68%,#fff5 69% 72%,transparent 73%);
+  opacity:.62;
+}
+.detail-grid{z-index:1}
+.detail-kicker{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  letter-spacing:.24em;
+}
+.detail-kicker:before{
+  content:"";
+  width:28px;height:1px;
+  background:currentColor;
+}
+.detail-title{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  font-weight:830;
+}
+.detail-tagline{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  font-weight:760;
+  letter-spacing:-.055em;
+  color:var(--app-accent);
+}
+.detail-summary{font-size:15px;line-height:1.95}
+.detail-stage:before{
+  content:"";
+  position:absolute;
+  width:360px;height:78px;
+  left:50%;bottom:36px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:#756f5f26;
+  filter:blur(14px);
+}
+.detail-device{
+  box-shadow:26px 34px 64px #4d493d36;
+  transition:transform .28s ease;
+}
+.detail-stage:hover .detail-device{transform:rotate(2deg) translateY(-8px)}
+.detail-orbit{
+  border-color:#ffffff8a;
+  box-shadow:inset 0 0 40px #ffffff2d;
+}
+.detail-section{
+  position:relative;
+}
+.detail-section.alt{
+  background:
+    radial-gradient(circle at 12% 18%,#fffdf9 0 170px,transparent 390px),
+    linear-gradient(180deg,#f2f4ed,#edf0e8);
+}
+.detail-section-heading h2{
+  font-weight:800;
+  letter-spacing:-.06em;
+}
+.detail-section-heading p{font-size:14px}
+.feature-card{
+  min-height:250px;
+  border-color:#e0e3da;
+  border-radius:30px;
+  box-shadow:0 18px 40px #58605214;
+  transition:transform .2s ease,box-shadow .2s ease;
+  background:linear-gradient(150deg,#fffefa,#fbfaf5);
+}
+.feature-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 48px #535b4e20;
+}
+.feature-card h3{
+  font-size:24px;
+  font-weight:790;
+}
+.flow-grid{
+  gap:28px;
+}
+.flow-step{
+  position:relative;
+  padding-top:30px;
+}
+.flow-step:before{
+  content:"";
+  position:absolute;
+  top:-1px;left:0;
+  width:44px;height:2px;
+  background:var(--app-accent);
+}
+.flow-step h3{
+  font-size:26px;
+  font-weight:780;
+  letter-spacing:-.045em;
+}
+.other-apps{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 84% 12%,#49615240 0 140px,transparent 340px),
+    linear-gradient(180deg,#29312a,#222923);
+}
+.other-apps:after{
+  content:"DDZ";
+  position:absolute;
+  right:4%;bottom:-26px;
+  font-family:Georgia,serif;
+  font-weight:700;
+  font-size:140px;
+  letter-spacing:-.08em;
+  color:#ffffff08;
+}
+.other-app-grid{position:relative;z-index:1}
+.other-app{
+  min-height:98px;
+  border-radius:24px;
+  background:#ffffff08;
+  backdrop-filter:blur(8px);
+  transition:transform .18s ease,background .18s ease;
+}
+.other-app:hover{
+  transform:translateY(-3px);
+  background:#ffffff0f;
+}
+.app-dzlog .detail-device-screen{
+  background:
+    linear-gradient(145deg,#eef1db 0 14%,#cad8b8 42%,#99ac87 43% 52%,#eadcc7 73%,#8e715d 100%);
+}
+.app-dzlog .detail-table{
+  box-shadow:0 12px 22px #4c55491f;
+}
+.app-grigle .detail-hero{
+  background:
+    radial-gradient(circle at 75% 18%,#fff8f0 0 12%,transparent 30%),
+    radial-gradient(circle at 92% 72%,#f6e7d8 0 13%,transparent 32%),
+    linear-gradient(115deg,#fbf7ef 0%,#f8efe6 52%,#f2dfce 100%);
+}
+.app-mylock .detail-hero{
+  background:
+    radial-gradient(circle at 74% 16%,#f8fbff 0 12%,transparent 30%),
+    radial-gradient(circle at 92% 70%,#e7eef6 0 14%,transparent 33%),
+    linear-gradient(115deg,#faf7f1 0%,#f4f1ed 48%,#e7edf4 100%);
+}
+@media(min-width:901px) and (max-width:1250px){
+  .detail-grid{grid-template-columns:minmax(0,.95fr) minmax(340px,1.05fr);gap:50px}
+  .detail-device{transform:scale(.92) rotate(3deg)}
+  .detail-stage:hover .detail-device{transform:scale(.92) rotate(1.5deg) translateY(-6px)}
+}
