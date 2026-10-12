@@ -1,0 +1,376 @@
+/* Dudozi Workshop R3 — photographic, tactile PC art direction.
+   This file is deliberately isolated from the stable R2 layout.
+   Reuses existing R2 photographs and core UI components. */
+:root{
+  --r3-cream:#fbf8f1;
+  --r3-paper:#fffdf9;
+  --r3-forest:#355a3d;
+  --r3-ink:#272c27;
+  --r3-taupe:#af9577;
+}
+
+/* Shared finish: warm contrast, consistent depth, no heavy outlined tiles. */
+html{scroll-padding-top:82px}
+body{background:var(--r3-cream)}
+.site-header{
+  position:relative;z-index:20;
+  background:#fbf9f4e8;
+  box-shadow:0 1px 0 #d6d8cf5c;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.brand-korean{font-size:16px;letter-spacing:-.045em}
+.desktop-nav a{color:#44483f;transition:color .2s ease}
+.desktop-nav a:hover{color:var(--r3-forest)}
+.header-cta{
+  color:#34593c;
+  background:#fffefaf0;
+  border:1px solid #849a866b;
+  box-shadow:0 6px 24px #6c675a0b;
+  transition:background .2s ease,box-shadow .2s ease,transform .2s ease
+}
+.header-cta:hover{background:#f1f6ee;box-shadow:0 8px 24px #4f725626;transform:translateY(-2px)}
+
+@media(min-width:1200px){
+  .hero{
+    background:
+      radial-gradient(ellipse at 74% 51%,#f3f7eeb0 0 22%,transparent 52%),
+      linear-gradient(114deg,#fbf8f1 0%,#fcf9f4 37%,#f4f0e7 77%,#ebe5d9 100%);
+    min-height:822px;
+    box-shadow:inset 0 -1px 0 #cfc7b728;
+  }
+  /* Windows cast broad ambient shadows and warm daylight, not harsh stripes. */
+  .hero:before{
+    content:"";position:absolute;inset:-100px -50px 0 auto;
+    width:54%;height:95%;pointer-events:none;opacity:.65;
+    background:
+      linear-gradient(123deg,transparent 26%,#a7a38c20 29%,#aa9f8724 31%,transparent 36%),
+      linear-gradient(123deg,transparent 51%,#ab9c7927 54%,#a39a852b 56%,transparent 62%),
+      linear-gradient(145deg,transparent 57%,#fffdf19e 72%,transparent 85%);
+    filter:blur(23px);transform:rotate(2deg);
+    mix-blend-mode:multiply;
+  }
+  .hero-light{
+    top:-50px;right:0;width:59%;height:730px;
+    background:linear-gradient(116deg,transparent 15%,#fff9ed95 36%,transparent 53%,#fffaf17a 67%,transparent 82%);
+    opacity:.85;filter:blur(24px);transform:none;
+  }
+  .hero-glow-one{
+    background:#f4f5e9b0;
+    right:10%;top:22%;width:470px;height:520px;filter:blur(85px);
+  }
+  .hero-glow-two{
+    background:url('/assets/leaf-edge.webp') center/cover no-repeat;
+    width:120px;height:330px;left:-43px;top:325px;bottom:auto;
+    border-radius:0;opacity:.36;filter:blur(7px) saturate(.68);
+    transform:scaleX(-1);
+  }
+  .hero-layout{min-height:790px;grid-template-columns:minmax(0,43fr) minmax(0,57fr);gap:2px}
+  .hero-copy{align-self:center;padding:4px 0 18px;z-index:4}
+  .eyebrow{
+    font-size:10px;letter-spacing:.34em;font-weight:750;
+    margin-bottom:32px;color:#5e7761;
+  }
+  .hero-copy h1{
+    max-width:620px;
+    font-family:"Noto Sans KR",sans-serif;
+    font-size:clamp(48px,4.25vw,68px);
+    line-height:1.34;letter-spacing:-.078em;
+    font-weight:800;margin:0 0 34px;white-space:nowrap;
+    color:#202722;
+  }
+  .hero-copy h1 span{color:#446d4b}
+  .hero-intro{font-size:16px;line-height:1.98;letter-spacing:-.03em;color:#656d63}
+  .hero-actions{margin-top:33px;gap:13px}
+  .hero-actions .button{min-height:54px;padding:14px 25px;font-size:13px;gap:26px}
+  .hero-actions .button-primary{
+    color:white;background:linear-gradient(175deg,#456f4e,#345a3c);
+    border:1px solid #345a3c;
+    box-shadow:0 12px 28px #2e4b3429,inset 0 1px 0 #fff3;
+  }
+  .hero-actions .button-outline{
+    background:#fffefadf;border:1px solid #93a393b0;
+    color:#3b5941;box-shadow:0 8px 24px #80766613;
+  }
+  .hero-actions .button:hover{transform:translateY(-3px)}
+  .micro-note{
+    position:absolute;bottom:-129px;left:0;margin:0;
+    color:#72816e;font-size:11px;letter-spacing:.11em;
+    border-left:1px solid #748e70;padding:5px 0 5px 16px;
+  }
+  .hero-copy:after{content:none}
+  .hero-showcase{
+    min-height:715px;grid-template-columns:51% 49%;
+    align-items:center;overflow:visible;
+  }
+  .phone-stage{min-height:700px;height:700px;overflow:visible}
+  .phone-stage:before{
+    background:radial-gradient(circle,#ffffffe8 0 27%,#eef0e0a8 47%,transparent 70%);
+    width:510px;height:570px;
+  }
+  .phone-mockup{
+    transform:translate(12px,-24px) rotate(-2deg) scale(1.08)!important;
+    filter:drop-shadow(3px 30px 21px #59493626);
+    transition:transform .45s cubic-bezier(.2,.68,.26,1),filter .4s ease;
+    z-index:3;
+  }
+  .phone-stage:hover .phone-mockup{
+    transform:translate(12px,-34px) rotate(-.7deg) scale(1.087)!important;
+  }
+  .phone-mockup:after{
+    filter:drop-shadow(1px 7px 9px #5a4d3a3a);
+  }
+  .stage-disc{
+    z-index:0;
+    width:134%;height:159px;left:-11%;bottom:25px;
+    border-radius:0;
+    background:url('/assets/podium.webp') center/100% 100% no-repeat;
+    box-shadow:none;
+    filter:saturate(.87) contrast(.99) drop-shadow(0 22px 18px #6e594235);
+    -webkit-mask-image:radial-gradient(ellipse 75% 69% at 50% 49%,#000 50%,transparent 79%);
+    mask-image:radial-gradient(ellipse 75% 69% at 50% 49%,#000 50%,transparent 79%);
+  }
+  .stage-disc:after{display:none}
+  .phone-stage:after{
+    left:50%;bottom:29px;width:350px;height:42px;
+    filter:blur(10px);background:radial-gradient(ellipse,#65523c45,transparent 74%);
+    z-index:0;
+  }
+  .concept-label{
+    bottom:19px;left:54%;z-index:3;
+    background:#fffdf8dd;border:1px solid #fff9;
+    box-shadow:0 5px 17px #665d4a1b;
+    color:#7b806f;font-size:9px;padding:9px 14px;
+  }
+  .hero-decor-books{
+    width:360px;height:212px;left:-2px;bottom:-19px;
+    background:url('/assets/desk-books.webp') 12% 60%/cover no-repeat!important;
+    opacity:.73;filter:saturate(.85) contrast(.96);
+    -webkit-mask-image:linear-gradient(to right,#000 0%,#000 75%,transparent 100%);
+    mask-image:linear-gradient(to right,#000 0%,#000 75%,transparent 100%);
+    transform:none;
+  }
+  .hero-decor-books:before,.hero-decor-books:after{content:none}
+  .hero-decor-leaf{
+    width:135px;height:320px;right:-6px;top:100px;
+    background:url('/assets/leaf-edge.webp') center/cover no-repeat!important;
+    opacity:.5;filter:saturate(.72) blur(1px);
+    -webkit-mask-image:linear-gradient(to left,#000 48%,transparent 100%);
+    mask-image:linear-gradient(to left,#000 48%,transparent 100%);
+  }
+  .hero-decor-leaf:before,.hero-decor-leaf:after{content:none}
+  .app-rail{
+    gap:15px;transform:translate(4px,4px);
+    z-index:5;
+  }
+  .app-panel{
+    height:185px;min-height:185px;padding:22px 18px 17px 21px;
+    border:1px solid #ffffffdf;
+    border-radius:25px;
+    background:linear-gradient(110deg,#fffcf5f2,#fffcf2d6);
+    box-shadow:0 17px 39px #615c501f,0 2px 3px #ffffffb0 inset;
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  }
+  .app-panel.grigle-panel{background:linear-gradient(115deg,#fff3e9f1,#ffece2dd)}
+  .app-panel.mylock-panel{background:linear-gradient(115deg,#f0f7fded,#e5f0f9dc)}
+  .app-panel:before{background:linear-gradient(126deg,#ffffff97,transparent 50%)}
+  .app-panel:hover{
+    transform:translateY(-5px);
+    border-color:#ffffff;
+    box-shadow:0 24px 55px #6259482d,0 1px 1px #fff inset;
+  }
+  .panel-copy{z-index:3}
+  .panel-topline{gap:9px}
+  .panel-topline strong{font-size:18px;font-weight:780;letter-spacing:-.045em}
+  .state-tag{font-size:9px;padding:5px 8px}
+  .panel-copy p{font-size:12px;line-height:1.66;color:#686c63;margin:15px 0 0}
+  .panel-arrow{
+    background:#fff9;border:1px solid #f5f5ee;
+    box-shadow:0 3px 10px #7a725b15;width:30px;height:30px;
+    display:grid;place-items:center;border-radius:50%;
+    font-size:15px;
+  }
+  .dzlog-art{
+    right:-10px;top:7px;width:141px;height:188px;
+    border:6px solid #292f2d;border-radius:23px 0 0 23px;
+    transform:rotate(7deg);box-shadow:-13px 16px 24px #3b473424;
+  }
+  .keyboard-art{right:-20px;width:145px;height:179px;transform:rotate(9deg)}
+  .lock-art{right:-8px;width:142px;height:221px;transform:rotate(9deg)}
+}
+/* Slightly tighter composition for laptops, but keep two-line heading. */
+@media(min-width:1051px) and (max-width:1199px){
+  .hero-copy h1{font-size:clamp(32px,3.05vw,36px);white-space:nowrap}
+  .hero-decor-books,.hero-decor-leaf{opacity:.24}
+  .hero-showcase{grid-template-columns:51% 49%}
+  .app-rail{gap:12px}
+  .app-panel{height:175px;min-height:175px}
+}
+
+/* App collection: one real product photograph anchors each category. */
+@media(min-width:1051px){
+  .overview{
+    padding:120px 0 126px;
+    background:radial-gradient(ellipse at 76% 45%,#e9efe6 0%,transparent 52%),#f9faf5;
+  }
+  .overview:before{
+    color:#849282;font-size:10px;letter-spacing:.22em;
+  }
+  .section-heading{margin-bottom:43px;align-items:end}
+  .section-heading h2{
+    font-size:clamp(38px,3.2vw,52px);
+    line-height:1.3;letter-spacing:-.067em;
+    font-weight:790;
+  }
+  .section-intro{color:#7c8177;font-size:13px;line-height:1.9}
+  .product-grid{
+    grid-template-columns:minmax(0,1.24fr) minmax(360px,.76fr);
+    gap:24px;
+  }
+  .product-side{gap:22px}
+  .product-card{
+    border-radius:30px;
+    border:1px solid #fff9;
+    box-shadow:0 22px 60px #636b5d20;
+    transition:transform .3s ease,box-shadow .3s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 68px #5d66562d;
+  }
+  .product-card-featured{
+    min-height:610px;
+    background:linear-gradient(120deg,#faf3e9 0 38%,#e9eee2 80%);
+    grid-template-columns:minmax(0,.9fr) minmax(290px,1.1fr);
+  }
+  .product-card-featured:before{background:#ddc7a363;z-index:3;left:30px;top:20px}
+  .product-card-featured .product-copy{padding:55px 44px 43px}
+  .product-title-row h3{font-size:48px}
+  .product-tagline{font-size:27px;line-height:1.52;color:#3e6746;margin:36px 0 18px}
+  .product-description{color:#71776e;line-height:2;font-size:13px;max-width:325px}
+  .product-link{
+    border-bottom:1px solid #a7b9a8;
+    padding:0 0 8px;
+    margin-top:auto;
+    font-size:13px;
+  }
+  .dzlog-product-visual{
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 44% 58%,#fefdf57a 0 21%,transparent 58%),
+      linear-gradient(150deg,#e9f0e5,#dce6d4 65%,#d5c9b8);
+  }
+  .dzlog-product-visual:before{
+    content:"";
+    position:absolute;z-index:0;left:-15%;right:-15%;bottom:-52px;height:165px;
+    border-radius:50%;
+    background:linear-gradient(170deg,#f8f3e9,#d2bda1);
+    box-shadow:inset 0 2px 3px #fff9,0 14px 25px #65574022;
+  }
+  .featured-phone{
+    z-index:1;width:263px;height:483px;
+    border:8px solid #2a302d;border-radius:42px;
+    transform:rotate(6deg) translate(4px,-14px);
+    box-shadow:26px 32px 43px #3f4c3a43;
+  }
+  .product-card-featured:hover .featured-phone{transform:rotate(3deg) translate(4px,-20px)}
+  .featured-photo{
+    background:linear-gradient(0deg,#d3dcb60a,#ebf3d81b),url('/assets/scene.webp') center 40%/cover no-repeat;
+  }
+  .featured-table{left:17px;right:17px;top:175px;box-shadow:0 11px 28px #2e403436}
+  .visual-note{right:23px;bottom:18px;font-size:9px;background:#fffcf2c7;border-radius:999px;padding:8px 12px}
+  .product-card-secondary{
+    min-height:290px;
+    background:linear-gradient(135deg,#fff4ecef,#f6e6dc);
+    grid-template-columns:minmax(0,1fr) 173px;
+  }
+  .product-mylock{background:linear-gradient(135deg,#f5f9fb,#e3edf4)}
+  .product-card-secondary .product-copy{padding:37px 30px}
+  .product-card-secondary .product-title-row h3{font-size:27px;white-space:nowrap}
+  .product-card-secondary .product-description{font-size:12px;max-width:220px}
+  .mini-product-visual{
+    width:171px;height:222px;margin-right:-19px;
+    box-shadow:-10px 18px 34px #504b3b2a;
+  }
+  .keyboard-product-visual{transform:rotate(8deg) translateY(7px)}
+  .lock-product-visual{transform:rotate(8deg) translateY(7px)}
+  .product-card-secondary:before{
+    width:8px;height:8px;left:auto;right:22px;top:21px;
+    background:#aa937a70;box-shadow:none;
+  }
+}
+
+/* Studio: warm paper, expressive editorial typesetting, precise alignments. */
+@media(min-width:1051px){
+  .studio{
+    padding:132px 0 140px;
+    background:
+      radial-gradient(ellipse at 12% 95%,#d3dbcdcf 0%,transparent 45%),
+      radial-gradient(ellipse at 86% 8%,#faf5ec 0 13%,transparent 38%),
+      #e8ede5;
+  }
+  .studio:before{
+    right:-160px;top:-200px;background:#fbf8ef78;
+    width:680px;height:620px;filter:blur(55px);
+  }
+  .studio-hero{margin-bottom:72px;gap:95px}
+  .studio-heading-block{padding-left:24px}
+  .studio-heading-block:before{top:16px;height:133px;background:linear-gradient(#648a67,transparent)}
+  .studio-heading-block h2{
+    font-size:clamp(43px,3.9vw,61px);
+    font-weight:770;line-height:1.42;
+  }
+  .studio-heading-block .serif-accent{
+    display:inline-block;line-height:1.65;
+    font-family:"Noto Serif KR",serif;
+    color:#446d4c;font-size:.88em;font-weight:600;
+    letter-spacing:-.067em;
+  }
+  .studio-intro p{line-height:2.08;font-size:14px}
+  .studio-board{gap:28px;grid-template-columns:minmax(0,1.15fr) minmax(260px,.77fr) minmax(280px,.85fr)}
+  .studio-note{
+    min-height:430px;
+    padding:46px 40px;
+    border:1px solid #ffffff39;border-radius:32px 32px 32px 8px;
+    background:
+      radial-gradient(circle at 86% 16%,#87a48c59,transparent 39%),
+      linear-gradient(130deg,#476f50,#294a34);
+    box-shadow:0 26px 58px #38554230,inset 0 1px 0 #fff3;
+  }
+  .studio-note strong{
+    margin:32px 0 22px;
+    font-size:32px;line-height:1.68;
+    color:#fffaf1;
+    font-family:"Noto Serif KR",serif;
+  }
+  .studio-values{padding:8px 8px;min-height:425px;background:transparent;border:0;box-shadow:none}
+  .studio-values article{
+    padding:24px 0 25px 41px;border-top:1px solid #879b882e;border-bottom:0;
+    transition:transform .2s ease;
+  }
+  .studio-values article:hover{transform:translateX(6px)}
+  .studio-values article>span{left:0;top:30px}
+  .studio-values h3{font-size:28px;font-weight:740}
+  .studio-values p{font-size:12px;line-height:1.8}
+  .studio-making{
+    min-height:429px;padding:33px 28px;border-radius:6px 28px 28px 28px;
+    transform:rotate(1.7deg);
+    background:
+      repeating-linear-gradient(0deg,transparent 0 31px,#a78a6521 32px,transparent 33px),
+      linear-gradient(140deg,#fff8ea,#f1e2c8);
+    box-shadow:0 25px 45px #72655328,inset 0 1px 0 #fff9;
+  }
+  .studio-making:before{background:#c9b28f9e}
+  .making-row{border-top:1px solid #c9b89e60}
+  .making-row strong{font-weight:780}
+  .closing{
+    padding:120px 0;
+    background:radial-gradient(circle at 80% 35%,#e0e9dc 0%,transparent 43%),#fcfaf5;
+  }
+  .closing h2{font-size:clamp(39px,3.8vw,58px);line-height:1.38}
+}
+/* Preserve existing mobile mockup baseline until the PC direction is approved. */
+@media(max-width:760px){.site-header{backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){
+  .phone-mockup,.product-card,.studio-values article,.app-panel{transition:none!important}
+}
