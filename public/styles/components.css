@@ -1,0 +1,22 @@
+.button{
+  display:inline-flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  min-height:54px;
+  padding:14px 24px;
+  border-radius:var(--radius-pill);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+  white-space:nowrap;
+  transition:transform .18s ease,background .18s ease;
+}
+.button:hover{transform:translateY(-2px)}
+.button-primary{background:#3b6144;color:#fff;min-width:190px}
+.button-outline{border:1px solid #607e65;background:#fffdf9a0;color:#2d4b32}
+.icon{width:1em;height:1em;display:inline-block;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.125em}
+@media(max-width:1050px){.button{font-size:12px;padding:12px 17px;min-height:48px}}
+@media(max-width:760px){.button{padding:11px 16px;min-height:46px}}
+@media(max-width:450px){.button{font-size:11px;padding:10px 13px;min-height:43px}}
+@media(prefers-reduced-motion:reduce){.button,.app-panel{transition:none}}
