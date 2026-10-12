@@ -582,3 +582,44 @@
     background:linear-gradient(145deg,#f8fbfd,#e7eff7);
   }
 }
+
+
+/* Desktop width QA: keep the approved composition stable below 1440px */
+@media(min-width:1051px) and (max-width:1320px){
+  .shell{width:min(1240px,calc(100% - 56px))}
+  .header-content{gap:22px}
+  .desktop-nav{gap:42px}
+  .hero-layout{grid-template-columns:minmax(0,43fr) minmax(0,57fr)}
+  .hero-copy h1{font-size:clamp(42px,4.1vw,56px)}
+  .hero-intro{font-size:14px}
+  .hero-showcase{grid-template-columns:47% 53%}
+  .phone-mockup{transform:translateY(-10px) rotate(-1deg) scale(.92)}
+  .phone-stage:hover .phone-mockup{transform:translateY(-15px) rotate(-.2deg) scale(.92)}
+  .stage-disc{width:126%;left:-4%}
+  .app-panel{min-height:158px;padding:17px 16px 16px 18px}
+  .panel-copy{min-width:130px}
+  .panel-topline strong{font-size:17px}
+  .panel-copy p{font-size:12px}
+  .dzlog-art{width:118px;height:174px;right:-18px}
+  .keyboard-art{width:132px;height:160px;right:-31px}
+  .lock-art{width:132px;height:215px;right:-28px}
+  .product-card-featured{grid-template-columns:minmax(0,.95fr) minmax(280px,1.05fr)}
+  .product-copy{padding:32px}
+  .product-title-row h3{font-size:40px}
+  .studio-hero{gap:66px}
+  .studio-board{grid-template-columns:1.05fr 1fr .88fr}
+}
+@media(min-width:1051px) and (max-width:1160px){
+  .brand-korean{display:none}
+  .desktop-nav{gap:30px}
+  .header-cta{padding:9px 18px}
+  .hero-layout{grid-template-columns:minmax(0,41fr) minmax(0,59fr)}
+  .hero-copy h1{font-size:43px}
+  .hero-showcase{grid-template-columns:45% 55%}
+  .phone-mockup{transform:translateY(-8px) rotate(-1deg) scale(.84)}
+  .phone-stage:hover .phone-mockup{transform:translateY(-12px) rotate(-.2deg) scale(.84)}
+  .app-panel{min-height:150px}
+  .panel-copy p{font-size:11px}
+  .state-tag{font-size:8px}
+  .studio-note strong{font-size:27px}
+}
