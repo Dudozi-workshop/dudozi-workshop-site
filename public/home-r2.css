@@ -1180,3 +1180,72 @@
     pointer-events:none;
   }
 }
+
+
+/* Hero app rail v4: mini product posters */
+@media(min-width:1051px){
+  .app-panel{
+    position:relative;
+    min-height:176px;
+    padding:20px 19px 18px 20px;
+    overflow:hidden;
+  }
+  .app-panel:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+      linear-gradient(135deg,#ffffff66,transparent 42%),
+      radial-gradient(circle at 88% 16%,#ffffff72 0 34px,transparent 90px);
+  }
+  .panel-copy{
+    position:relative;
+    z-index:2;
+  }
+  .panel-topline{
+    gap:8px;
+  }
+  .mini-icon{
+    width:31px;height:31px;
+    border-radius:10px;
+  }
+  .state-tag{
+    padding:4px 7px;
+    font-size:8px;
+  }
+  .panel-copy p{
+    max-width:170px;
+    margin-top:10px;
+    font-size:12px;
+  }
+  .panel-arrow{
+    width:31px;height:31px;
+    margin-top:14px;
+    background:#ffffff8c;
+    box-shadow:0 6px 14px #4f554817;
+  }
+  .dzlog-art{
+    width:132px;height:182px;
+    right:-9px;top:7px;
+    transform:rotate(4deg);
+    border-radius:20px 0 0 20px;
+    box-shadow:-12px 18px 26px #565c4d24;
+  }
+  .keyboard-art{
+    width:145px;height:171px;
+    right:-18px;bottom:-18px;
+    transform:rotate(5deg);
+    box-shadow:-12px 18px 28px #735e4d22;
+  }
+  .lock-art{
+    width:145px;height:220px;
+    right:-12px;bottom:-54px;
+    transform:rotate(5deg);
+    box-shadow:-13px 18px 30px #57616f22;
+  }
+  .dzlog-panel:hover .dzlog-art{transform:rotate(2deg) translateY(-3px)}
+  .grigle-panel:hover .keyboard-art{transform:rotate(3deg) translateY(-3px)}
+  .mylock-panel:hover .lock-art{transform:rotate(3deg) translateY(-3px)}
+  .dzlog-art,.keyboard-art,.lock-art{transition:transform .25s ease}
+}
