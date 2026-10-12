@@ -323,3 +323,94 @@
   .app-grigle .screen-story-grid .screen-moment,
   .app-mylock .screen-story-grid .screen-moment{transform:none}
 }
+
+
+/* Editorial continuity with homepage */
+@media(min-width:901px){
+  .detail-hero{
+    min-height:760px;
+  }
+  .detail-grid{
+    min-height:610px;
+  }
+  .detail-hero:before{
+    opacity:.62;
+  }
+  .detail-hero:after{
+    opacity:.72;
+  }
+  .detail-title{
+    font-size:clamp(60px,6vw,88px);
+    letter-spacing:-.07em;
+  }
+  .detail-tagline{
+    max-width:520px;
+    font-size:clamp(29px,2.7vw,40px);
+    line-height:1.45;
+  }
+  .detail-summary{
+    max-width:500px;
+    color:#697069;
+  }
+
+  .screen-story{
+    padding-top:122px;
+    padding-bottom:118px;
+  }
+  .screen-story:after{
+    content:"APP EXPERIENCE / DUDOZI WORKSHOP";
+    position:absolute;
+    right:max(5vw,50px);
+    top:36px;
+    font-size:9px;
+    font-weight:700;
+    letter-spacing:.18em;
+    color:#8a9189;
+  }
+  .screen-story-head{
+    margin-bottom:52px;
+  }
+  .screen-story-head h2{
+    font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+    font-weight:600;
+    max-width:720px;
+  }
+  .screen-moment{
+    border-radius:32px;
+  }
+  .screen-moment:nth-child(2){
+    margin-top:18px;
+  }
+  .screen-moment:nth-child(3){
+    margin-top:36px;
+  }
+
+  .detail-section-heading{
+    position:relative;
+  }
+  .detail-section-heading:before{
+    content:"";
+    position:absolute;
+    left:0;top:-26px;
+    width:42px;height:2px;
+    background:var(--app-accent);
+    opacity:.65;
+  }
+  .feature-card{
+    position:relative;
+    overflow:hidden;
+  }
+  .feature-card:after{
+    content:"";
+    position:absolute;
+    width:110px;height:110px;
+    border-radius:50%;
+    right:-50px;bottom:-55px;
+    background:var(--app-soft);
+    opacity:.6;
+  }
+  .other-apps h2{
+    font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+    font-weight:600;
+  }
+}
