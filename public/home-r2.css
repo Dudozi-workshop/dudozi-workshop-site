@@ -683,3 +683,7 @@
   }
   .footer-brand span{letter-spacing:-.03em}
 }
+
+/* Homepage app cards are direct links to detail pages */
+.product-card{text-decoration:none;color:inherit}
+.product-card:visited{color:inherit}
