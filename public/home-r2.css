@@ -42,3 +42,10 @@
 @media(min-width:761px) and (max-width:1050px){.app-rail{top:60px;gap:11px}.app-panel{min-height:166px}.dzlog-art{right:-66px;opacity:.8}}
 @media(max-width:760px){.hero-decor-books{opacity:.22;width:45%;height:95px}.hero-decor-leaf{opacity:.48;width:75px;height:190px}.app-rail{top:47px;gap:9px}.app-panel{min-height:143px}.dzlog-art{display:none}.app-panel .panel-copy p{white-space:normal;font-size:10px}.phone-stage{height:520px}.hero-showcase{min-height:540px}}
 @media(max-width:450px){.hero-showcase{min-height:490px}.phone-stage{height:480px}.app-rail{top:39px;gap:9px}.app-panel{min-height:136px}}
+
+
+/* Hybrid hero: keep live UI interactive while borrowing the approved mockup's physical phone finish. */
+.phone-mockup{overflow:visible;border:0;background:transparent;box-shadow:none}
+.phone-bezel{position:relative;border:0;border-radius:37px;overflow:hidden;box-shadow:10px 20px 28px #514a3f42;background:#fdfbf7}
+.phone-mockup::after{content:"";position:absolute;inset:-10px -12px -12px -12px;background:url('/assets/phone-frame-r2.webp') center/100% 100% no-repeat;pointer-events:none;z-index:4;filter:drop-shadow(0 12px 18px #554b4038)}
+.phone-screen{position:relative;z-index:2;border-radius:31px;overflow:hidden}
