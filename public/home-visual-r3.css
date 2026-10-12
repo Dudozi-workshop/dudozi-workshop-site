@@ -438,3 +438,99 @@
 @media (min-width:1051px) and (prefers-reduced-motion:reduce) {
   .hero-copy,.phone-stage,.app-rail .app-panel{animation:none}
 }
+
+
+/* Product-camera and workshop finishing: prioritize imagery over abstract rectangles */
+@media(min-width:1051px){
+  .featured-photo{
+    background:
+      linear-gradient(0deg,#38432935,transparent 62%),
+      url('/assets/scene.webp') center/cover no-repeat;
+    top:8px;bottom:114px;
+  }
+  .featured-photo:before{content:none}
+  .featured-phone:before{
+    content:"DZlog";
+    position:absolute;
+    top:9px;left:8px;right:8px;
+    height:34px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fffef7f0;
+    color:#263529;
+    font-size:13px;
+    font-weight:800;
+    border-radius:22px 22px 0 0;
+    z-index:2;
+  }
+  .featured-table{
+    top:39%;
+    border-color:#dce6d8;
+    box-shadow:0 16px 26px #344c3659;
+  }
+  .featured-table span,.featured-table b{padding:10px 11px}
+  .featured-shutter{
+    bottom:33px;
+    box-shadow:inset 0 0 0 4px #161b18,0 0 0 3px #fff5;
+  }
+  .featured-phone:after{
+    content:"촬영     ·     표 설정     ·     갤러리";
+    position:absolute;
+    bottom:8px;left:0;right:0;
+    text-align:center;
+    font-size:8px;
+    color:#dce6d8;
+    letter-spacing:.03em;
+  }
+  .dzlog-product-visual:before{
+    content:"";
+    position:absolute;
+    left:12%;right:-15%;bottom:-16%;
+    height:170px;
+    background:url('/assets/podium.webp') center/cover no-repeat;
+    filter:saturate(.82);
+    opacity:.44;
+    -webkit-mask-image:radial-gradient(ellipse,#000 30%,transparent 74%);
+    mask-image:radial-gradient(ellipse,#000 30%,transparent 74%);
+  }
+  .studio:after{
+    content:"";
+    position:absolute;
+    z-index:0;
+    right:-60px;bottom:-15px;
+    width:340px;height:180px;
+    opacity:.27;
+    pointer-events:none;
+    background:url('/assets/desk-books.webp') right bottom/contain no-repeat;
+    filter:saturate(.7);
+    -webkit-mask-image:linear-gradient(270deg,#000 35%,transparent 94%);
+    mask-image:linear-gradient(270deg,#000 35%,transparent 94%);
+  }
+  .studio .shell{position:relative;z-index:1}
+  .studio-note{
+    border:1px solid #66816a47;
+    box-shadow:0 28px 67px #294c3934,inset 0 1px #ffffff29;
+  }
+  .studio-note:after{
+    width:240px;height:240px;
+    top:-85px;right:-64px;
+    border:1px solid #ffffff2b;
+    box-shadow:0 0 0 23px #ffffff06,0 0 0 55px #ffffff05;
+  }
+  .studio-values article h3{font-weight:800;letter-spacing:-.025em}
+  .studio-making{
+    background:
+      repeating-linear-gradient(0deg,transparent 0 27px,#ab8d600d 28px 29px),
+      repeating-linear-gradient(90deg,transparent 0 27px,#ab8d6008 28px 29px),
+      linear-gradient(144deg,#fff9ed,#efdfc7);
+    box-shadow:0 27px 60px #5b594626,inset 0 1px #fff9;
+  }
+  .studio-making:before{
+    width:104px;height:24px;
+    top:-11px;left:49%;
+    background:#d3b9919e;
+    border:1px solid #fff6;
+    transform:translateX(-50%) rotate(-7deg);
+  }
+}
