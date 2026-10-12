@@ -687,3 +687,256 @@
 /* Homepage app cards are direct links to detail pages */
 .product-card{text-decoration:none;color:inherit}
 .product-card:visited{color:inherit}
+
+
+/* Visual direction v2: closer to approved bright workshop mockups */
+@media(min-width:1051px){
+  .hero{
+    background:
+      radial-gradient(circle at 69% 20%,#fffaf1 0 14%,transparent 31%),
+      radial-gradient(circle at 88% 68%,#e3ead978 0 13%,transparent 34%),
+      linear-gradient(110deg,#fbf7ef 0%,#f8f4eb 48%,#efe9dc 100%);
+  }
+  .hero-light{
+    opacity:.78;
+    filter:blur(1px);
+    background:
+      linear-gradient(110deg,transparent 0 55%,#fff9 56% 60%,transparent 61% 67%,#fff7 68% 71%,transparent 72%);
+    transform:skewX(-8deg);
+  }
+  .hero-decor-books{
+    opacity:.88;
+    filter:saturate(.78) contrast(.96);
+    transform:translate(-8px,8px) rotate(-1deg);
+  }
+  .hero-decor-leaf{
+    opacity:.72;
+    filter:saturate(.72);
+  }
+  .hero-copy{
+    padding-top:24px;
+    position:relative;
+    z-index:2;
+  }
+  .hero-copy h1{
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    font-size:clamp(50px,4.45vw,70px);
+    font-weight:820;
+    line-height:1.22;
+    letter-spacing:-.07em;
+    color:#222823;
+    text-wrap:balance;
+  }
+  .hero-copy h1 span{
+    font-family:inherit;
+    font-weight:820;
+    letter-spacing:inherit;
+    color:#496c4f;
+  }
+  .hero-intro{
+    margin-top:28px;
+    max-width:470px;
+    font-size:16px;
+    line-height:1.9;
+    color:#666d66;
+    letter-spacing:-.025em;
+  }
+  .hero-actions .button{
+    min-height:54px;
+    padding-inline:25px;
+    font-size:14px;
+  }
+  .button-primary{
+    background:linear-gradient(180deg,#426d49,#365c3d);
+    border-color:#365c3d;
+    box-shadow:0 14px 28px #2f4f3630,inset 0 1px 0 #ffffff2a;
+  }
+  .button-primary:hover{
+    background:linear-gradient(180deg,#4a7651,#3a6241);
+    transform:translateY(-2px);
+  }
+  .button-outline{
+    border-color:#9cab9c;
+    background:#fffdf9b8;
+    box-shadow:0 10px 24px #665e5010,inset 0 1px 0 #fff;
+  }
+  .micro-note{
+    color:#737a72;
+    font-size:11px;
+    letter-spacing:.08em;
+  }
+
+  .phone-stage:after{
+    content:"";
+    position:absolute;
+    left:50%;bottom:15px;
+    width:360px;height:80px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse,#7c775f2c 0%,#7c775f13 44%,transparent 72%);
+    filter:blur(12px);
+    z-index:-1;
+  }
+  .phone-mockup{
+    filter:drop-shadow(0 24px 28px #4d493d2d);
+  }
+  .stage-disc{
+    border-radius:50%;
+    box-shadow:
+      inset 0 1px 0 #fff9,
+      0 28px 48px #8b76552b;
+  }
+
+  .app-rail{
+    gap:13px;
+  }
+  .app-panel{
+    min-height:172px;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border:1px solid #ffffffd4;
+    box-shadow:0 16px 34px #6d62521a,inset 0 1px 0 #fff;
+  }
+  .app-panel:hover{
+    transform:translateY(-6px) scale(1.01);
+    box-shadow:0 26px 50px #64594627,inset 0 1px 0 #fff;
+  }
+  .panel-topline strong{
+    font-size:19px;
+    font-weight:820;
+  }
+  .panel-copy p{
+    font-size:12px;
+    line-height:1.65;
+  }
+  .panel-arrow{
+    margin-top:16px;
+  }
+
+  .overview{
+    position:relative;
+    background:
+      radial-gradient(circle at 12% 18%,#fffdf9 0 180px,transparent 420px),
+      linear-gradient(180deg,#f8f8f3,#f1f3eb);
+  }
+  .overview:after{
+    content:"";
+    position:absolute;
+    left:0;right:0;top:0;height:120px;
+    background:linear-gradient(180deg,#f7f3eb 0%,transparent 100%);
+    pointer-events:none;
+  }
+  .section-heading{
+    position:relative;
+    z-index:1;
+  }
+  .section-heading h2{
+    max-width:760px;
+    font-size:clamp(40px,3.5vw,54px);
+    line-height:1.28;
+    font-weight:800;
+    letter-spacing:-.065em;
+  }
+  .section-intro{
+    max-width:420px;
+    font-size:14px;
+    line-height:1.9;
+  }
+  .product-card{
+    overflow:hidden;
+    border-color:#e4e2d8;
+    box-shadow:0 20px 46px #5b5e5015;
+  }
+  .product-card-featured{
+    min-height:575px;
+    border-radius:34px;
+  }
+  .product-card-featured .product-copy{
+    padding:44px 40px;
+  }
+  .product-title-row h3{
+    font-size:50px;
+    font-weight:820;
+  }
+  .product-tagline{
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    font-size:28px;
+    font-weight:760;
+    line-height:1.5;
+    letter-spacing:-.05em;
+    color:#365f3f;
+  }
+  .product-description{
+    max-width:420px;
+    font-size:14px;
+    line-height:1.9;
+  }
+  .featured-phone{
+    transform:rotate(4deg) translateY(-4px);
+    transition:transform .3s ease;
+  }
+  .product-card-featured:hover .featured-phone{
+    transform:rotate(2deg) translateY(-10px);
+  }
+  .product-card-secondary{
+    border-radius:30px;
+  }
+  .product-card-secondary .product-copy{
+    padding:32px 30px;
+  }
+
+  .studio{
+    background:
+      radial-gradient(circle at 8% 86%,#dfe6d7 0 160px,transparent 360px),
+      radial-gradient(circle at 92% 8%,#f8f5ed 0 170px,transparent 340px),
+      linear-gradient(180deg,#ebefe6,#e5ebe2);
+  }
+  .studio-heading-block h2{
+    font-size:clamp(44px,4.15vw,62px);
+    font-weight:790;
+    line-height:1.34;
+    letter-spacing:-.06em;
+  }
+  .studio-heading-block .serif-accent{
+    display:inline-block;
+    margin-top:5px;
+    font-size:.97em;
+    font-weight:600;
+  }
+  .studio-intro p{
+    font-size:15px;
+    line-height:1.95;
+  }
+  .studio-note,.studio-values,.studio-making{
+    min-height:348px;
+    box-shadow:0 20px 44px #59625216;
+  }
+  .studio-note strong{
+    font-family:"Noto Serif KR","Nanum Myeongjo",serif;
+    font-weight:600;
+    font-size:32px;
+    line-height:1.48;
+  }
+  .studio-values h3{
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    font-weight:760;
+  }
+
+  .closing{
+    padding-top:108px;
+    padding-bottom:108px;
+    background:
+      radial-gradient(circle at 78% 34%,#e8efe4 0 160px,transparent 360px),
+      #faf9f4;
+  }
+  .closing h2{
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+    font-weight:820;
+    letter-spacing:-.065em;
+    line-height:1.28;
+  }
+  .closing h2 span{
+    font-family:inherit;
+    font-weight:820;
+    color:#496c4f;
+  }
+}
