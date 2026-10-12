@@ -1,0 +1,309 @@
+/*
+ Dudozi Workshop / PC HERO R4 — approved photographic mockup direction.
+ Scoped to desktop hero; preserve mobile and all detail-page behavior.
+ Reference principles: warm window light, real tabletop, editorial left copy,
+ full-size DZlog record camera, frosted translucent app posters.
+*/
+@media (min-width:1051px){
+  .site-header{
+    position:absolute!important;top:0;left:0;right:0;
+    z-index:50;background:transparent!important;
+    border:0!important;box-shadow:none!important;
+    backdrop-filter:none!important;
+  }
+  .site-header .header-content{min-height:98px}
+  .site-header .desktop-nav{gap:62px}
+  .site-header .desktop-nav a{
+    font-size:15px;font-weight:750;letter-spacing:-.035em;
+    color:#242d25;
+  }
+  .site-header .header-cta{
+    min-height:53px;padding:12px 27px;
+    border:1px solid #8d9479;
+    background:#fffdf5db;
+    border-radius:999px;color:#385e3d;
+    font-size:14px;font-weight:800;
+    box-shadow:0 14px 30px #67645322,inset 0 1px #fff;
+  }
+
+  /* A single photographic room, with a legible ivory reading area. */
+  .hero{
+    min-height:910px!important;
+    isolation:isolate;overflow:hidden;
+    background:
+      linear-gradient(90deg,#fffdf7fc 0%,#fffaf3f2 20%,#fff9f0dc 37%,#fff9ef74 55%,#f6ecd324 78%,#f8f1e422 100%),
+      linear-gradient(0deg,#eee0c47d 0%,transparent 34%),
+      url('https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2200&q=80') center 40% /cover no-repeat,
+      #f7f1e5;
+  }
+  .hero:before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      linear-gradient(180deg,#fffaf13b,transparent 36%,#d8bb9850 100%),
+      repeating-linear-gradient(110deg,transparent 0 8%,#fff9e526 8.5% 11%,transparent 11.5% 19%);
+    opacity:.8;mix-blend-mode:screen;pointer-events:none;
+  }
+  .hero:after{
+    content:"";position:absolute;left:0;right:0;bottom:0;
+    z-index:0;height:220px;
+    background:linear-gradient(180deg,transparent,#f6e8d054);
+    pointer-events:none;
+  }
+  .hero .hero-light{display:none}
+  .hero .hero-glow-one,.hero .hero-glow-two{opacity:.14;filter:blur(55px)}
+  .hero .hero-decor-books{
+    display:block!important;
+    position:absolute;left:-22px;bottom:5px;z-index:1;
+    width:370px;height:205px;opacity:.9;
+    background:url('/assets/desk-books.webp') left bottom /contain no-repeat!important;
+    filter:saturate(.76);
+    mask-image:linear-gradient(90deg,#000 0 75%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,#000 0 75%,transparent);
+  }
+  .hero .hero-decor-leaf{
+    display:block!important;
+    right:0;top:104px;width:154px;height:340px;z-index:1;
+    background:url('/assets/leaf-edge.webp') right top/contain no-repeat!important;
+    opacity:.6;filter:saturate(.8);
+    mask-image:linear-gradient(270deg,#000 50%,transparent);
+    -webkit-mask-image:linear-gradient(270deg,#000 50%,transparent);
+  }
+  .hero .hero-decor-books:before,.hero .hero-decor-books:after,
+  .hero .hero-decor-leaf:before,.hero .hero-decor-leaf:after{content:none!important}
+
+  .hero .hero-layout{
+    min-height:910px!important;position:relative;z-index:2;
+    padding:122px 0 32px!important;
+    grid-template-columns:minmax(0,43%) minmax(0,57%)!important;
+    gap:0!important;
+  }
+  .hero .hero-copy{
+    position:relative;align-self:center;z-index:5;
+    padding:0 0 55px!important;
+  }
+  .hero .eyebrow{
+    margin-bottom:26px;color:#496549;
+    font-size:12px;letter-spacing:.32em;font-weight:750;
+  }
+  .hero .hero-copy h1{
+    font-family:"Noto Sans KR",system-ui,sans-serif!important;
+    font-size:clamp(45px,4.05vw,65px)!important;
+    font-weight:850!important;
+    letter-spacing:-.084em!important;
+    line-height:1.28!important;
+    white-space:nowrap;text-wrap:nowrap;
+    color:#1c241d!important;
+    margin:0 0 26px!important;
+    text-shadow:0 2px 10px #fff3;
+  }
+  .hero .hero-copy h1 span{color:#3d603f!important;font:inherit}
+  .hero .hero-intro{
+    font-size:16px!important;line-height:1.94!important;
+    color:#525750!important;letter-spacing:-.035em;
+    max-width:530px!important;font-weight:450!important;
+  }
+  .hero .hero-actions{
+    display:flex;gap:16px;margin-top:33px;align-items:center;flex-wrap:nowrap;
+  }
+  .hero .hero-actions .button{
+    min-height:62px!important;
+    padding:15px 24px!important;
+    font-size:15px!important;font-weight:750;
+    border-radius:999px!important;white-space:nowrap;
+    gap:20px;box-shadow:0 17px 32px #3d443524;
+  }
+  .hero .hero-actions .button-primary{
+    background:linear-gradient(160deg,#496b45,#345b38)!important;
+    border-color:#355d3b!important;color:#fff;
+    min-width:195px;
+  }
+  .hero .hero-actions .button-outline{
+    background:#fffef5dc!important;
+    border:1px solid #95a389!important;
+    color:#2e392f;
+    min-width:216px;
+  }
+  .hero .micro-note{
+    position:absolute!important;left:0;bottom:-63px;
+    margin:0!important;padding:7px 0 7px 18px!important;
+    background:none!important;
+    border-left:2px solid #527b56!important;
+    color:#4f6352!important;
+    font-size:12px!important;letter-spacing:-.025em!important;
+  }
+  .hero .hero-copy:after{content:none!important}
+
+  /* The two product rails combine into a single 3D product scene. */
+  .hero .hero-showcase{
+    display:grid!important;
+    min-height:727px!important;
+    grid-template-columns:minmax(0,49%) minmax(0,51%)!important;
+    align-items:center;gap:0!important;
+    overflow:visible!important;
+    isolation:isolate;
+  }
+  .hero .phone-stage{
+    position:relative;
+    display:grid;place-items:center;
+    height:740px!important;min-height:740px!important;
+    z-index:3;overflow:visible!important;
+  }
+  .hero .phone-stage:before{
+    content:"";position:absolute;
+    top:13%;left:50%;width:470px;height:600px;
+    transform:translateX(-50%);
+    z-index:-1;border-radius:50%;
+    background:radial-gradient(ellipse,#fff9ef9a,transparent 70%);
+    filter:blur(25px);
+  }
+  .hero .stage-disc{
+    width:132%!important;height:184px!important;
+    left:-16%!important;bottom:20px!important;
+    border-radius:50%!important;
+    background:url('/assets/podium.webp') center /cover no-repeat!important;
+    box-shadow:0 22px 32px #6d56492a!important;
+    filter:saturate(.7) contrast(1.07);
+    mask-image:radial-gradient(ellipse 70% 65% at center,#000 55%,transparent 91%)!important;
+    -webkit-mask-image:radial-gradient(ellipse 70% 65% at center,#000 55%,transparent 91%)!important;
+  }
+  .hero .stage-disc:after{display:none}
+  .hero .phone-mockup{
+    position:relative;width:308px!important;height:635px!important;
+    transform:translate(3px,-7px) rotate(-1.9deg)!important;
+    border:8px solid #202724!important;border-radius:48px!important;
+    box-shadow:9px 27px 16px #292f2a35,24px 38px 50px #3b423a45,inset -4px 0 0 #9d9e96!important;
+    filter:none!important;z-index:2;
+  }
+  .hero .phone-stage:hover .phone-mockup{
+    transform:translate(3px,-13px) rotate(-1.1deg)!important;
+  }
+  .hero .phone-screen{background:#f8f7f0}
+  .hero .phone-bezel{border-radius:38px}
+  .hero .photo-scene{
+    background:
+      linear-gradient(0deg,#4f553228,transparent 63%),
+      url('/assets/scene.webp') center center/cover no-repeat!important;
+  }
+  .hero .record-table{
+    top:34%!important;left:6%!important;right:6%!important;
+    font-size:11px!important;box-shadow:0 15px 32px #273b2a4d;
+  }
+  .hero .camera-controls{height:135px!important}
+  .hero .concept-label{
+    position:absolute;bottom:0!important;
+    border:1px solid #ffffffad;background:#ffffffbf!important;
+    color:#657565!important;border-radius:999px!important;
+    backdrop-filter:blur(10px);
+    box-shadow:0 8px 24px #5a5d501f;
+    font-size:10px!important;padding:7px 14px!important;
+  }
+
+  /* Right app panels emulate photographed devices on frosted glass posters. */
+  .hero .app-rail{
+    position:relative;z-index:4;
+    display:flex;flex-direction:column;
+    gap:14px!important;
+    transform:translateX(-5px);
+  }
+  .hero .app-panel{
+    min-height:187px!important;position:relative;overflow:hidden;
+    padding:22px 20px 20px 23px!important;
+    border:1px solid #ffffffc9!important;
+    border-radius:28px!important;
+    background:#faf9f1dc!important;
+    box-shadow:0 22px 39px #4b44321e,inset 0 1px #fff!important;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    transform:none;
+  }
+  .hero .app-panel:hover{
+    transform:translateY(-5px)!important;
+    box-shadow:0 27px 45px #4b443232!important;
+  }
+  .hero .dzlog-panel{background:linear-gradient(116deg,#fffef4f2,#e6eddbd9)!important}
+  .hero .grigle-panel{background:linear-gradient(116deg,#fffaf6f2,#f4e0d2e6)!important}
+  .hero .mylock-panel{background:linear-gradient(116deg,#f4f9fcf2,#dce8f3df)!important}
+  .hero .panel-copy{z-index:4;position:relative}
+  .hero .panel-topline{display:flex;align-items:center;gap:9px!important;flex-wrap:nowrap}
+  .hero .panel-topline strong{
+    font-size:22px!important;font-weight:800;white-space:nowrap;
+    color:#1e241f;letter-spacing:-.065em!important;
+  }
+  .hero .mini-icon{
+    width:37px!important;height:37px!important;flex:0 0 37px;
+    border-radius:12px;background:#fffefae6;
+    box-shadow:0 5px 12px #7c806422;
+  }
+  .hero .state-tag{font-size:9px!important;padding:5px 8px!important;white-space:nowrap}
+  .hero .panel-copy p{
+    font-size:12px!important;color:#626761!important;
+    line-height:1.75!important;margin:12px 0 15px!important;
+    max-width:178px;white-space:normal;
+  }
+  .hero .panel-arrow{
+    margin-top:0!important;width:30px!important;height:28px!important;
+    background:#ffffffb0!important;
+    border-radius:50%;display:grid;place-items:center;
+    box-shadow:0 5px 13px #383a2d16!important;
+  }
+  .hero .dzlog-art,.hero .keyboard-art,.hero .lock-art{
+    position:absolute;z-index:2;
+    right:-15px!important;
+    width:156px!important;
+    border:6px solid #353a37!important;
+    border-radius:23px 23px 0 0!important;
+    transform:rotate(9deg)!important;
+    box-shadow:-15px 23px 29px #28312530!important;
+    transition:transform .3s ease;
+  }
+  .hero .dzlog-art{
+    top:15px!important;height:220px!important;
+    background:
+      linear-gradient(0deg,#faf9edd7,#e6efdc5b),
+      url('/assets/scene.webp') center/cover no-repeat!important;
+  }
+  .hero .keyboard-art{
+    bottom:-57px!important;height:214px!important;
+    background:#fffdfa!important;
+  }
+  .hero .lock-art{
+    bottom:-80px!important;height:250px!important;
+  }
+  .hero .app-panel:hover .dzlog-art,.hero .app-panel:hover .keyboard-art,.hero .app-panel:hover .lock-art{
+    transform:rotate(5deg) translateY(-5px)!important;
+  }
+}
+
+/* Keep the 2-line headline at narrower desktop widths without clipping. */
+@media(min-width:1051px) and (max-width:1399px){
+ .hero .hero-layout{grid-template-columns:minmax(0,43%) minmax(0,57%)!important}
+ .hero .hero-copy h1{font-size:clamp(34px,3.45vw,49px)!important}
+ .hero .hero-intro{font-size:14px!important}
+ .hero .hero-actions .button{font-size:12px!important;min-height:52px!important;padding:12px 15px!important;min-width:0}
+ .hero .phone-mockup{width:280px!important;height:581px!important}
+ .hero .phone-stage{height:677px!important;min-height:677px!important}
+ .hero .hero-showcase{min-height:665px!important}
+ .hero .app-panel{min-height:169px!important;padding:18px 11px 16px 15px!important}
+ .hero .panel-topline strong{font-size:18px!important}
+ .hero .mini-icon{width:30px!important;height:30px!important;flex-basis:30px}
+ .hero .state-tag{font-size:8px!important;padding:4px 6px!important}
+ .hero .panel-copy p{font-size:11px!important}
+ .hero .dzlog-art,.hero .keyboard-art,.hero .lock-art{width:133px!important}
+ .hero .hero-decor-books{opacity:.7}
+}
+@media(min-width:1051px) and (max-width:1160px){
+ .hero .hero-copy h1{font-size:clamp(31px,2.95vw,35px)!important}
+ .hero .phone-mockup{width:258px!important;height:535px!important}
+ .hero .hero-copy{padding-bottom:72px!important}
+ .hero .hero-layout{min-height:800px!important}
+ .hero{min-height:800px!important}
+ .hero .app-panel{min-height:157px!important;padding:14px 11px!important}
+ .hero .panel-topline strong{font-size:16px!important}
+ .hero .app-rail{gap:11px!important}
+ .hero .dzlog-art,.hero .keyboard-art,.hero .lock-art{width:110px!important}
+ .hero .panel-copy p{font-size:10px!important}
+ .hero .hero-actions{gap:9px!important}
+}
+@media(prefers-reduced-motion:reduce) and (min-width:1051px){
+ .hero .hero-copy,.hero .phone-stage,.hero .app-rail .app-panel{animation:none!important}
+}
