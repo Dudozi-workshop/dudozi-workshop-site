@@ -1,0 +1,440 @@
+/* VISUAL R3: a photographic workshop art direction. Built on shared R2 structure. */
+@media (min-width:1051px) {
+  :root {
+    --v3-cream: #f9f6ef;
+    --v3-paper: #fffdfa;
+    --v3-forest: #385f40;
+    --v3-forest-dark: #28482f;
+    --v3-ink: #222820;
+    --v3-muted: #666960;
+  }
+  .site-header {
+    position:absolute;
+    inset:0 0 auto;
+    z-index:20;
+    background:transparent;
+    border-bottom:1px solid #ffffff55;
+  }
+  .header-content { min-height:104px; }
+  .brand-mark img { width:104px;height:45px; }
+  .brand-mark {width:108px}
+  .brand-korean {font-size:18px;letter-spacing:-.055em}
+  .desktop-nav {gap:56px}
+  .desktop-nav a {font-weight:700;color:#2e332c;font-size:15px}
+  .header-cta {
+    min-height:48px;
+    display:inline-flex;
+    align-items:center;
+    background:#fffdf9dc;
+    border:1px solid #a3a88e;
+    padding-inline:24px;
+    box-shadow:0 8px 20px #6a624619,inset 0 1px #fff;
+  }
+
+  /* Full-bleed room lighting; leave an ivory reading zone at left. */
+  .hero {
+    min-height:900px;
+    background:
+      radial-gradient(ellipse 52% 73% at 47% 42%,#fcfcf5e8,transparent 83%),
+      radial-gradient(ellipse 22% 30% at 89% 49%,#e5dfc999,transparent 95%),
+      linear-gradient(118deg,#faf8f1 0%,#f9f6ed 36%,#ede4d4 78%,#e7dfce);
+  }
+  .hero::before {
+    content:"";
+    position:absolute;inset:0;
+    opacity:1;
+    z-index:0;
+    pointer-events:none;
+    background:
+      linear-gradient(0deg,#decdb58c 0 2px,transparent 2px) 0 87%/100% 100% no-repeat,
+      linear-gradient(180deg,transparent 0 71%,#fff7e47a 86%,#c1a88738 100%),
+      radial-gradient(ellipse 16% 36% at 98% 47%,#8da67c37,transparent 100%);
+    mix-blend-mode:normal;
+  }
+  .hero::after {
+    content:"";
+    position:absolute;inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.65;
+    background:
+      linear-gradient(112deg,transparent 58%,#fff9ec62 60%,#fffefaac 66%,transparent 69%),
+      linear-gradient(112deg,transparent 68%,#fffef68c 72%,transparent 76%),
+      linear-gradient(112deg,transparent 78%,#fffce760 82%,transparent 86%);
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 64%,transparent 92%);
+    mask-image:linear-gradient(180deg,#000 0%,#000 64%,transparent 92%);
+  }
+  .hero-glow-one {width:710px;height:610px;right:2%;top:6%;background:#e5eedc77;filter:blur(100px)}
+  .hero-glow-two {width:550px;height:380px;left:6%;bottom:-200px;background:#efdfc0a9;filter:blur(75px)}
+  .hero-light {
+    z-index:0;
+    top:0;right:3%;width:60%;height:88%;
+    opacity:.58;filter:blur(13px);transform:none;
+    background:
+      linear-gradient(121deg,transparent 16%,#ffffff67 20%,transparent 33%),
+      linear-gradient(121deg,transparent 40%,#fffdfa91 43%,transparent 48%);
+  }
+  .hero-layout {
+    position:relative;
+    z-index:2;
+    min-height:900px;
+    padding-top:95px;
+    padding-bottom:58px;
+    grid-template-columns:minmax(0,44fr) minmax(0,56fr);
+    gap:12px;
+  }
+  .hero-copy {
+    padding:5px 0 42px;
+    align-self:center;
+    z-index:6;
+  }
+  .eyebrow {
+    color:#516e50;
+    font-size:11px;
+    letter-spacing:.27em;
+    margin-bottom:27px;
+  }
+  .hero-copy h1 {
+    color:var(--v3-ink);
+    font-size:clamp(47px,4.23vw,65px);
+    letter-spacing:-.078em;
+    font-weight:800;
+    line-height:1.32;
+    margin-bottom:28px;
+    text-wrap:nowrap;
+    white-space:nowrap;
+  }
+  .hero-copy h1 span {color:#406641}
+  .hero-intro {
+    color:#525950;
+    font-size:16px;
+    line-height:1.95;
+    font-weight:400;
+  }
+  .hero-actions {margin-top:32px;gap:14px}
+  .hero-actions .button {
+    min-height:55px;
+    padding:14px 27px;
+    font-size:14px;
+    box-shadow:0 10px 24px #5b695124;
+  }
+  .hero-actions .button-primary{
+    background:linear-gradient(180deg,#426d47,#345b3d);
+    border-color:#426d47;
+  }
+  .hero-actions .button-outline {
+    border:1px solid #a9b49d;
+    background:#fffefaaf;
+    box-shadow:0 9px 20px #66775b10,inset 0 1px #fff;
+  }
+  .micro-note{
+    margin-top:90px;
+    font-size:11px;
+    letter-spacing:0;
+    line-height:1.7;
+    color:#6b786a;
+    background:#fffcf449;
+    width:max-content;
+    padding:10px 16px;
+    border-left:2px solid #6a916d;
+  }
+  .hero-copy:after{content:none}
+  .hero-decor-books {
+    z-index:1;
+    left:-15px;
+    bottom:7px;
+    width:370px;
+    height:198px;
+    opacity:.83;
+    background:url('/assets/desk-books.webp') left bottom/contain no-repeat!important;
+    filter:saturate(.85) contrast(1.09);
+    transform:none;
+    -webkit-mask-image:linear-gradient(90deg,#000 0 66%,transparent 100%);
+    mask-image:linear-gradient(90deg,#000 0 66%,transparent 100%);
+  }
+  .hero-decor-books:before,.hero-decor-books:after{content:none}
+  .hero-decor-leaf{
+    z-index:1;
+    top:92px;right:-14px;
+    width:160px;height:335px;
+    background:url('/assets/leaf-edge.webp') right top/contain no-repeat!important;
+    opacity:.85;
+    filter:saturate(.83) contrast(1.08);
+    transform:none;
+    -webkit-mask-image:linear-gradient(270deg,#000 24% 75%,transparent 100%);
+    mask-image:linear-gradient(270deg,#000 24% 75%,transparent 100%);
+  }
+  .hero-decor-leaf:before,.hero-decor-leaf:after{content:none}
+
+  /* Phone is the centerpiece, not a tiny interface illustration. */
+  .hero-showcase{
+    min-height:705px;
+    grid-template-columns:minmax(0,51%) minmax(0,49%);
+    align-items:center;
+  }
+  .phone-stage{
+    height:700px;
+    min-height:700px;
+    z-index:2;
+  }
+  .phone-stage:before{
+    content:"";
+    position:absolute;
+    width:560px;height:610px;left:50%;top:5%;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:radial-gradient(ellipse,#fffefa79 0 38%,transparent 70%);
+    z-index:-3;
+  }
+  .phone-stage:after{
+    content:"";
+    position:absolute;
+    width:380px;height:66px;
+    left:50%;bottom:45px;
+    transform:translateX(-50%);
+    background:radial-gradient(ellipse,#7663495e,transparent 68%);
+    filter:blur(20px);z-index:-1;
+  }
+  .stage-disc{
+    width:122%;
+    left:-10%;
+    height:178px;
+    bottom:15px;
+    background:url('/assets/podium.webp') center/cover no-repeat;
+    border-radius:46% 46% 48% 48%;
+    box-shadow:0 18px 34px #75614826;
+    filter:saturate(.8) contrast(1.08);
+    -webkit-mask-image:radial-gradient(ellipse 67% 65% at 50% 50%,#000 57%,transparent 92%);
+    mask-image:radial-gradient(ellipse 67% 65% at 50% 50%,#000 57%,transparent 92%);
+  }
+  .stage-disc:after{content:none}
+  .phone-mockup{
+    width:312px;
+    height:633px;
+    border-radius:47px;
+    border:8px solid #222724;
+    transform:translate(1px,-10px) rotate(-1deg);
+    box-shadow:10px 30px 52px #33382f54,inset -4px 0 0 #9a9c94;
+    filter:drop-shadow(0 22px 25px #605b4931);
+    transition:transform .35s ease,box-shadow .35s ease;
+  }
+  .phone-stage:hover .phone-mockup {transform:translate(1px,-17px) rotate(-.4deg)}
+  .phone-bezel{border-radius:38px;background:#fff}
+  .phone-screen{background:#fff}
+  .photo-scene{
+    background:
+      linear-gradient(0deg,#4d54311d,transparent 64%),
+      url('/assets/scene.webp') center center/cover no-repeat;
+  }
+  .photo-scene .scene-window,.photo-scene .scene-window-bars,
+  .photo-scene .scene-desk,.photo-scene .scene-notebook,
+  .photo-scene .scene-vase{display:none}
+  .record-table{top:35%;left:7%;right:7%;font-size:11px;box-shadow:0 13px 24px #142b1c47}
+  .record-row span,.record-row strong{padding:9px}
+  .camera-controls{height:133px}
+  .shutter-row{padding-top:3px}
+  .concept-label{
+    bottom:4px;
+    padding:8px 13px;
+    font-size:10px;
+    background:#fffcf0bb;
+    color:#6b7b67;
+    box-shadow:0 7px 24px #665b4c12;
+  }
+
+  /* Three photographed-product-like app postcards */
+  .app-rail{gap:15px;transform:translateX(0);z-index:4}
+  .app-panel{
+    min-height:194px;
+    padding:24px 20px 22px 24px;
+    border:1px solid #ffffffdb;
+    border-radius:28px;
+    background:linear-gradient(125deg,#fffefaee,#f5f2eae8);
+    box-shadow:0 20px 43px #524f3d27,inset 0 1px #fff;
+    transition:transform .28s ease,box-shadow .28s ease;
+  }
+  .app-panel:hover{
+    transform:translateY(-5px);
+    box-shadow:0 27px 52px #524f3d34,inset 0 1px #fff;
+  }
+  .app-panel:before{
+    background:linear-gradient(135deg,#ffffffba,transparent 44%),radial-gradient(circle at 85% 15%,#ffffffa1,transparent 55%);
+    opacity:1;
+  }
+  .dzlog-panel{background:linear-gradient(112deg,#fafcf5,#e3ead7)}
+  .grigle-panel{background:linear-gradient(112deg,#fff9f3,#f3ded2)}
+  .mylock-panel{background:linear-gradient(112deg,#f5fafc,#dbe7f2)}
+  .mini-icon{
+    width:39px;height:39px;
+    border-radius:13px;
+    background:#ffffffd9;
+    box-shadow:0 8px 15px #5d634f12;
+  }
+  .panel-topline{gap:10px}
+  .panel-topline strong{font-size:23px;font-weight:800;letter-spacing:-.055em}
+  .state-tag{font-size:10px;padding:5px 9px}
+  .panel-copy{min-width:0}
+  .panel-copy p{
+    font-size:12px;
+    line-height:1.75;
+    font-weight:500;
+    color:#61665e;
+    margin:12px 0 7px;
+  }
+  .panel-arrow{font-size:18px;background:transparent;box-shadow:none;margin-top:auto}
+  .dzlog-art{
+    width:142px;height:197px;right:-19px;top:9px;
+    border-radius:21px 0 0 21px;
+    transform:rotate(8deg);
+    border:5px solid #303633;
+    box-shadow:-14px 22px 29px #25362733;
+    background:linear-gradient(0deg,#e4ead4a6,#f5f6ed85),url('/assets/scene.webp') center/cover no-repeat;
+  }
+  .keyboard-art{
+    width:160px;height:200px;right:-23px;bottom:-34px;
+    transform:rotate(8deg);
+    border-width:5px;
+    box-shadow:-13px 22px 28px #7d665c2b;
+  }
+  .lock-art{
+    width:156px;height:257px;right:-25px;bottom:-66px;
+    transform:rotate(8deg);
+    border-width:5px;
+    box-shadow:-15px 20px 30px #45546f33;
+  }
+
+  /* App catalog is a designed product display, not a generic card grid. */
+  .overview{
+    padding:130px 0 144px;
+    background:
+      radial-gradient(ellipse 50% 45% at 79% 10%,#eff1e6,transparent 85%),
+      linear-gradient(180deg,#faf9f5,#f3f4ed);
+  }
+  .overview:after{background:linear-gradient(180deg,#faf9f4,transparent)}
+  .overview:before{border-color:#a8b19d4a;color:#858d7c}
+  .section-heading{margin-bottom:48px}
+  .section-heading h2{
+    font-size:clamp(42px,3.5vw,55px);
+    letter-spacing:-.065em;
+  }
+  .section-intro{font-size:15px;line-height:1.9}
+  .product-grid{gap:24px}
+  .product-card{
+    border:1px solid #ecece4;
+    box-shadow:0 26px 70px #555d4e1a;
+  }
+  .product-card:hover{box-shadow:0 35px 80px #555d4e2c;transform:translateY(-4px)}
+  .product-card-featured{
+    min-height:615px;
+    border-radius:38px;
+    background:#f9f6ec;
+  }
+  .product-card-featured:before{opacity:.55}
+  .product-card-featured .product-copy{padding:46px 38px 42px}
+  .product-title-row h3{font-size:51px;font-weight:800}
+  .product-tagline{font-size:30px;line-height:1.48}
+  .product-description{font-size:13px;color:#6b7067;line-height:1.9}
+  .dzlog-product-visual{
+    background:
+      linear-gradient(180deg,#f6f8ef50,#e9ead8a1),
+      url('/assets/scene.webp') center/cover no-repeat;
+  }
+  .dzlog-product-visual:after{
+    width:330px;height:330px;right:-80px;top:-60px;
+    border-color:#fffffdb0;
+  }
+  .featured-phone{
+    width:280px;height:500px;
+    border-radius:42px;
+    transform:rotate(6deg) translateY(8px);
+    box-shadow:28px 36px 56px #34382c58;
+  }
+  .featured-phone:hover{transform:rotate(3deg) translateY(1px)}
+  .product-side{gap:23px}
+  .product-card-secondary{min-height:285px;border-radius:30px}
+  .product-card-secondary .product-copy{padding:35px 31px}
+  .product-card-secondary .product-title-row h3{font-size:30px}
+  .product-card-secondary .product-description{font-size:12px;line-height:1.8}
+  .mini-product-visual{
+    width:201px;height:224px;
+    border:6px solid #343a37;
+    border-radius:31px 0 0 31px;
+    box-shadow:-14px 21px 35px #363b362e;
+  }
+  .product-grigle{background:linear-gradient(117deg,#fff8f3,#f8e9dd)}
+  .product-mylock{background:linear-gradient(117deg,#f9fbfc,#e6eef5)}
+
+  /* The studio block: editorial sheet, purposeful negative space, warm materials. */
+  .studio{
+    background:
+      radial-gradient(ellipse 44% 44% at 8% 90%,#d5e0cf,transparent),
+      radial-gradient(ellipse 33% 45% at 93% 12%,#fffdf78c,transparent),
+      linear-gradient(155deg,#edf1e7,#e6ecdf);
+    padding:136px 0 142px;
+  }
+  .studio-hero{margin-bottom:84px}
+  .studio-heading-block h2{font-size:clamp(45px,4vw,61px)}
+  .studio-board{gap:25px}
+  .studio-note{
+    min-height:425px;
+    border-radius:38px 38px 38px 14px;
+    background:
+      radial-gradient(circle at 87% 12%,#9bb09c36 0 80px,transparent 230px),
+      linear-gradient(142deg,#466d50,#274931);
+    box-shadow:0 34px 65px #3c594334;
+  }
+  .studio-note strong{font-size:33px}
+  .studio-values{padding:12px 8px}
+  .studio-values article{padding-block:31px}
+  .studio-making{
+    transform:rotate(1.5deg);
+    background:
+      repeating-linear-gradient(0deg,transparent 0 28px,#a9906c0b 29px 30px),
+      linear-gradient(150deg,#fffaf0,#efe1c8);
+    box-shadow:0 34px 60px #655c4923;
+  }
+  .closing{
+    background:
+      radial-gradient(ellipse 45% 75% at 83% 48%,#d7e4d6a6,transparent),
+      #fbfaf6;
+  }
+}
+@media (min-width:1051px) and (max-width:1360px) {
+  .hero-copy h1{font-size:clamp(38px,3.62vw,52px)}
+  .hero-showcase{grid-template-columns:minmax(0,51%) minmax(0,49%)}
+  .phone-mockup{width:289px;height:591px}
+  .stage-disc{height:162px}
+  .app-panel{min-height:181px;padding:20px 13px 18px 17px}
+  .panel-topline strong{font-size:19px}
+  .panel-topline{gap:6px}
+  .state-tag{font-size:8px;padding:4px 7px}
+  .panel-copy p{font-size:11px}
+  .dzlog-art{width:126px}
+  .product-card-featured .product-copy{padding:38px 28px}
+  .product-card-secondary .product-copy{padding:30px 23px}
+}
+@media (min-width:1051px) and (max-width:1199px) {
+  .hero{min-height:830px}
+  .hero-layout{min-height:830px;padding-top:94px;grid-template-columns:minmax(0,42%) minmax(0,58%)}
+  .hero-copy h1{font-size:clamp(31px,2.9vw,36px);line-height:1.34}
+  .hero-intro{font-size:13px}
+  .hero-actions .button{font-size:12px;padding:12px 15px;min-height:49px}
+  .phone-stage{height:650px;min-height:650px}
+  .phone-mockup{width:263px;height:545px}
+  .stage-disc{height:146px}
+  .app-panel{min-height:168px;border-radius:21px;padding:16px 11px 14px 14px}
+  .panel-topline strong{font-size:17px}
+  .state-tag{font-size:8px;padding:3px 5px}
+  .mini-icon{height:31px;width:31px}
+  .panel-copy p{font-size:10px}
+  .dzlog-art{width:106px}
+  .keyboard-art{width:120px}
+  .lock-art{width:124px}
+  .hero-decor-books{width:260px;opacity:.55}
+  .hero-decor-leaf{width:122px;opacity:.6}
+  .product-card-featured .product-tagline{font-size:21px}
+  .product-card-secondary .product-title-row h3{font-size:22px}
+}
+@media (min-width:1051px) and (prefers-reduced-motion:reduce) {
+  .hero-copy,.phone-stage,.app-rail .app-panel{animation:none}
+}
