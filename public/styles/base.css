@@ -2,7 +2,9 @@ html{scroll-behavior:smooth}
 body{
   background:var(--color-bg);
   color:var(--color-ink);
-  font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-family:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  font-weight:400;
+  letter-spacing:-.018em;
   line-height:1.65;
 }
 a{color:inherit}
