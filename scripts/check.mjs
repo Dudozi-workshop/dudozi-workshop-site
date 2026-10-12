@@ -2,6 +2,8 @@ import { readFileSync, existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
 const html=readFileSync('public/index.html','utf8');
 const css=readFileSync('public/home-r2.css','utf8');
+const tokens=readFileSync('public/styles/tokens.css','utf8');
+const components=readFileSync('public/styles/components.css','utf8');
 const js=readFileSync('public/home-r2.js','utf8');
 assert.match(html,/lang="ko"/);
 assert.match(html,/name="viewport"/);
@@ -20,6 +22,13 @@ assert.match(css,/@media\(max-width:760px\)/);
 assert.match(css,/@media\(max-width:450px\)/);
 assert.match(js,/Escape/);
 assert.ok(existsSync('public/assets/ddz-mark.svg'));
+assert.ok(existsSync('public/vendor/modern-normalize.css'));
+assert.ok(existsSync('public/vendor/modern-normalize.LICENSE'));
+assert.ok(existsSync('public/vendor/lucide-sprite.svg'));
+assert.ok(existsSync('public/vendor/lucide.LICENSE'));
+assert.match(tokens,/--color-green/);
+assert.match(components,/\.button/);
+assert.match(html,/lucide-sprite\.svg#icon-/);
 assert.ok(existsSync('public/support.html'));
 for(const match of html.matchAll(/href="#([^"]+)"/g)){assert.ok(html.includes('id="'+match[1]+'"'),'Missing anchor '+match[1]);}
 for(const match of html.matchAll(/(?:src|href)="\/(?!#)([^"]+)"/g)){assert.ok(existsSync('public/'+match[1]),'Missing local asset '+match[1]);}
