@@ -623,3 +623,13 @@
   .state-tag{font-size:8px}
   .studio-note strong{font-size:27px}
 }
+
+
+@media(min-width:1051px){
+  .desktop-nav a.is-active{color:#46684e}
+  .desktop-nav a.is-active:after{right:0}
+  .header-cta:hover{background:#fffefa;transform:translateY(-1px);box-shadow:0 11px 24px #4e644522}
+  .header-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+  .product-link:hover{color:#334f39}
+  .footer-nav a:hover{color:#f0f3eb}
+}
