@@ -101,3 +101,37 @@
 .footer{background:#262f29;color:#eef1e9;padding:40px 0 22px}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:30px}.footer-brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}.footer-brand img{filter:brightness(1.4) saturate(.6)}.footer-nav{display:flex;gap:28px}.footer-nav a{text-decoration:none;font-size:12px;color:#c7d0c7}.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #ffffff17;margin-top:27px;padding-top:18px;color:#97a298;font-size:10px;letter-spacing:.04em}
 @media(max-width:1050px){.studio{padding:90px 0}.studio-hero{gap:50px}.studio-board{grid-template-columns:1fr 1fr}.studio-making{grid-column:1/-1;min-height:auto}.making-row{display:grid;grid-template-columns:1fr auto;align-items:center}.making-row span{text-align:right}.closing{padding:80px 0}}
 @media(max-width:760px){.studio{padding:70px 0}.studio-hero{grid-template-columns:1fr;gap:20px;margin-bottom:35px}.studio-heading-block h2{font-size:36px}.studio-board{grid-template-columns:1fr}.studio-making{grid-column:auto}.studio-note,.studio-making{min-height:auto}.closing{padding:68px 0}.closing-inner{display:block}.closing .button{margin-top:28px}.footer-main,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-nav{gap:18px;flex-wrap:wrap}}
+
+
+/* Mobile layout stabilization */
+@media(max-width:760px){
+  .hero-layout{padding-bottom:58px}
+  .hero-showcase{display:flex;flex-direction:column;min-height:0;margin-top:30px;gap:14px}
+  .phone-stage{width:100%;height:500px;transform:none}
+  .phone-mockup{transform:scale(.79)}
+  .stage-disc{left:50%;width:76%;transform:translateX(-50%);bottom:42px}
+  .concept-label{bottom:8px}
+  .app-rail{position:static;width:100%;transform:none;display:grid;grid-template-columns:1fr;gap:10px}
+  .app-panel{min-height:132px;padding:17px 18px;border-radius:20px}
+  .panel-copy{min-width:0}
+  .panel-topline{flex-wrap:nowrap}
+  .panel-topline strong{font-size:16px}
+  .panel-copy p{font-size:11px;line-height:1.55;margin-top:8px}
+  .panel-arrow{margin-top:auto}
+  .dzlog-art{display:block;width:112px;height:150px;right:-24px;top:4px;opacity:.72}
+  .keyboard-art{width:125px;height:145px;right:-29px;bottom:-26px;opacity:.7}
+  .lock-art{width:125px;height:190px;right:-24px;bottom:-67px;opacity:.7}
+}
+@media(max-width:450px){
+  .hero-showcase{min-height:0}
+  .phone-stage{height:440px;transform:none}
+  .phone-mockup{transform:scale(.68)}
+  .app-rail{top:auto;right:auto;width:100%;gap:9px}
+  .app-panel{min-height:126px}
+  .dzlog-art{display:block;width:105px;height:142px;right:-28px;opacity:.55}
+  .keyboard-art,.lock-art{opacity:.55}
+  .product-card-featured .product-visual{height:340px}
+  .featured-phone{transform:rotate(4deg) scale(.88)}
+  .studio-heading-block h2{font-size:32px}
+  .closing h2{font-size:32px}
+}
