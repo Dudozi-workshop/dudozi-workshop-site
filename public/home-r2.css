@@ -1600,22 +1600,3 @@
   }
   .hero-decor-leaf:before,.hero-decor-leaf:after{content:none}
 }
-
-
-/* Photo podium trial: use the R2 stone asset instead of a flat ellipse. */
-@media(min-width:1200px){
-  .stage-disc{
-    width:126%;
-    height:138px;
-    left:-13%;
-    bottom:23px;
-    border-radius:0;
-    background:url('/assets/podium.webp') center center/cover no-repeat;
-    box-shadow:none;
-    filter:saturate(.72) contrast(.94);
-    -webkit-mask-image:radial-gradient(ellipse 67% 68% at 50% 54%,#000 43%,transparent 78%);
-    mask-image:radial-gradient(ellipse 67% 68% at 50% 54%,#000 43%,transparent 78%);
-  }
-  .stage-disc:after{display:none}
-  .hero-decor-books{opacity:.46}
-}
