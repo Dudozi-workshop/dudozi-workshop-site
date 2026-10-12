@@ -515,3 +515,17 @@
     pointer-events:none;
   }
 }
+
+
+/* Restrained reveal motion */
+.reveal-item{
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .62s ease var(--reveal-delay,0ms),
+    transform .62s cubic-bezier(.22,.61,.36,1) var(--reveal-delay,0ms);
+}
+.reveal-item.is-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .reveal-item{opacity:1;transform:none;transition:none}
+}
