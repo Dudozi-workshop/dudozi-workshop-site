@@ -3,24 +3,139 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="두도지공방의 앱과 소식을 만나보세요. MY LOCK, DZlog, 그리글을 만드는 작은 공방입니다.">
-  <title>두도지공방</title>
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="두도지공방은 일상에 필요한 작은 앱을 만듭니다. DZlog, 그리글, MY LOCK을 만나보세요.">
+  <title>두도지공방 — 일상에 쓰임을 더하는 작은 공방</title>
   <link rel="stylesheet" href="/theme.css">
 </head>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>
-  <div class="wrap">
-    <header><a class="brand" href="#main">두도지공방</a><nav aria-label="주요 메뉴"><a href="#apps">앱 소개</a><a href="#support">문의·개선 의견</a></nav></header>
-    <main id="main">
-      <div class="hero"><div class="eyebrow">DUDOZI WORKSHOP</div><h1>일상에 작은 편리함을.<br>취향에 작은 즐거움을.</h1><p class="lead">기록을 더 편하게, 나만의 화면을 더 즐겁게.<br>두도지공방은 일상 가까이에서 쓰이는 앱을 만듭니다.</p><a class="button" href="#apps">공방의 앱 둘러보기</a></div>
-      <section id="apps"><h2>공방에서 만드는 앱</h2><div class="grid">
-        <article class="card"><div class="app-icon" aria-hidden="true">M</div><h3>MY LOCK</h3><p>색과 모양, 배경과 움직임으로 꾸미는<br>나만의 잠금 화면.</p><span class="tag">다운로드 안내 준비 중</span></article>
-        <article class="card"><div class="app-icon" aria-hidden="true">D</div><h3>DZlog</h3><p>사진 위에 표를 더하고 기록을 정리하는<br>나만의 기록 카메라.</p><span class="tag">다운로드 안내 준비 중</span></article>
-        <article class="card"><div class="app-icon" aria-hidden="true">그</div><h3>그리글</h3><p>그리글의 자세한 소개와<br>다운로드 안내를 준비하고 있어요.</p><span class="tag">소개 준비 중</span></article>
-      </div></section>
-      <section id="support"><div class="card support"><h3>함께 더 편한 앱을 만들어요.</h3><p>사용 중 불편했던 점이나 필요한 기능이 있다면 알려주세요.<br>오류 제보와 개선 의견을 받을 창구를 준비하고 있습니다.</p><span class="tag">문의 접수 준비 중</span><p class="note">MY LOCK·DZlog·그리글의 문의 유형과 작성 안내를 확인할 수 있어요.</p><a class="button" href="/support.html">문의 안내 보기</a></div></section>
-    </main>
-    <footer>© 두도지공방 · Dudozi Workshop</footer>
-  </div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="두도지공방 홈">
+        <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>두도지공방<small>DUDOZI WORKSHOP</small></span>
+      </a>
+      <nav class="main-nav" aria-label="주요 메뉴">
+        <a href="#dzlog">DZlog</a>
+        <a href="#grigle">그리글</a>
+        <a href="#mylock">MY LOCK</a>
+        <a href="#studio" class="nav-about">공방 소개</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> 작은 아이디어를 만드는 앱 스튜디오</p>
+        <h1 id="hero-title">사소한 순간이<br><em>조금 더 좋아지도록.</em></h1>
+        <p class="hero-lead">기록할 때도, 무언가를 그려볼 때도, 나만의 화면을 꾸밀 때도.<br class="desktop-only"> 일상 속 작은 쓰임을 고민하고 직접 만듭니다.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#dzlog">앱 둘러보기 <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#studio">두도지공방 이야기 <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero-caption"><span class="pulse-dot" aria-hidden="true"></span> 우리가 만드는 것들 · DZlog / 그리글 / MY LOCK</p>
+      </div>
+      <div class="hero-art" aria-label="DZlog 기록 카메라를 표현한 일러스트">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="art-spark spark-a" aria-hidden="true">✳</div>
+        <div class="art-spark spark-b" aria-hidden="true">✦</div>
+        <div class="phone">
+          <div class="phone-top"><span>09:41</span><span aria-hidden="true">● ● ●</span></div>
+          <div class="camera-stage">
+            <div class="camera-photo"><div class="landscape-sun"></div><div class="landscape-hill hill-back"></div><div class="landscape-hill hill-front"></div></div>
+            <div class="camera-grid">
+              <div class="grid-head"><span>현장 기록</span><span>10.12</span></div>
+              <div><span>작업 구역</span><strong>A-01</strong></div>
+              <div><span>작업 내용</span><strong>생육 조사</strong></div>
+              <div><span>개체 번호</span><strong>001</strong></div>
+            </div>
+          </div>
+          <div class="camera-toolbar"><span class="tool-dot"></span><span class="shutter"></span><span class="tool-bars">▤</span></div>
+        </div>
+        <div class="float-note"><span class="float-note-icon" aria-hidden="true">▦</span><span><strong>사진과 기록을 하나로</strong><small>DZlog · 기록 카메라</small></span></div>
+        <span class="art-disclaimer">콘셉트 일러스트 · 실제 앱 화면과 다를 수 있습니다.</span>
+      </div>
+    </section>
+
+    <div class="section-divider container"><span>MADE WITH CARE</span><span aria-hidden="true">✳</span><span>작지만 분명한 편리함</span></div>
+
+    <section class="section featured-section" id="dzlog" aria-labelledby="dzlog-title">
+      <div class="container featured-layout">
+        <div class="featured-visual">
+          <div class="dz-visual-label">01 <span>FEATURED APP</span></div>
+          <div class="dz-showcase">
+            <div class="sample-polaroid sample-polaroid-back"><div class="sample-photo sample-photo-2"></div><span>기록도, 촬영도.</span></div>
+            <div class="sample-polaroid sample-polaroid-front"><div class="sample-photo sample-photo-1"><div class="mini-table"><span>구역</span><b>A-01</b><span>상태</span><b>정상</b><span>기록</span><b>완료</b></div></div><span>한 장에 담기.</span></div>
+            <div class="floating-stamp" aria-hidden="true">DZ<br>log</div>
+          </div>
+        </div>
+        <div class="section-copy">
+          <p class="kicker">01 / 기록의 새로운 방법</p>
+          <h2 id="dzlog-title">찍고, 적고,<br><em>한 번에 기록하다.</em></h2>
+          <p class="section-description">DZlog는 사진 위에 표를 더해 현장 기록을 남기는 카메라 앱입니다. 반복되는 기록은 더 간단하게, 필요한 정보는 사진과 함께 정리할 수 있도록 만들고 있어요.</p>
+          <div class="feature-points">
+            <div><span class="point-icon" aria-hidden="true">01</span><span><strong>사진 위에 바로 기록</strong><small>정보를 표로 정리해 한 장의 사진에 담기</small></span></div>
+            <div><span class="point-icon" aria-hidden="true">02</span><span><strong>나만의 기록 양식</strong><small>작업 방식에 맞게 표와 항목 구성하기</small></span></div>
+            <div><span class="point-icon" aria-hidden="true">03</span><span><strong>정돈된 사진 관리</strong><small>촬영 결과를 폴더별로 찾아보기</small></span></div>
+          </div>
+          <span class="project-footnote">DZlog · Android 앱 프로젝트</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grigle-section" id="grigle" aria-labelledby="grigle-title">
+      <div class="container secondary-layout">
+        <div class="section-copy">
+          <p class="kicker">02 / 작은 실험의 시작 <span class="status-tag">프로토타입</span></p>
+          <h2 id="grigle-title">그리글,<br><em>아이디어를 그려보다.</em></h2>
+          <p class="section-description">그리글은 현재 아이디어와 사용 경험을 실험하는 프로토타입 단계의 프로젝트입니다. 아직 정식 제품으로 소개하기보다, 가능성을 차근차근 다듬고 있습니다.</p>
+          <p class="quiet-note">자세한 기능과 공개 일정은 확정되는 대로 안내할 예정입니다.</p>
+        </div>
+        <div class="grigle-art" aria-label="그리글 프로젝트를 상징하는 추상 그래픽">
+          <div class="grigle-paper paper-back"></div>
+          <div class="grigle-paper paper-front"><span class="paper-header">GRIGLE / IDEA NO. 02</span><div class="scribble-one"></div><div class="scribble-two"></div><span class="paper-mark">g.</span></div>
+          <div class="paper-pin" aria-hidden="true"></div>
+          <span class="grigle-art-label">아직 만들어가는 중인 아이디어</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mylock-section" id="mylock" aria-labelledby="mylock-title">
+      <div class="container secondary-layout reverse-layout">
+        <div class="section-copy">
+          <p class="kicker">03 / 나만의 화면 만들기 <span class="status-tag">개발 중</span></p>
+          <h2 id="mylock-title">열어볼 때마다<br><em>조금 더 내 취향.</em></h2>
+          <p class="section-description">MY LOCK은 색, 모양, 배경과 움직임으로 잠금 경험을 꾸미는 앱입니다. 작은 디테일까지 취향에 맞게 조합할 수 있도록 개발하고 있습니다.</p>
+          <p class="quiet-note">개발 중인 프로젝트로, 기능과 공개 일정은 변경될 수 있습니다.</p>
+        </div>
+        <div class="lock-art" aria-label="MY LOCK의 색과 모양을 표현한 콘셉트 일러스트">
+          <div class="lock-glow"></div>
+          <div class="lock-screen">
+            <div class="lock-time">09:41</div><div class="lock-date">MONDAY · OCT 12</div>
+            <div class="lock-shape"><div class="lock-shape-inner"></div></div>
+            <div class="lock-bottom">made for your mood <span>↗</span></div>
+          </div>
+          <span class="lock-art-caption">콘셉트 일러스트</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio-section" id="studio" aria-labelledby="studio-title">
+      <div class="container studio-inner">
+        <div><p class="kicker">A SMALL INDEPENDENT STUDIO</p><h2 id="studio-title">작은 공방에서<br><em>오래 쓰고 싶은 앱을.</em></h2></div>
+        <div class="studio-detail"><p>두도지공방은 일상에서 발견한 불편함과 좋아하는 감각을 앱으로 만들어가는 작은 스튜디오입니다.</p><p>거창한 기능보다 쓰기 좋은 흐름을, 화려한 장식보다 마음에 드는 디테일을 고민합니다.</p><a class="text-link" href="/support.html">의견 보내기 안내 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>두도지공방</strong><p>Every little thing, thoughtfully made.</p></div>
+      <div class="footer-links"><a href="#dzlog">DZlog</a><a href="#grigle">그리글</a><a href="#mylock">MY LOCK</a><a href="/support.html">문의 안내</a></div>
+      <small>© 2026 Dudozi Workshop</small>
+    </div>
+  </footer>
 </body>
 </html>
