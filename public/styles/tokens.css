@@ -8,9 +8,11 @@
   --color-edge:#d5d8cb;
   --color-paper:#fffdf8;
   --radius-pill:999px;
-  --radius-card:24px;
-  --shadow-soft:0 12px 40px #7c6f5c14;
-  --shadow-hover:0 17px 42px #7c6f5c29;
+  --radius-card:28px;
+  --radius-card-small:20px;
+  --shadow-soft:0 14px 38px #5d665915;
+  --shadow-hover:0 22px 48px #545d5024;
+  --section-space:118px;
   --content-max:1460px;
   --content-gutter:100px;
   --focus-ring:#537b55;
