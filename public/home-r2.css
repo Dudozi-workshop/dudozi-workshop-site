@@ -1078,3 +1078,105 @@
     font-size:11px;
   }
 }
+
+
+/* App showcase v3: stronger visual hierarchy, less text-card feel */
+@media(min-width:1051px){
+  .product-card-featured{
+    grid-template-columns:minmax(0,.82fr) minmax(360px,1.18fr);
+  }
+  .product-card-featured .product-copy{
+    padding:48px 42px 44px;
+  }
+  .product-card-featured .overview-index{
+    font-size:9px;
+    letter-spacing:.18em;
+  }
+  .product-title-row{
+    margin-top:6px;
+  }
+  .product-tagline{
+    margin-top:30px;
+    margin-bottom:16px;
+    font-size:27px;
+  }
+  .product-description{
+    max-width:370px;
+    font-size:13px;
+  }
+  .product-link{
+    font-size:12px;
+  }
+
+  .dzlog-product-visual{
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 36%,#fffef3 0 110px,transparent 270px),
+      linear-gradient(145deg,#e8eee1,#dfe7d8 54%,#d8cbb8 100%);
+  }
+  .dzlog-product-visual:after{
+    content:"";
+    position:absolute;
+    width:230px;height:230px;
+    border-radius:50%;
+    right:-42px;top:-42px;
+    border:1px solid #ffffff70;
+    box-shadow:inset 0 0 0 36px #ffffff12;
+  }
+  .featured-phone{
+    width:260px;
+    height:455px;
+    border-width:8px;
+    border-radius:42px;
+    box-shadow:24px 34px 52px #4a554739;
+  }
+  .visual-note{
+    right:28px;bottom:24px;
+    padding:7px 10px;
+    border-radius:999px;
+    background:#ffffff78;
+    backdrop-filter:blur(8px);
+    letter-spacing:.13em;
+    color:#6f7e70;
+  }
+
+  .product-side{
+    gap:22px;
+  }
+  .product-card-secondary{
+    grid-template-columns:minmax(0,1fr) 190px;
+    min-height:264px;
+    overflow:hidden;
+  }
+  .product-card-secondary .product-copy{
+    padding:31px 28px;
+  }
+  .product-card-secondary .product-title-row h3{
+    font-size:29px;
+  }
+  .product-card-secondary .product-description{
+    max-width:240px;
+    font-size:12px;
+  }
+  .mini-product-visual{
+    width:182px;height:204px;
+    margin-right:-18px;
+    border-radius:28px 0 0 28px;
+    box-shadow:-12px 18px 34px #5d54441d;
+  }
+  .keyboard-product-visual{
+    transform:rotate(6deg) translateY(5px);
+  }
+  .lock-product-visual{
+    transform:rotate(5deg) translateY(7px);
+  }
+  .product-grigle:after,.product-mylock:after{
+    content:"";
+    position:absolute;
+    width:150px;height:150px;
+    border-radius:50%;
+    right:-60px;top:-72px;
+    background:#ffffff4d;
+    pointer-events:none;
+  }
+}
