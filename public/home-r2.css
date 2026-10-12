@@ -414,3 +414,104 @@
     background:linear-gradient(180deg,#283029,#222823);
   }
 }
+
+
+/* Editorial workshop details */
+@media(min-width:1051px){
+  .studio-hero:after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:-30px;
+    height:1px;
+    background:linear-gradient(90deg,#9eae9f66,transparent 68%);
+  }
+  .studio-note:before{
+    content:"DUDOZI / 2026";
+    position:absolute;
+    right:25px;top:22px;
+    font-size:8px;
+    letter-spacing:.22em;
+    color:#c7d5c759;
+  }
+  .studio-values{
+    position:relative;
+    background:
+      repeating-linear-gradient(0deg,transparent 0 38px,#7d8b7a08 39px 40px),
+      #fffefa;
+  }
+  .studio-values:before{
+    content:"";
+    position:absolute;
+    top:-7px;left:42px;
+    width:72px;height:18px;
+    background:#d8cdbba8;
+    transform:rotate(-3deg);
+    border-radius:2px;
+    box-shadow:0 2px 4px #665f5420;
+  }
+  .studio-values h3{
+    font-family:"Noto Serif KR",serif;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+  .studio-making{
+    position:relative;
+    background:
+      linear-gradient(90deg,#8e76570a 1px,transparent 1px) 0 0/22px 22px,
+      linear-gradient(#8e76570a 1px,transparent 1px) 0 0/22px 22px,
+      linear-gradient(145deg,#f7f1e8,#eee4d4);
+  }
+  .studio-making:after{
+    content:"";
+    position:absolute;
+    width:9px;height:9px;
+    border-radius:50%;
+    top:20px;right:22px;
+    background:#9c7a59;
+    box-shadow:0 2px 0 #735a42,0 5px 12px #604c3c2e;
+  }
+  .making-row{
+    position:relative;
+    transition:transform .18s ease;
+  }
+  .making-row:hover{transform:translateX(5px)}
+  .making-row:after{
+    content:"";
+    position:absolute;
+    left:0;bottom:-1px;
+    width:0;height:1px;
+    background:#7b8d77;
+    transition:width .22s ease;
+  }
+  .making-row:hover:after{width:42px}
+
+  .overview:before{
+    content:"";
+    display:block;
+    width:min(1460px,calc(100% - 100px));
+    height:1px;
+    margin:-76px auto 75px;
+    background:linear-gradient(90deg,transparent,#a9b4a82e 18%,#a9b4a82e 82%,transparent);
+  }
+  .closing:before{
+    content:"";
+    display:block;
+    width:min(1460px,calc(100% - 100px));
+    height:1px;
+    margin:-48px auto 76px;
+    background:linear-gradient(90deg,#a7b2a629,transparent);
+  }
+  .closing-inner{position:relative}
+  .closing-inner:after{
+    content:"DDZ";
+    position:absolute;
+    right:0;top:-38px;
+    font-family:Georgia,serif;
+    font-size:84px;
+    line-height:1;
+    font-weight:700;
+    color:#4c684b0a;
+    letter-spacing:-.08em;
+    pointer-events:none;
+  }
+}
