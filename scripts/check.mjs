@@ -11,6 +11,10 @@ const pages = [
 const htmlByRoute = new Map();
 const requiredAssets = [
   'public/assets/ddz-mark.svg',
+  'public/assets/app-dzlog-launcher.webp',
+  'public/assets/app-grigle-launcher.webp',
+  'public/assets/app-mylock-launcher.png',
+  'public/styles/app-brand-icons.css',
   'public/vendor/modern-normalize.css',
   'public/vendor/modern-normalize.LICENSE',
   'public/vendor/lucide-sprite.svg',
@@ -73,6 +77,9 @@ assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet mis
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
 assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
 assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
+for (const [name, extension] of [['dzlog', 'webp'], ['grigle', 'webp'], ['mylock', 'png']]) {
+  assert.match(homepage, new RegExp('app-' + name + '-launcher\\.' + extension), 'Missing actual launcher mark: ' + name);
+}
 for (const route of ['/apps/dzlog/', '/apps/grigle/', '/apps/mylock/']) {
   assert.match(homepage, new RegExp('href="' + route + '"'), 'Homepage direct link to ' + route);
 }
@@ -84,6 +91,8 @@ for (const page of pages.slice(1)) {
   assert.match(html, /href="\/#apps"/, page.label + ': back to apps');
   assert.match(html, /class="other-app-grid"/, page.label + ': other app discovery');
   assert.match(html, /app-visual-r3\.css/, page.label + ': shared R3 visual stylesheet');
+  assert.match(html, /class="detail-brand-appicon"/, page.label + ': launcher icon missing');
+  assert.match(html, /app-brand-icons\.css/, page.label + ': shared official icon CSS missing');
 }
 
 const stylesheet = readFileSync('public/home-r2.css', 'utf8');
