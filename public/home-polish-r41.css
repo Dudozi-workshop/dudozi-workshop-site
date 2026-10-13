@@ -82,7 +82,8 @@
       radial-gradient(ellipse 58% 52% at 88% 17%,#e8ecdfb3,transparent 95%),
       linear-gradient(180deg,#fcfbf7 0%,#f2f5ec 100%);
   }
-  .overview .section-heading{margin-bottom:56px}
+  .overview .section-heading{margin-bottom:58px;align-items:end}
+  .overview .section-heading:after{content:"";display:block;position:absolute;width:58px;height:3px;border-radius:6px;background:#7e9b7c;bottom:-25px;left:0;opacity:.75}
   .overview .section-eyebrow{color:#537454;letter-spacing:.22em}
   .overview .section-heading h2{
     max-width:800px;
@@ -105,10 +106,16 @@
     box-shadow:0 31px 70px #515c4b29;
   }
   .overview .product-card-featured{
-    background:linear-gradient(145deg,#fffdf6,#f4f4e8);
+    grid-template-columns:minmax(0,1.08fr) minmax(315px,1fr);
+    background:linear-gradient(135deg,#fffdf8 0%,#f7f7ec 46%,#e9efe6 100%);
     min-height:640px;
+    border-radius:38px;
+    box-shadow:0 29px 80px #43534126,inset 0 1px #fff;
   }
-  .overview .product-card-featured .product-copy{padding:52px 42px}
+  .overview .product-card-featured .product-copy{padding:54px 36px 48px 43px;display:flex;flex-direction:column;align-items:flex-start}
+  .overview .product-card-featured .product-link{margin-top:auto}
+  .overview .dzlog-product-visual{background:radial-gradient(ellipse 75% 64% at 60% 36%,#fbfcf7b9,transparent 86%),linear-gradient(140deg,#e9f0e7,#d2decf 55%,#b9c8b7)}
+  .overview .featured-phone{filter:drop-shadow(0 18px 23px #34503b20)}
   .overview .product-title-row h3{font-size:52px;line-height:1.15}
   .overview .product-tagline{
     color:#345d40;
@@ -132,9 +139,12 @@
     border-bottom:1px solid #7eac8573;
   }
   .overview .product-card-secondary{
+    grid-template-columns:minmax(0,1fr) 160px;
     min-height:293px;
     border-radius:32px;
+    box-shadow:0 19px 49px #55584a21,inset 0 1px #fff;
   }
+  .overview .product-card-secondary .mini-product-visual{width:172px;margin-right:-18px}
   .overview .product-card-secondary .product-copy{
     padding:32px 28px;
     display:flex;flex-direction:column;align-items:flex-start;
@@ -183,7 +193,9 @@
     font-size:15px;
     line-height:1.98;
   }
-  .studio .studio-board{gap:28px}
+  .studio .studio-board{gap:26px;align-items:stretch}
+  .studio .studio-values article{border-color:#83988830}
+  .studio .studio-making{transform:rotate(.6deg)}
   .studio .studio-note{
     background:
       radial-gradient(ellipse 60% 50% at 104% 9%,#74967c7a,transparent),
@@ -234,20 +246,34 @@
     border-top:1px solid #e7ebdf;
   }
   .closing h2{color:#253228;line-height:1.35}
+  .closing .button-primary{min-height:56px;padding-inline:27px;background:#3d6645;border-color:#3d6645;box-shadow:0 15px 29px #344f3622}
+  .closing-inner{align-items:center}
+  .footer-nav{display:flex;align-items:center;gap:23px;flex-wrap:wrap}
+  .footer-nav a{transition:color .2s ease}
+  .footer-nav a:hover{color:#fff}
 }
 @media(min-width:1051px) and (max-width:1399px){
   .hero .panel-copy p{font-size:11px!important}
-  .overview .product-card-featured .product-copy{padding:40px 29px}
+  .overview .product-card-featured{grid-template-columns:minmax(0,1fr) minmax(275px,.97fr)}
+  .overview .product-card-featured .product-copy{padding:42px 27px 39px}
   .overview .product-tagline{font-size:25px}
   .overview .product-description{font-size:12px}
-  .overview .product-card-secondary .product-copy{padding:27px 23px}
+  .overview .product-card-secondary{grid-template-columns:minmax(0,1fr) 134px}
+  .overview .product-card-secondary .product-copy{padding:27px 18px}
+  .overview .product-card-secondary .mini-product-visual{width:151px;margin-right:-19px}
   .overview .product-card-secondary .product-description{font-size:11.5px}
   .studio .studio-note strong{font-size:29px}
   .studio .studio-values h3{font-size:26px}
 }
 @media(min-width:1051px) and (max-width:1160px){
   .hero .panel-copy p{font-size:10px!important}
-  .overview .product-card-secondary .product-copy{padding:25px 19px}
+  .overview .product-card-secondary .product-copy{padding:23px 15px}
+  .overview .product-card-featured{grid-template-columns:minmax(0,1fr) 272px}
+  .overview .product-card-featured .product-copy{padding:36px 20px 32px 24px}
+  .overview .featured-phone{width:224px;height:413px}
+  .overview .product-card-secondary{grid-template-columns:minmax(0,1fr) 119px}
+  .overview .product-card-secondary .mini-product-visual{width:135px}
+  .overview .product-card-secondary .product-title-row{gap:6px}
   .overview .product-card-secondary .product-title-row h3{font-size:22px}
   .overview .product-card-secondary .product-description{font-size:11px}
   .product-small-link{font-size:10px}
