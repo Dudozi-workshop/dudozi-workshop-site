@@ -86,6 +86,7 @@ assert.match(htmlByRoute.get('/apps/grigle/'), /↑ → 는 ㅏ/, 'GRIGLE detail
 assert.match(htmlByRoute.get('/apps/grigle/'), /grigle-direction-result/, 'Grigle direction mapping detail demo');
 assert.match(htmlByRoute.get('/apps/dzlog/'), /dzlog-folder-demo/, 'DZlog file workflow detail demo');
 assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-authored-art-r42\.css/, 'MY LOCK detail approved artwork stylesheet');
+assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-concept-note[^>]*>[^<]*실제 앱 화면 캡처는 아닙니다/, 'MY LOCK detail must distinguish concept art from actual screenshots');
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
 assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
