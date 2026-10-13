@@ -8,10 +8,10 @@
 .hero .mylock-panel .lock-art .lock-shape{
   display:block;
   position:absolute;
-  width:142px;
-  height:142px;
+  width:120px;
+  height:120px;
   left:50%;
-  top:91px;
+  top:52px;
   margin:0;
   transform:translateX(-50%);
   border-radius:0;
@@ -23,11 +23,14 @@
 }
 .product-mylock .lock-product-visual i{
   display:block;
-  width:166px;
-  height:166px;
+  position:absolute;
+  top:76px;
+  left:50%;
+  width:140px;
+  height:140px;
   max-width:88%;
-  margin:3px auto 0;
-  transform:none;
+  margin:0;
+  transform:translateX(-50%);
   border-radius:0;
   background:url('/assets/mylock-candy-soft-trio.webp') center/contain no-repeat;
   box-shadow:none;
@@ -62,14 +65,14 @@
 
 @media(min-width:1051px) and (max-width:1399px){
   .hero .mylock-panel .lock-art .lock-shape{
-    width:122px;height:122px;top:82px;
+    width:107px;height:107px;top:48px;
   }
-  .product-mylock .lock-product-visual i{width:142px;height:142px}
+  .product-mylock .lock-product-visual i{width:120px;height:120px;top:70px}
 }
 @media(max-width:1050px){
   /* Keep the approved artwork inside the existing mobile composition. */
-  .hero .mylock-panel .lock-art .lock-shape{width:115px;height:115px;top:82px}
-  .product-mylock .lock-product-visual i{width:130px;height:130px}
+  .hero .mylock-panel .lock-art .lock-shape{width:107px;height:107px;top:52px}
+  .product-mylock .lock-product-visual i{width:110px;height:110px;top:68px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero .mylock-panel .lock-art .lock-shape{transition:none}
