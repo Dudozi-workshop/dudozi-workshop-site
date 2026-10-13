@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/homepage-hero-r2
+      - feat/homepage-visual-r3-hifi
   pull_request:
     branches:
       - main
