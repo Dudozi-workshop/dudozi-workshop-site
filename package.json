@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "check": "node scripts/check.mjs",
-    "build": "npm run check && node scripts/build.mjs"
+    "build": "npm run check && node scripts/build.mjs",
+    "preview:local": "node scripts/preview-local.mjs"
   }
 }
