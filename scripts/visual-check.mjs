@@ -80,6 +80,7 @@ for (const item of pages) {
             const box = el.getBoundingClientRect();
             return box.left < -4 || box.right > window.innerWidth + 4;
           }).map(el => el.className),
+        posterTextWidths: [...document.querySelectorAll('.hero .app-panel .panel-copy p')].map(el => Math.round(el.getBoundingClientRect().width)),
         brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
@@ -94,6 +95,7 @@ for (const item of pages) {
     if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
     if (metrics.clipping.length) failures.push(item.path + ' @ ' + width + ': clipped text/card content ' + metrics.clipping.join('; '));
     if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
+    if (metrics.posterTextWidths.some(value => value < 140)) failures.push(item.path + ' @ ' + width + ': poster text too narrow ' + metrics.posterTextWidths.join(','));
     if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
 
     // Exercise real app-card navigation after screenshot metrics are locked to the homepage.
