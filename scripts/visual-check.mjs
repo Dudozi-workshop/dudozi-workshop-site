@@ -12,9 +12,9 @@ const failures = [];
 
 const pages = [
   { path: '/', label: 'home', widths: [1440, 1280, 1100] },
-  { path: '/apps/dzlog/', label: 'dzlog', widths: [1440] },
-  { path: '/apps/grigle/', label: 'grigle', widths: [1440] },
-  { path: '/apps/mylock/', label: 'mylock', widths: [1440] },
+  { path: '/apps/dzlog/', label: 'dzlog', widths: [1440, 1280, 1100] },
+  { path: '/apps/grigle/', label: 'grigle', widths: [1440, 1280, 1100] },
+  { path: '/apps/mylock/', label: 'mylock', widths: [1440, 1280, 1100] },
 ];
 
 for (const item of pages) {
@@ -63,18 +63,18 @@ for (const item of pages) {
         appRail: rect('.app-rail'),
         detailHeading: rect('.detail-title'),
         clipping: clipping('.hero-copy h1, .panel-topline, .product-copy, .screen-moment'),
+        textOverflow: [...document.querySelectorAll(
+          '.hero-copy h1, .hero-intro, .section-heading h2, .product-title-row h3, .detail-title, .detail-tagline, .screen-story-head h2, .studio-heading-block h2'
+        )].filter(el => el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 4)
+          .map(el => ({ selector: el.className || el.tagName.toLowerCase(), difference: el.scrollWidth - el.clientWidth })).slice(0, 12),
+        primaryVisualOutsideViewport: [...document.querySelectorAll('.hero .phone-mockup, .hero .app-rail, .detail-stage .detail-device')]
+          .filter(el => {
+            const box = el.getBoundingClientRect();
+            return box.left < -4 || box.right > window.innerWidth + 4;
+          }).map(el => el.className),
         brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
-    const record = { page: item.path, width, ...metrics, pageErrors, failedAssets, failedImageRequests };
-    report.push(record);
-    const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
-    if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
-    if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
-    if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
-    if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
-    if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
-
     // Verify the actual homepage card -> app detail -> homepage journey, not just href markup.
     if (item.path === '/' && width === 1440) {
       for (const appName of ['dzlog', 'grigle', 'mylock']) {
@@ -89,6 +89,17 @@ for (const item of pages) {
         }
       }
     }
+    const record = { page: item.path, width, ...metrics, pageErrors, failedAssets, failedImageRequests };
+    report.push(record);
+    const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
+    if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
+    if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
+    if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
+    if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
+    if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
+    if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
+    if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
+
     await page.close();
   }
 }
@@ -99,5 +110,5 @@ if (failures.length) {
   console.error('Visual QA failed: ' + failures.join(' | '));
   process.exitCode = 1;
 } else {
-  console.log('Visual QA passed: PC homepage widths and all three app details.');
+  console.log('Visual QA passed: 1440/1280/1100px homepage and app details, navigation, text fit, images and JS.');
 }
