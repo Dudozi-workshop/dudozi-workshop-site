@@ -39,6 +39,13 @@ for (const asset of requiredAssets) {
   assert.ok(existsSync(asset), 'Missing shared asset ' + asset);
 }
 
+const vercel = JSON.parse(readFileSync('vercel.json', 'utf8'));
+assert.equal(
+  vercel.git?.deploymentEnabled?.['feat/homepage-visual-r3-hifi'],
+  false,
+  'The active PC design branch must not trigger automatic Vercel deployments'
+);
+
 const resolveAsset = (path) => 'public/' + path.replace(/^\//, '');
 for (const page of pages) {
   assert.ok(existsSync(page.file), 'Missing route ' + page.route);
