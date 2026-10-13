@@ -78,6 +78,7 @@ assert.ok(homepage.indexOf('id="apps"') < homepage.indexOf('id="studio"'));
 assert.match(homepage, /href="#apps"/, 'Home menu should show overview');
 assert.match(homepage, /mylock-authored-art-r42\.css/, 'Homepage MY LOCK approved artwork stylesheet');
 assert.match(homepage, /product-concept-r43\.css/, 'Homepage R4.3 verified product concepts');
+assert.match(homepage, /class="overview-concept-note"[^>]*>[^<]*구성 예시/, 'Homepage mock UI concept disclosure required');
 assert.match(homepage, /grigle-poster/, 'Grigle source-accurate gesture poster');
 assert.match(homepage, /grigle-poster-caption">← ↑ <span>=<\/span> ㄱ/, 'GRIGLE poster must show L,U = ㄱ');
 assert.match(homepage, /grigle-catalog-gesture[^>]*><span>←<\/span><span>↑<\/span><strong>ㄱ<\/strong>/, 'GRIGLE home catalog must show L,U = ㄱ');
