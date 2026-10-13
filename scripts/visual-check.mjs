@@ -74,6 +74,21 @@ for (const item of pages) {
     if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
     if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
     if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
+
+    // Verify the actual homepage card -> app detail -> homepage journey, not just href markup.
+    if (item.path === '/' && width === 1440) {
+      for (const appName of ['dzlog', 'grigle', 'mylock']) {
+        try {
+          await page.locator('a#' + appName).click();
+          await page.waitForURL(url => url.pathname === '/apps/' + appName + '/', { timeout: 12000 });
+          await page.locator('a.detail-back').click();
+          await page.waitForURL(url => url.pathname === '/' && url.hash === '#apps', { timeout: 12000 });
+        } catch (error) {
+          failures.push('App detail round trip failed for ' + appName + ': ' + error.message);
+          await page.goto(baseUrl + '/', { waitUntil: 'domcontentloaded' });
+        }
+      }
+    }
     await page.close();
   }
 }
