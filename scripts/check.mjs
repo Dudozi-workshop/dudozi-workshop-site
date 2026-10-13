@@ -11,6 +11,8 @@ const pages = [
 const htmlByRoute = new Map();
 const requiredAssets = [
   'public/assets/ddz-mark.svg',
+  'public/assets/mylock-candy-soft-trio.webp',
+  'public/mylock-authored-art-r42.css',
   'public/assets/app-dzlog-launcher.webp',
   'public/assets/app-grigle-launcher.webp',
   'public/assets/app-mylock-launcher.png',
@@ -73,6 +75,8 @@ assert.ok(homepage.indexOf('id="dzlog"') < homepage.indexOf('id="grigle"'));
 assert.ok(homepage.indexOf('id="grigle"') < homepage.indexOf('id="mylock"'));
 assert.ok(homepage.indexOf('id="apps"') < homepage.indexOf('id="studio"'));
 assert.match(homepage, /href="#apps"/, 'Home menu should show overview');
+assert.match(homepage, /mylock-authored-art-r42\.css/, 'Homepage MY LOCK approved artwork stylesheet');
+assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-authored-art-r42\.css/, 'MY LOCK detail approved artwork stylesheet');
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
 assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
