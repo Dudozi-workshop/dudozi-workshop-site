@@ -13,6 +13,7 @@ const requiredAssets = [
   'public/assets/ddz-mark.svg',
   'public/assets/mylock-candy-soft-trio.webp',
   'public/mylock-authored-art-r42.css',
+  'public/product-concept-r43.css',
   'public/assets/app-dzlog-launcher.webp',
   'public/assets/app-grigle-launcher.webp',
   'public/assets/app-mylock-launcher.png',
@@ -76,6 +77,10 @@ assert.ok(homepage.indexOf('id="grigle"') < homepage.indexOf('id="mylock"'));
 assert.ok(homepage.indexOf('id="apps"') < homepage.indexOf('id="studio"'));
 assert.match(homepage, /href="#apps"/, 'Home menu should show overview');
 assert.match(homepage, /mylock-authored-art-r42\.css/, 'Homepage MY LOCK approved artwork stylesheet');
+assert.match(homepage, /product-concept-r43\.css/, 'Homepage R4.3 verified product concepts');
+assert.match(homepage, /grigle-poster/, 'Grigle source-accurate gesture poster');
+assert.match(htmlByRoute.get('/apps/grigle/'), /grigle-direction-result/, 'Grigle direction mapping detail demo');
+assert.match(htmlByRoute.get('/apps/dzlog/'), /dzlog-folder-demo/, 'DZlog file workflow detail demo');
 assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-authored-art-r42\.css/, 'MY LOCK detail approved artwork stylesheet');
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
