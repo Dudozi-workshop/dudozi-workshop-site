@@ -38,7 +38,8 @@
   outline-offset:5px;
 }
 .footer-nav{flex-wrap:wrap;align-items:center}
-.footer-nav a:hover,.detail-nav a:hover{color:#fff}
+.footer-nav a:hover{color:#fff}
+.detail-nav a:hover{color:#395d43}
 .footer-nav a:focus-visible{outline-offset:6px}
 
 /* Visually consistent PC editorial rhythm without introducing new sections. */
@@ -312,4 +313,11 @@
   .secondary-link .icon,
   .product-card,
   .app-detail .screen-moment{transition:none!important}
+}
+
+/* Keep the already-approved narrow/mobile layout stable until its own pass. */
+@media(max-width:760px){
+  .product-card-secondary .secondary-link{display:none}
+  .closing-description{font-size:12px;line-height:1.8}
+  .footer-nav{gap:12px 18px}
 }
