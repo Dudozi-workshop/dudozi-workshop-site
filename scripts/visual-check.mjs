@@ -75,8 +75,21 @@ for (const item of pages) {
         brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
-    // Verify the actual homepage card -> app detail -> homepage journey, not just href markup.
+    const record = { page: item.path, width, ...metrics, pageErrors: [...pageErrors], failedAssets: [...failedAssets], failedImageRequests: [...failedImageRequests] };
+    report.push(record);
+    const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
+    if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
+    if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
+    if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
+    if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
+    if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
+    if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
+    if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
+
+    // Exercise real app-card navigation after screenshot metrics are locked to the homepage.
+    // Capture interaction failures separately so detail-page loads are not misattributed to /.
     if (item.path === '/' && width === 1440) {
+      const initial = { js: pageErrors.length, assets: failedAssets.length, images: failedImageRequests.length };
       for (const appName of ['dzlog', 'grigle', 'mylock']) {
         try {
           await page.locator('a#' + appName).click();
@@ -88,17 +101,11 @@ for (const item of pages) {
           await page.goto(baseUrl + '/', { waitUntil: 'domcontentloaded' });
         }
       }
+      if (pageErrors.length > initial.js) failures.push('App navigation JS errors: ' + pageErrors.slice(initial.js).join('; '));
+      if (failedAssets.length > initial.assets) failures.push('App navigation asset errors: ' + failedAssets.slice(initial.assets).join('; '));
+      // Navigation can intentionally abort image loads on the previous page.
+      // Ignore requestfailed from those transitions; each detail route is tested independently above.
     }
-    const record = { page: item.path, width, ...metrics, pageErrors, failedAssets, failedImageRequests };
-    report.push(record);
-    const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
-    if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
-    if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
-    if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
-    if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
-    if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
-    if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
-    if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
 
     await page.close();
   }
