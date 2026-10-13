@@ -70,6 +70,7 @@
     margin-top:22px;
     background:#e5ecdfd4;
     padding:7px 13px;
+    font-size:11px;
   }
   .detail-tagline{
     font-size:clamp(32px,3vw,44px);
@@ -78,9 +79,9 @@
     margin-bottom:18px;
     color:var(--app-accent);
   }
-  .detail-summary{font-size:15px;line-height:2;color:#676d66}
+  .detail-summary{font-size:16px;line-height:1.95;color:#555f55}
   .detail-actions{margin-top:37px}
-  .detail-actions .button{min-height:53px;font-size:13px;padding-inline:25px}
+  .detail-actions .button{min-height:53px;font-size:14px;padding-inline:25px}
   .detail-stage{
     min-height:665px;
     position:relative;
@@ -176,8 +177,9 @@
       linear-gradient(0deg,#5668433d,transparent 56%),
       url('/assets/scene.webp') center/cover no-repeat;
   }
-  .screen-moment h3{font-size:23px;margin:23px 7px 10px}
-  .screen-moment p{font-size:13px;margin-inline:7px;line-height:1.85}
+  .screen-moment h3{font-size:24px;margin:23px 7px 10px}
+  .screen-moment p{font-size:14px;margin-inline:7px;line-height:1.85;color:#586158}
+  .screen-moment>span{font-size:11px}
   .feature-card{
     background:linear-gradient(150deg,#fffef9,#f4f5ef);
     border:1px solid #ffffffe8;
@@ -222,6 +224,8 @@
   }
 }
 @media(min-width:901px) and (max-width:1250px){
+  .detail-summary{font-size:15px}
+  .screen-moment p{font-size:13.5px}
   .detail-grid{grid-template-columns:minmax(0,1fr) minmax(390px,1fr);gap:42px}
   .detail-title{font-size:70px}
   .detail-tagline{font-size:33px}
