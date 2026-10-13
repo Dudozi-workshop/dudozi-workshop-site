@@ -134,7 +134,7 @@ for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detai
     assert.ok(existsSync(resolveAsset(match[1])), file + ': missing referenced asset ' + match[1]);
   }
 }
-for (const file of ['public/home-r2.js', 'scripts/check.mjs', 'scripts/build.mjs']) {
+for (const file of ['public/home-r2.js', 'scripts/check.mjs', 'scripts/build.mjs', 'scripts/preview-local.mjs', 'scripts/visual-check.mjs']) {
   const result = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(result.status, 0, file + ': invalid JavaScript\n' + result.stderr);
 }
