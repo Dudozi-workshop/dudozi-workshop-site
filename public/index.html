@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/home-r2.css">
   <link rel="stylesheet" href="/home-visual-r3.css">
   <link rel="stylesheet" href="/home-hero-r4.css">
+  <link rel="stylesheet" href="/styles/site-cohesion-r4.css">
   <script src="/home-r2.js" defer></script>
 </head>
 <body>
@@ -149,6 +150,7 @@
                 <span class="overview-index">02 · PROTOTYPE</span>
                 <div class="product-title-row"><h3>그리글</h3><span class="product-status">프로토타입</span></div>
                 <p class="product-description">방향 제스처를 이용해 한글을 입력하는 키보드 프로젝트입니다.</p>
+                <span class="secondary-link">그리글 자세히 보기 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></span>
               </div>
               <div class="mini-product-visual keyboard-product-visual" aria-hidden="true"><span>ㄱ</span><span>ㄴ</span><span>ㄷ</span><i></i></div>
             </a>
@@ -157,6 +159,7 @@
                 <span class="overview-index">03 · IN DEVELOPMENT</span>
                 <div class="product-title-row"><h3>MY LOCK</h3><span class="product-status">개발 중</span></div>
                 <p class="product-description">색·모양·배경·움직임을 조합해 만드는 나만의 잠금 화면.</p>
+                <span class="secondary-link">MY LOCK 자세히 보기 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></span>
               </div>
               <div class="mini-product-visual lock-product-visual" aria-hidden="true"><strong>9:41</strong><span>MON · OCT 12</span><i>✦</i></div>
             </a>
@@ -198,20 +201,21 @@
       </div>
     </section>
 
-    <section class="closing" aria-label="두도지공방 마무리 메시지">
+    <section class="closing" aria-labelledby="closing-heading">
       <div class="shell closing-inner">
-        <div>
-          <p class="section-eyebrow">SMALL APPS, BRIGHTER DAYS</p>
-          <h2>일상에 작은 편리함을.<br><span>취향에 작은 즐거움을.</span></h2>
+        <div class="closing-copy">
+          <p class="section-eyebrow">MADE WITH CARE, FOR EVERYDAY</p>
+          <h2 id="closing-heading">작은 생각에서 시작해,<br><span>오래 쓰고 싶은 앱으로.</span></h2>
+          <p class="closing-description">일상에 필요한 편리함과 좋아하는 취향을 두도지공방만의 속도로 만들어갑니다.</p>
         </div>
-        <a class="button button-primary" href="#top">처음으로 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></a>
+        <a class="button button-primary closing-cta" href="#apps">앱 다시 둘러보기 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></a>
       </div>
     </section>
   </main>
   <footer class="footer">
     <div class="shell footer-main">
       <a class="footer-brand" href="#top"><img src="/assets/ddz-mark.svg" alt="" width="72" height="32"><span>두도지공방</span></a>
-      <nav class="footer-nav" aria-label="푸터 메뉴"><a href="#apps">앱 소개</a><a href="#studio">공방 이야기</a><a href="/apps/dzlog/">DZlog</a></nav>
+      <nav class="footer-nav" aria-label="푸터 메뉴"><a href="#apps">앱 소개</a><a href="#studio">공방 이야기</a><a href="/apps/dzlog/">DZlog</a><a href="/apps/grigle/">그리글</a><a href="/apps/mylock/">MY LOCK</a></nav>
     </div>
     <div class="shell footer-bottom"><span>© 2026 Dudozi Workshop</span><span>Small apps, brighter days.</span></div>
   </footer>
