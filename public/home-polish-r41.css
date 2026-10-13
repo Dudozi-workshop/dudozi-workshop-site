@@ -4,6 +4,20 @@
  * Changes are restricted to desktop, except global accessibility enhancement.
  */
 
+/* Mark illustrative product art without competing with the collection's visual hierarchy. */
+.overview-concept-note{
+  margin:21px 2px 0;
+  text-align:right;
+  font-size:11px;
+  line-height:1.65;
+  font-weight:500;
+  letter-spacing:-.018em;
+  color:#5d675e;
+}
+@media(max-width:760px){
+  .overview-concept-note{text-align:left;margin-top:15px}
+}
+
 /* Keyboard focus should remain visible against the photographed background. */
 :where(.site-header a,.hero a,.overview a,.studio a,.closing a):focus-visible{
   outline:3px solid #416e49;
