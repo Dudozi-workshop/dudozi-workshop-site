@@ -31,10 +31,10 @@
     min-height:910px!important;
     isolation:isolate;overflow:hidden;
     background:
-      linear-gradient(90deg,#fffdf7fc 0%,#fffaf3f2 20%,#fff9f0dc 37%,#fff9ef74 55%,#f6ecd324 78%,#f8f1e422 100%),
-      linear-gradient(0deg,#eee0c47d 0%,transparent 34%),
+      linear-gradient(90deg,#fffdf7f5 0%,#fffaf3e8 25%,#fff9f0b8 44%,#fcf5e55a 66%,#f6edda20 100%),
+      linear-gradient(180deg,#fff9ee16 0%,transparent 56%,#d4bea045 100%),
       url('https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2560&q=88') center 46% /cover no-repeat,
-      #f7f1e5;
+      #f9f5ee;
   }
   .hero:before{
     content:"";position:absolute;inset:0;z-index:0;
