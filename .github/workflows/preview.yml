@@ -1,15 +1,7 @@
 name: Preview workshop website
 
+# Publish preview only when manually approved; avoids a deployment on every design commit.
 on:
-  push:
-    branches: [feat/homepage-visual-r3-hifi]
-  pull_request:
-    branches: [main]
-    paths:
-      - 'public/**'
-      - 'scripts/**'
-      - 'package.json'
-      - '.github/workflows/preview.yml'
   workflow_dispatch:
 
 permissions:
