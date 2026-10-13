@@ -122,6 +122,11 @@ const detailCss = readFileSync('public/apps/app-detail.css', 'utf8');
 const homeVisualCss = readFileSync('public/home-visual-r3.css', 'utf8');
 const heroR4Css = readFileSync('public/home-hero-r4.css', 'utf8');
 const polishR41Css = readFileSync('public/home-polish-r41.css', 'utf8');
+assert.match(heroR4Css, /w=2560&q=88/, 'R4 hero should request high-resolution photographic backdrop');
+assert.match(heroR4Css, /\.hero \.hero-decor-books\{\s*display:none!important/, 'R4 hero should not composite low-resolution desk-book cut-out');
+assert.match(heroR4Css, /\.hero \.hero-decor-leaf\{\s*display:none!important/, 'R4 hero should not composite low-resolution leaf cut-out');
+assert.doesNotMatch(heroR4Css, /url\('\/assets\/podium\.webp'\)/, 'R4 hero must not upscale low-resolution podium texture');
+
 const appVisualCss = readFileSync('public/apps/app-visual-r3.css', 'utf8');
 const tokens = readFileSync('public/styles/tokens.css', 'utf8');
 const components = readFileSync('public/styles/components.css', 'utf8');
