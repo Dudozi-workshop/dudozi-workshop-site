@@ -20,6 +20,8 @@ const requiredAssets = [
   'public/styles/components.css',
   'public/home-r2.css',
   'public/home-visual-r3.css',
+  'public/home-hero-r4.css',
+  'public/home-polish-r41.css',
   'public/home-r2.js',
   'public/apps/app-detail.css',
   'public/apps/app-visual-r3.css',
@@ -68,6 +70,9 @@ assert.ok(homepage.indexOf('id="grigle"') < homepage.indexOf('id="mylock"'));
 assert.ok(homepage.indexOf('id="apps"') < homepage.indexOf('id="studio"'));
 assert.match(homepage, /href="#apps"/, 'Home menu should show overview');
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
+assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
+assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
+assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
 for (const route of ['/apps/dzlog/', '/apps/grigle/', '/apps/mylock/']) {
   assert.match(homepage, new RegExp('href="' + route + '"'), 'Homepage direct link to ' + route);
 }
@@ -84,6 +89,8 @@ for (const page of pages.slice(1)) {
 const stylesheet = readFileSync('public/home-r2.css', 'utf8');
 const detailCss = readFileSync('public/apps/app-detail.css', 'utf8');
 const homeVisualCss = readFileSync('public/home-visual-r3.css', 'utf8');
+const heroR4Css = readFileSync('public/home-hero-r4.css', 'utf8');
+const polishR41Css = readFileSync('public/home-polish-r41.css', 'utf8');
 const appVisualCss = readFileSync('public/apps/app-visual-r3.css', 'utf8');
 const tokens = readFileSync('public/styles/tokens.css', 'utf8');
 const components = readFileSync('public/styles/components.css', 'utf8');
@@ -98,7 +105,7 @@ assert.match(tokens, /--color-green/);
 assert.match(components, /\.button/);
 assert.match(scripts, /Escape/);
 
-for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss], ['home-visual-r3.css', homeVisualCss], ['app-visual-r3.css', appVisualCss]]) {
+for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss], ['home-visual-r3.css', homeVisualCss], ['home-hero-r4.css', heroR4Css], ['home-polish-r41.css', polishR41Css], ['app-visual-r3.css', appVisualCss]]) {
   for (const match of css.matchAll(/url\(['"]?(\/[^)'"]+)['"]?\)/g)) {
     assert.ok(existsSync(resolveAsset(match[1])), file + ': missing referenced asset ' + match[1]);
   }
