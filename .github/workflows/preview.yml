@@ -1,6 +1,8 @@
 name: Preview workshop website
 
 on:
+  push:
+    branches: [feat/homepage-visual-r3-hifi]
   pull_request:
     branches: [main]
     paths:
