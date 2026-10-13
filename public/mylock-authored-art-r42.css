@@ -1,0 +1,76 @@
+/*
+ * MY LOCK · authored Candy Soft R2 showcase
+ * Source: Dudozi-workshop/my-lock/assets/raster_shapes/candy_soft_r2/
+ * Original approved circle/triangle/square rasters, composite without redrawing.
+ * This is an illustrative product composition, not a literal screenshot.
+ */
+
+.hero .mylock-panel .lock-art .lock-shape{
+  display:block;
+  position:absolute;
+  width:142px;
+  height:142px;
+  left:50%;
+  top:91px;
+  margin:0;
+  transform:translateX(-50%);
+  border-radius:0;
+  box-shadow:none;
+  font-size:0;
+  color:transparent;
+  background:url('/assets/mylock-candy-soft-trio.webp') center/contain no-repeat;
+  filter:drop-shadow(0 8px 9px #68636c22);
+}
+.product-mylock .lock-product-visual i{
+  display:block;
+  width:166px;
+  height:166px;
+  max-width:88%;
+  margin:3px auto 0;
+  transform:none;
+  border-radius:0;
+  background:url('/assets/mylock-candy-soft-trio.webp') center/contain no-repeat;
+  box-shadow:none;
+  font-size:0;
+  color:transparent;
+  filter:drop-shadow(0 9px 12px #63647221);
+}
+.app-mylock .detail-device-screen{
+  background:
+    url('/assets/mylock-candy-soft-trio.webp') center 66%/105% auto no-repeat,
+    radial-gradient(ellipse 75% 66% at 50% 59%,#fffcf864,transparent 90%),
+    linear-gradient(160deg,#b1c6d2,#e7d8d9 55%,#a9b9cf);
+  color:#fff;
+  text-shadow:0 2px 10px #2d334344;
+}
+.app-mylock .moment-shape .mock-shapes{
+  background:url('/assets/mylock-candy-soft-trio.webp') center/contain no-repeat;
+}
+.app-mylock .moment-shape .mock-shapes i{display:none}
+.app-mylock .moment-motion .mock-lock-shape{
+  width:160px;
+  height:160px;
+  bottom:27px;
+  background:url('/assets/mylock-candy-soft-trio.webp') center/contain no-repeat;
+  color:transparent;
+  font-size:0;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  transform:translateX(-50%);
+}
+
+@media(min-width:1051px) and (max-width:1399px){
+  .hero .mylock-panel .lock-art .lock-shape{
+    width:122px;height:122px;top:82px;
+  }
+  .product-mylock .lock-product-visual i{width:142px;height:142px}
+}
+@media(max-width:1050px){
+  /* Keep the approved artwork inside the existing mobile composition. */
+  .hero .mylock-panel .lock-art .lock-shape{width:115px;height:115px;top:82px}
+  .product-mylock .lock-product-visual i{width:130px;height:130px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .mylock-panel .lock-art .lock-shape{transition:none}
+}
