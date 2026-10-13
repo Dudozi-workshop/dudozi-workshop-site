@@ -54,7 +54,7 @@
   .hero .hero-decor-books{
     display:block!important;
     position:absolute;left:-22px;bottom:5px;z-index:1;
-    width:370px;height:205px;opacity:.9;
+    width:285px;height:155px;opacity:.67;
     background:url('/assets/desk-books.webp') left bottom /contain no-repeat!important;
     filter:saturate(.76);
     mask-image:linear-gradient(90deg,#000 0 75%,transparent);
@@ -62,9 +62,9 @@
   }
   .hero .hero-decor-leaf{
     display:block!important;
-    right:0;top:104px;width:154px;height:340px;z-index:1;
+    right:0;top:124px;width:124px;height:280px;z-index:1;
     background:url('/assets/leaf-edge.webp') right top/contain no-repeat!important;
-    opacity:.6;filter:saturate(.8);
+    opacity:.48;filter:saturate(.78);
     mask-image:linear-gradient(270deg,#000 50%,transparent);
     -webkit-mask-image:linear-gradient(270deg,#000 50%,transparent);
   }
@@ -160,7 +160,9 @@
     width:132%!important;height:184px!important;
     left:-16%!important;bottom:20px!important;
     border-radius:50%!important;
-    background:url('/assets/podium.webp') center /cover no-repeat!important;
+    background:
+      linear-gradient(180deg,#fffaf1b4 0%,#e3d4b98a 47%,#a8987d26 100%),
+      url('/assets/podium.webp') center /cover no-repeat!important;
     box-shadow:0 22px 32px #6d56492a!important;
     filter:saturate(.7) contrast(1.07);
     mask-image:radial-gradient(ellipse 70% 65% at center,#000 55%,transparent 91%)!important;
@@ -168,10 +170,10 @@
   }
   .hero .stage-disc:after{display:none}
   .hero .phone-mockup{
-    position:relative;width:308px!important;height:635px!important;
+    position:relative;width:322px!important;height:654px!important;
     transform:translate(3px,-7px) rotate(-1.9deg)!important;
     border:8px solid #202724!important;border-radius:48px!important;
-    box-shadow:9px 27px 16px #292f2a35,24px 38px 50px #3b423a45,inset -4px 0 0 #9d9e96!important;
+    box-shadow:10px 27px 17px #292f2a33,28px 43px 56px #343f354e,inset -4px 0 0 #a1a49a,inset 2px 0 0 #ffffff28!important;
     filter:none!important;z-index:2;
   }
   .hero .phone-stage:hover .phone-mockup{
@@ -206,12 +208,12 @@
     transform:translateX(-5px);
   }
   .hero .app-panel{
-    min-height:187px!important;position:relative;overflow:hidden;
+    min-height:186px!important;position:relative;overflow:hidden;
     padding:22px 20px 20px 23px!important;
     border:1px solid #ffffffc9!important;
     border-radius:28px!important;
     background:#faf9f1dc!important;
-    box-shadow:0 22px 39px #4b44321e,inset 0 1px #fff!important;
+    box-shadow:0 23px 44px #4b443222,inset 0 1px #fff,inset 0 -1px #ffffff60!important;
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
     transform:none;
@@ -280,7 +282,7 @@
  .hero .hero-copy h1{font-size:clamp(34px,3.45vw,49px)!important}
  .hero .hero-intro{font-size:14px!important}
  .hero .hero-actions .button{font-size:12px!important;min-height:52px!important;padding:12px 15px!important;min-width:0}
- .hero .phone-mockup{width:280px!important;height:581px!important}
+ .hero .phone-mockup{width:clamp(277px,22vw,304px)!important;height:602px!important}
  .hero .phone-stage{height:677px!important;min-height:677px!important}
  .hero .hero-showcase{min-height:665px!important}
  .hero .app-panel{min-height:169px!important;padding:18px 11px 16px 15px!important}
