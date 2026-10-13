@@ -198,6 +198,9 @@
   .other-app{min-height:114px;background:#ffffff0b;border-color:#ffffff27;transition:background .2s ease,transform .2s ease}
   .other-app:hover{transform:translateY(-3px)}
   .other-app strong{font-size:24px}
+  .other-app:focus-visible{background:#ffffff1b;border-color:#d9ebd7}
+  .detail-actions .button:hover{box-shadow:0 13px 26px #52604b1d}
+
   .app-grigle .detail-hero{
     background:
       radial-gradient(ellipse 34% 45% at 82% 38%,#f7dccdb9,transparent 85%),
@@ -225,6 +228,21 @@
   .detail-device{width:291px;height:555px}
   .detail-stage:before{width:450px;height:160px}
 }
+/* Concept labels and keyboard accessibility shared by all three app pages. */
+.mylock-concept-note{
+  color:#858177;
+  font-size:12px;
+  line-height:1.7;
+  max-width:380px;
+  margin-top:12px;
+}
+:where(.detail-header a,.detail-actions a,.other-apps a):focus-visible{
+  outline:3px solid #3b6846;
+  outline-offset:5px;
+  border-radius:12px;
+}
 @media(prefers-reduced-motion:reduce){
   .detail-stage:hover .detail-device{transform:none}
+  .other-app:hover{transform:none}
+  .other-app,.detail-actions .button{transition:none}
 }
