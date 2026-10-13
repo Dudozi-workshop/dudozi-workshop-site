@@ -23,16 +23,24 @@ for (const item of pages) {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const pageErrors = [];
     const failedAssets = [];
+    const failedImageRequests = [];
     page.on('pageerror', error => pageErrors.push(error.message));
     page.on('response', response => {
-      if (response.status() >= 400 && response.url().startsWith(baseUrl)) {
+      if (response.status() >= 400 && (response.url().startsWith(baseUrl) || response.request().resourceType() === 'image')) {
         failedAssets.push(response.status() + ' ' + response.url());
       }
     });
 
+    page.on('requestfailed', request => {
+      if (request.resourceType() === 'image') failedImageRequests.push(request.url());
+    });
+
     const response = await page.goto(baseUrl + item.path, { waitUntil: 'networkidle', timeout: 45000 });
     assert.equal(response?.status(), 200, item.path + ': expected HTTP 200');
-    await page.evaluate(async () => { await document.fonts.ready; });
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(img => img.decode().catch(() => {})));
+    });
     await page.screenshot({ path: output + '/' + item.label + '-' + width + '.png', fullPage: true });
 
     const metrics = await page.evaluate(() => {
@@ -55,14 +63,17 @@ for (const item of pages) {
         appRail: rect('.app-rail'),
         detailHeading: rect('.detail-title'),
         clipping: clipping('.hero-copy h1, .panel-topline, .product-copy, .screen-moment'),
+        brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
-    const record = { page: item.path, width, ...metrics, pageErrors, failedAssets };
+    const record = { page: item.path, width, ...metrics, pageErrors, failedAssets, failedImageRequests };
     report.push(record);
     const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
     if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
     if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
     if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
+    if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
+    if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
     await page.close();
   }
 }
