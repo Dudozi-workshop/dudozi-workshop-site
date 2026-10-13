@@ -1,0 +1,263 @@
+/*
+ * DUDoZI · PC visual finish R4.1
+ * Final hierarchy + affordance pass layered on the accepted R4 photo set.
+ * Changes are restricted to desktop, except global accessibility enhancement.
+ */
+
+/* Keyboard focus should remain visible against the photographed background. */
+:where(.site-header a,.hero a,.overview a,.studio a,.closing a):focus-visible{
+  outline:3px solid #416e49;
+  outline-offset:5px;
+  border-radius:12px;
+}
+@media(min-width:1051px) {
+  /* Contrast guard without obscuring the warm photographic lighting. */
+  .hero{
+    background:
+      linear-gradient(90deg,#fffef9f9 0%,#fffcf6f1 21%,#fffaf1c7 37%,#faf3e361 56%,#f6ecd320 78%,#faf5ea16 100%),
+      linear-gradient(180deg,#fff9ee0a 0%,transparent 67%,#d8c7a62f 100%),
+      url('https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2200&q=80') center 40% /cover no-repeat,
+      #f9f5ee;
+  }
+  .hero .hero-copy h1{ text-shadow:0 2px 14px #fff9; }
+  .hero .hero-intro{
+    color:#474f47!important;
+    text-shadow:0 1px 8px #fffaf2a8;
+    max-width:525px!important;
+  }
+  .hero .hero-actions .button{
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .hero .hero-actions .button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 35px #3c42302b!important;
+  }
+  .hero .app-rail {gap:16px!important}
+  .hero .app-panel{
+    border:1px solid #ffffffeb!important;
+    background:#fffcf3ef!important;
+    box-shadow:0 16px 36px #473f331f,inset 0 1px #fffffffa!important;
+  }
+  .hero .dzlog-panel{background:linear-gradient(110deg,#fffef9f5 0%,#edf2e5e6 96%)!important}
+  .hero .grigle-panel{background:linear-gradient(110deg,#fffcf8f5 0%,#f6e7dce8 96%)!important}
+  .hero .mylock-panel{background:linear-gradient(110deg,#fbfdfff5 0%,#e7edf6ec 96%)!important}
+  .hero .panel-copy p{
+    font-size:13px!important;
+    line-height:1.69!important;
+    color:#535a53!important;
+    font-weight:500;
+    margin-top:15px!important;
+    max-width:185px;
+  }
+  .hero .panel-topline strong{color:#232a22!important}
+  .hero .state-tag{
+    border:1px solid #ffffff8c;
+  }
+  .hero .panel-arrow{
+    width:34px!important;height:34px!important;
+    background:#ffffffdf!important;
+    border:1px solid #ffffffdb;
+    color:#355b3b;
+  }
+  .hero .app-panel:hover .panel-arrow{background:#3a6543!important;color:white}
+  .hero .app-panel::after{
+    content:"";
+    display:block;
+    position:absolute;
+    z-index:1;
+    inset:0 41% 0 0;
+    pointer-events:none;
+    background:linear-gradient(90deg,#ffffff35,transparent);
+  }
+  /* Keep camera mock-up the clear visual center. */
+  .hero .phone-mockup{
+    box-shadow:10px 23px 19px #33332d33,22px 39px 57px #393d3352,
+    inset -3px 0 #989b90!important;
+  }
+
+  /* Product display: text and device images carry equal weight. */
+  .overview{
+    padding-top:132px;padding-bottom:150px;
+    background:
+      radial-gradient(ellipse 58% 52% at 88% 17%,#e8ecdfb3,transparent 95%),
+      linear-gradient(180deg,#fcfbf7 0%,#f2f5ec 100%);
+  }
+  .overview .section-heading{margin-bottom:56px}
+  .overview .section-eyebrow{color:#537454;letter-spacing:.22em}
+  .overview .section-heading h2{
+    max-width:800px;
+    color:#263129;
+    font-weight:800;
+    letter-spacing:-.071em;
+  }
+  .overview .section-intro{
+    color:#656d64;
+    line-height:1.94;
+  }
+  .overview .product-grid{gap:26px}
+  .overview .product-card {
+    border:1px solid #fffefa;
+    box-shadow:0 24px 60px #56574b1e;
+    transition:transform .23s ease,box-shadow .23s ease;
+  }
+  .overview .product-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 31px 70px #515c4b29;
+  }
+  .overview .product-card-featured{
+    background:linear-gradient(145deg,#fffdf6,#f4f4e8);
+    min-height:640px;
+  }
+  .overview .product-card-featured .product-copy{padding:52px 42px}
+  .overview .product-title-row h3{font-size:52px;line-height:1.15}
+  .overview .product-tagline{
+    color:#345d40;
+    font-weight:780;
+    font-size:30px;
+    line-height:1.45;
+  }
+  .overview .product-description{
+    color:#5d665d;
+    line-height:1.95;
+    font-size:14px;
+  }
+  .overview .product-link{
+    display:inline-flex;
+    align-items:center;
+    width:max-content;
+    padding:10px 0;
+    gap:12px;
+    color:#3a6545;
+    font-weight:800;
+    border-bottom:1px solid #7eac8573;
+  }
+  .overview .product-card-secondary{
+    min-height:293px;
+    border-radius:32px;
+  }
+  .overview .product-card-secondary .product-copy{
+    padding:32px 28px;
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .overview .product-card-secondary .product-title-row h3{
+    font-size:30px;
+    line-height:1.25;
+  }
+  .overview .product-card-secondary .product-description{
+    font-size:13px;
+    font-weight:450;
+    line-height:1.8;
+    color:#5e655d;
+    margin:14px 0 16px;
+    max-width:255px;
+  }
+  .product-small-link{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:auto;
+    font-size:12px;line-height:1.3;
+    font-weight:800;color:#3e6746;
+    border-bottom:1px solid #718e7645;
+    padding-bottom:5px;
+  }
+  .product-small-link .icon{width:15px;height:15px}
+  .overview .product-card-secondary:hover .product-small-link{border-color:#3e6746}
+  .overview .product-card-secondary .mini-product-visual{
+    filter:drop-shadow(-8px 18px 18px #655b4a1b);
+  }
+
+  /* Editorial studio story: confident values list, tactile memo, not 3 equal cards. */
+  .studio{
+    padding-top:144px;padding-bottom:150px;
+    background:
+      radial-gradient(ellipse 34% 43% at 96% 9%,#fffdf7dc,transparent),
+      radial-gradient(ellipse 51% 41% at 11% 100%,#d2e0d0ac,transparent),
+      linear-gradient(155deg,#eff2eb,#e4ece1);
+  }
+  .studio .studio-heading-block h2{
+    color:#233127;
+    font-weight:780;
+    line-height:1.34;
+  }
+  .studio .studio-intro{
+    color:#5d6a60;
+    font-size:15px;
+    line-height:1.98;
+  }
+  .studio .studio-board{gap:28px}
+  .studio .studio-note{
+    background:
+      radial-gradient(ellipse 60% 50% at 104% 9%,#74967c7a,transparent),
+      linear-gradient(145deg,#446b50 0%,#31573e 50%,#254831 100%);
+    box-shadow:0 35px 66px #344e3c38,inset 0 1px #ffffff35;
+  }
+  .studio .studio-note strong{
+    letter-spacing:-.051em;
+    color:#fffef6;
+    line-height:1.53;
+    font-size:36px;
+    font-weight:600;
+  }
+  .studio .studio-note p{
+    color:#e4ede0;
+    line-height:1.92;
+    font-size:14px;
+    max-width:365px;
+  }
+  .studio .studio-values article{
+    transition:padding .2s ease;
+  }
+  .studio .studio-values h3{
+    font-size:30px;
+    letter-spacing:-.035em;
+    color:#2c4032;
+    margin-bottom:10px;
+    font-weight:790;
+  }
+  .studio .studio-values p{font-size:14px;color:#626c61}
+  .studio .studio-making{
+    background:
+      repeating-linear-gradient(0deg,transparent 0 27px,#ab8d600b 28px 29px),
+      linear-gradient(145deg,#fffaf1,#efdfc8);
+    box-shadow:0 27px 54px #5f53482a;
+  }
+  .studio .studio-making .making-row{
+    border-color:#b6a89166;
+  }
+  .studio .studio-making .making-row strong{font-size:21px;color:#38382f}
+  .studio .studio-making .making-row span{color:#757369}
+
+  /* A calm transition into the closing editorial message. */
+  .closing{
+    background:
+      radial-gradient(ellipse 33% 69% at 83% 41%,#d8e5d9a9,transparent),
+      #faf9f4;
+    border-top:1px solid #e7ebdf;
+  }
+  .closing h2{color:#253228;line-height:1.35}
+}
+@media(min-width:1051px) and (max-width:1399px){
+  .hero .panel-copy p{font-size:11px!important}
+  .overview .product-card-featured .product-copy{padding:40px 29px}
+  .overview .product-tagline{font-size:25px}
+  .overview .product-description{font-size:12px}
+  .overview .product-card-secondary .product-copy{padding:27px 23px}
+  .overview .product-card-secondary .product-description{font-size:11.5px}
+  .studio .studio-note strong{font-size:29px}
+  .studio .studio-values h3{font-size:26px}
+}
+@media(min-width:1051px) and (max-width:1160px){
+  .hero .panel-copy p{font-size:10px!important}
+  .overview .product-card-secondary .product-copy{padding:25px 19px}
+  .overview .product-card-secondary .product-title-row h3{font-size:22px}
+  .overview .product-card-secondary .product-description{font-size:11px}
+  .product-small-link{font-size:10px}
+  .studio .studio-board{gap:18px}
+  .studio .studio-note strong{font-size:27px}
+  .studio .studio-values h3{font-size:24px}
+  .studio .studio-making .making-row strong{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .hero-actions .button,
+  .overview .product-card,
+  .studio .studio-values article{transition:none}
+}
