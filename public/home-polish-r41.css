@@ -253,7 +253,7 @@
   .footer-nav a:hover{color:#fff}
 }
 @media(min-width:1051px) and (max-width:1399px){
-  .hero .panel-copy p{font-size:11px!important}
+  .hero .panel-copy p{font-size:12px!important}
   .overview .product-card-featured{grid-template-columns:minmax(0,1fr) minmax(275px,.97fr)}
   .overview .product-card-featured .product-copy{padding:42px 27px 39px}
   .overview .product-tagline{font-size:25px}
@@ -261,12 +261,12 @@
   .overview .product-card-secondary{grid-template-columns:minmax(0,1fr) 134px}
   .overview .product-card-secondary .product-copy{padding:27px 18px}
   .overview .product-card-secondary .mini-product-visual{width:151px;margin-right:-19px}
-  .overview .product-card-secondary .product-description{font-size:11.5px}
+  .overview .product-card-secondary .product-description{font-size:12.5px}
   .studio .studio-note strong{font-size:29px}
   .studio .studio-values h3{font-size:26px}
 }
 @media(min-width:1051px) and (max-width:1160px){
-  .hero .panel-copy p{font-size:10px!important}
+  .hero .panel-copy p{font-size:11.5px!important}
   .overview .product-card-secondary .product-copy{padding:23px 15px}
   .overview .product-card-featured{grid-template-columns:minmax(0,1fr) 272px}
   .overview .product-card-featured .product-copy{padding:36px 20px 32px 24px}
@@ -275,8 +275,8 @@
   .overview .product-card-secondary .mini-product-visual{width:135px}
   .overview .product-card-secondary .product-title-row{gap:6px}
   .overview .product-card-secondary .product-title-row h3{font-size:22px}
-  .overview .product-card-secondary .product-description{font-size:11px}
-  .product-small-link{font-size:10px}
+  .overview .product-card-secondary .product-description{font-size:12px}
+  .product-small-link{font-size:11px}
   .studio .studio-board{gap:18px}
   .studio .studio-note strong{font-size:27px}
   .studio .studio-values h3{font-size:24px}
