@@ -1,0 +1,71 @@
+/* Official launcher marks, reused directly from the app repositories. */
+.official-app-icon {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:inherit;
+  aspect-ratio:1;
+}
+.mini-icon:has(.official-app-icon) {
+  flex-shrink:0;
+  overflow:hidden;
+  background:transparent !important;
+  border-radius:12px;
+  box-shadow:none !important;
+}
+.mini-icon:has(.official-app-icon) .official-app-icon {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.product-app-icon {
+  display:block;
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  margin:0;
+  object-fit:contain;
+  border-radius:11px;
+}
+.product-card-featured .product-app-icon {
+  width:50px;
+  height:50px;
+  flex-basis:50px;
+}
+.product-title-row:has(.product-app-icon) {
+  align-items:center;
+  column-gap:10px;
+}
+.product-title-row:has(.product-app-icon) h3 {
+  margin-block:0 !important;
+}
+.detail-brand-appicon {
+  display:block;
+  width:66px;
+  height:66px;
+  margin:0 0 15px;
+  object-fit:contain;
+  border-radius:17px;
+}
+@media (min-width:1051px) and (max-width:1399px) {
+  .product-card-featured .product-app-icon {
+    width:43px;height:43px;flex-basis:43px;
+  }
+  .product-card-secondary .product-app-icon {
+    width:34px;height:34px;flex-basis:34px;
+  }
+  .product-card-secondary .product-title-row:has(.product-app-icon) {gap:6px}
+}
+@media (min-width:1051px) and (max-width:1199px) {
+  .product-card-secondary .product-app-icon {
+    width:27px;height:27px;flex-basis:27px;
+  }
+  .product-card-secondary .product-title-row:has(.product-app-icon) {column-gap:5px}
+}
+@media (max-width:1050px) {
+  .product-card-secondary .product-app-icon {
+    width:32px;height:32px;flex-basis:32px;
+  }
+  .detail-brand-appicon {width:58px;height:58px;margin-bottom:12px}
+}
