@@ -1,0 +1,315 @@
+/*
+ Dudozi Workshop — R4 sitewide cohesion pass.
+ Preserve the approved photographed hero. Calm visual transitions from product
+ showcase to editorial studio, closing invitation and the three detail pages.
+*/
+:root{
+  --ddz-ivory:#fbf9f3;
+  --ddz-paper:#fffefa;
+  --ddz-moss:#395d43;
+  --ddz-sage:#e6ebdf;
+  --ddz-ink:#262d27;
+  --ddz-body:#626c61;
+  --ddz-soft-edge:#dce2d5;
+  --ddz-editorial-shadow:0 18px 48px #495d4918;
+}
+.closing-description{
+  margin:20px 0 0;
+  color:var(--ddz-body);
+  font-size:14px;
+  line-height:1.9;
+  letter-spacing:-.025em;
+}
+.secondary-link{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  margin-top:18px;
+  color:#456749;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  white-space:nowrap;
+}
+.secondary-link .icon{transition:transform .2s ease}
+.product-card-secondary:hover .secondary-link .icon{transform:translateX(4px)}
+.product-card:focus-visible{
+  outline:3px solid #4b7350;
+  outline-offset:5px;
+}
+.footer-nav{flex-wrap:wrap;align-items:center}
+.footer-nav a:hover,.detail-nav a:hover{color:#fff}
+.footer-nav a:focus-visible{outline-offset:6px}
+
+/* Visually consistent PC editorial rhythm without introducing new sections. */
+@media(min-width:1051px){
+  /* Warm photography moves gradually into a quiet app showroom. */
+  .overview{
+    isolation:isolate;
+    position:relative;
+    padding:126px 0 134px;
+    background:
+      radial-gradient(ellipse 53% 48% at 88% 18%,#e4ebdf8a,transparent 82%),
+      linear-gradient(180deg,#f7f2e9 0%,#f9f8f3 21%,#f2f4ed 100%);
+  }
+  .overview:before{content:none!important}
+  .overview:after{
+    height:92px;
+    background:linear-gradient(180deg,#ede6dabb,transparent 100%);
+    z-index:0;
+  }
+  .overview > .shell{position:relative;z-index:1}
+  .section-heading{
+    align-items:end;
+    gap:72px;
+    margin-bottom:49px;
+  }
+  .section-heading .section-eyebrow,
+  .studio .section-eyebrow,
+  .closing .section-eyebrow{
+    font-family:"Noto Sans KR",system-ui,sans-serif;
+    color:#687e66;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.22em;
+  }
+  .section-heading h2{
+    font-family:"Noto Sans KR",system-ui,sans-serif;
+    font-size:clamp(38px,3.55vw,54px);
+    font-weight:800;
+    line-height:1.32;
+    letter-spacing:-.06em;
+    color:var(--ddz-ink);
+  }
+  .section-intro{
+    max-width:350px;
+    margin:0 0 5px;
+    color:#6e766a;
+    font-size:14px;
+    line-height:1.92;
+  }
+  .product-grid{gap:24px}
+  .product-side{gap:24px}
+  .product-card{
+    border:1px solid #e1e5dd;
+    box-shadow:var(--ddz-editorial-shadow);
+    transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-4px);
+    border-color:#d2dccf;
+    box-shadow:0 25px 56px #475e4a25;
+  }
+  .product-card-featured{
+    border-radius:34px;
+    min-height:580px;
+  }
+  .product-card-featured:before{content:none!important}
+  .product-card-featured .product-copy{padding:45px 37px 41px}
+  .product-title-row h3{color:#29332a}
+  .product-tagline{color:#395f42}
+  .product-description{color:#6b746b;line-height:1.85}
+  .product-link{color:#3d6743}
+  .product-card-secondary{
+    border-radius:30px;
+    min-height:278px;
+    background:#fbfaf6;
+  }
+  .product-card-secondary:before{content:none!important}
+  .product-card-secondary .product-copy{
+    display:flex;flex-direction:column;align-items:flex-start;
+    align-self:stretch;justify-content:center;
+    padding:28px 24px 26px;
+  }
+  .product-card-secondary .product-description{
+    margin-bottom:0;
+    line-height:1.85;
+  }
+  .product-card-secondary .secondary-link{
+    margin-top:20px;
+    font-size:11px;
+    opacity:.9;
+  }
+  .product-grigle{background:linear-gradient(120deg,#fffaf5,#f8e9de)}
+  .product-mylock{background:linear-gradient(120deg,#fbfdfd,#e9f0f5)}
+
+  /* A softer sage transition makes the studio feel part of the same brand. */
+  .studio{
+    isolation:isolate;
+    position:relative;
+    padding:124px 0 132px;
+    background:
+      radial-gradient(ellipse 45% 55% at 88% 9%,#fffef1a1,transparent 95%),
+      linear-gradient(175deg,#e8ede4 0%,#e7ecdf 58%,#e9eee6 100%);
+  }
+  .studio:before{
+    content:"";
+    position:absolute;inset:0 0 auto;height:66px;
+    pointer-events:none;
+    background:linear-gradient(180deg,#f2f4ed,transparent);
+  }
+  .studio-hero{
+    gap:76px;
+    margin-bottom:62px;
+  }
+  .studio-heading-block:before{
+    height:84px;
+    background:linear-gradient(180deg,#6c896d,#b1c6ac00);
+  }
+  .studio-heading-block h2{
+    font-size:clamp(40px,3.65vw,58px);
+    line-height:1.4;
+    letter-spacing:-.06em;
+  }
+  .studio-intro p{color:#657163;line-height:1.98}
+  .studio-board{gap:27px}
+  .studio-note{
+    min-height:394px;
+    padding:43px 40px 35px;
+    border-radius:30px;
+    background:
+      radial-gradient(circle at 80% 10%,#a0b9a22b,transparent 47%),
+      linear-gradient(146deg,#42664a,#2e5138);
+    box-shadow:0 22px 47px #38583a2b,inset 0 1px #ffffff1c;
+  }
+  .studio-note strong{
+    font-size:clamp(27px,2.25vw,33px);
+    line-height:1.52;
+  }
+  .studio-note p{line-height:1.9}
+  .studio-values{
+    min-height:394px;
+    padding:5px 0;
+  }
+  .studio-values article{
+    padding-block:23px 25px;
+    transition:color .2s ease;
+  }
+  .studio-values article:hover{padding-left:54px}
+  .studio-values h3{
+    font-size:26px;
+    color:#344b36;
+  }
+  .studio-values p{color:#667163;line-height:1.75}
+  .studio-making{
+    min-height:394px;
+    padding:31px 29px;
+    transform:rotate(.45deg);
+    border-radius:12px 24px 24px 22px;
+    background:
+      repeating-linear-gradient(0deg,transparent 0 27px,#b39e7b0c 28px 29px),
+      linear-gradient(145deg,#fffaf0,#f1e5d2);
+    box-shadow:0 23px 45px #5b51451f;
+  }
+  .studio-making:before{
+    width:76px;height:17px;
+    top:-7px;
+    background:#d3c0a79e;
+    transform:translateX(-50%) rotate(-3deg);
+  }
+  .making-header{margin-bottom:29px}
+  .making-row{padding-block:17px}
+  .making-row strong{color:#384436}
+
+  /* A distinct closing invitation, without repeating the whole hero. */
+  .closing{
+    position:relative;
+    padding:108px 0 114px;
+    background:
+      radial-gradient(ellipse 34% 85% at 90% 45%,#dfebddbc,transparent 86%),
+      linear-gradient(180deg,#f9faf6,#fcfaf5);
+  }
+  .closing:before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;height:42px;
+    background:linear-gradient(180deg,#e9eee6,transparent);
+    pointer-events:none;
+  }
+  .closing-inner{
+    position:relative;
+    align-items:center;
+    padding-top:0;
+  }
+  .closing-inner:before{content:none!important}
+  .closing h2{
+    margin-top:14px;
+    font-size:clamp(39px,3.7vw,54px);
+    font-weight:800;
+    line-height:1.35;
+    color:#28352a;
+    letter-spacing:-.065em;
+  }
+  .closing h2 span{color:#446a49}
+  .closing-description{max-width:510px}
+  .closing .closing-cta{
+    min-height:56px;
+    min-width:202px;
+    box-shadow:0 10px 24px #47614925;
+  }
+  .closing .button .icon{transform:none}
+
+  .footer{
+    background:#263329;
+    border-top:1px solid #ffffff11;
+    padding:35px 0 24px;
+  }
+  .footer-main{min-height:58px;gap:34px}
+  .footer-nav{gap:22px}
+  .footer-nav a{color:#cdd8ce;font-size:12px}
+  .footer-bottom{color:#aebdaf}
+  .footer-brand{font-size:14px}
+}
+/* Retain the dense but readable product layout at narrow desktop sizes. */
+@media(min-width:1051px) and (max-width:1210px){
+  .product-card-featured .product-copy{padding:32px 25px}
+  .product-card-secondary .product-copy{padding:24px 21px}
+  .product-card-secondary .secondary-link{font-size:10px}
+  .studio-board{gap:16px}
+  .studio-note{padding:34px 29px}
+  .studio-making{padding:28px 24px}
+  .studio-hero{gap:50px}
+  .closing h2{font-size:clamp(36px,3.5vw,44px)}
+}
+@media(min-width:901px) and (max-width:1050px){
+  .product-card-secondary .secondary-link{font-size:11px}
+  .studio-note,.studio-making{border-radius:24px}
+  .closing-description{max-width:490px}
+}
+
+/* Detailed app pages: softer card rhythm and matching footer/CTA language. */
+@media(min-width:901px){
+  .app-detail .detail-section.alt{
+    background:linear-gradient(180deg,#f3f4ee,#ebf0e8);
+  }
+  .app-detail .screen-story{
+    background:linear-gradient(180deg,#fcfaf6,#f9faf6);
+  }
+  .app-detail .screen-moment{
+    border:1px solid #e2e7dc;
+    box-shadow:var(--ddz-editorial-shadow);
+  }
+  .app-detail .feature-card{
+    border:1px solid #e2e6dd;
+    box-shadow:var(--ddz-editorial-shadow);
+  }
+  .app-detail .feature-card:hover,.app-detail .screen-moment:hover{
+    box-shadow:0 22px 48px #50624c22;
+  }
+  .app-detail .detail-section-heading h2{
+    color:var(--ddz-ink);
+  }
+  .app-detail .other-apps{
+    background:
+      radial-gradient(ellipse 45% 70% at 90% 10%,#567b5f2c,transparent),
+      #28362b;
+  }
+  .app-detail .detail-footer{
+    background:#263329;
+    color:#bdcbbd;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .secondary-link .icon,
+  .product-card,
+  .app-detail .screen-moment{transition:none!important}
+}
