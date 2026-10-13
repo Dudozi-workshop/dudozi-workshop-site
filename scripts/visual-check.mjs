@@ -24,23 +24,31 @@ for (const item of pages) {
     const pageErrors = [];
     const failedAssets = [];
     const failedImageRequests = [];
+    const failedFontRequests = [];
     page.on('pageerror', error => pageErrors.push(error.message));
     page.on('response', response => {
-      if (response.status() >= 400 && (response.url().startsWith(baseUrl) || response.request().resourceType() === 'image')) {
+      if (response.status() >= 400 && (response.url().startsWith(baseUrl) || ['image', 'font'].includes(response.request().resourceType()))) {
         failedAssets.push(response.status() + ' ' + response.url());
       }
     });
 
     page.on('requestfailed', request => {
       if (request.resourceType() === 'image') failedImageRequests.push(request.url());
+      if (request.resourceType() === 'font') failedFontRequests.push(request.url());
     });
 
-    const response = await page.goto(baseUrl + item.path, { waitUntil: 'networkidle', timeout: 45000 });
+    // External photography/fonts may continue loading; avoid an unbounded network-idle wait.
+    const response = await page.goto(baseUrl + item.path, { waitUntil: 'domcontentloaded', timeout: 45000 });
     assert.equal(response?.status(), 200, item.path + ': expected HTTP 200');
-    await page.evaluate(async () => {
-      await document.fonts.ready;
-      await Promise.all([...document.images].map(img => img.decode().catch(() => {})));
+    const assetsSettled = await page.evaluate(async () => {
+      const ready = Promise.all([
+        document.fonts.ready,
+        Promise.all([...document.images].map(img => img.decode().catch(() => {}))),
+      ]).then(() => true);
+      const timeout = new Promise(resolve => setTimeout(() => resolve(false), 20000));
+      return Promise.race([ready, timeout]);
     });
+    if (!assetsSettled) failures.push(item.path + ' @ ' + width + ': fonts/images timed out before screenshot');
     await page.screenshot({ path: output + '/' + item.label + '-' + width + '.png', fullPage: true });
 
     const metrics = await page.evaluate(() => {
@@ -75,13 +83,14 @@ for (const item of pages) {
         brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
-    const record = { page: item.path, width, ...metrics, pageErrors: [...pageErrors], failedAssets: [...failedAssets], failedImageRequests: [...failedImageRequests] };
+    const record = { page: item.path, width, ...metrics, assetsSettled, pageErrors: [...pageErrors], failedAssets: [...failedAssets], failedImageRequests: [...failedImageRequests], failedFontRequests: [...failedFontRequests] };
     report.push(record);
     const actualWidth = Math.max(metrics.scrollWidth, metrics.bodyWidth);
     if (actualWidth > width + 3) failures.push(item.path + ' @ ' + width + ': horizontal overflow ' + actualWidth);
     if (pageErrors.length) failures.push(item.path + ' @ ' + width + ': JS error ' + pageErrors.join('; '));
     if (failedAssets.length) failures.push(item.path + ' @ ' + width + ': missing asset ' + failedAssets.join('; '));
     if (failedImageRequests.length) failures.push(item.path + ' @ ' + width + ': failed image requests ' + failedImageRequests.join('; '));
+    if (failedFontRequests.length) failures.push(item.path + ' @ ' + width + ': failed font requests ' + failedFontRequests.join('; '));
     if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
     if (metrics.clipping.length) failures.push(item.path + ' @ ' + width + ': clipped text/card content ' + metrics.clipping.join('; '));
     if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
