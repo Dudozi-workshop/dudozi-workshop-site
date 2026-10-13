@@ -33,40 +33,29 @@
     background:
       linear-gradient(90deg,#fffdf7fc 0%,#fffaf3f2 20%,#fff9f0dc 37%,#fff9ef74 55%,#f6ecd324 78%,#f8f1e422 100%),
       linear-gradient(0deg,#eee0c47d 0%,transparent 34%),
-      url('https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2200&q=80') center 40% /cover no-repeat,
+      url('https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2560&q=88') center 46% /cover no-repeat,
       #f7f1e5;
   }
   .hero:before{
     content:"";position:absolute;inset:0;z-index:0;
     background:
-      linear-gradient(180deg,#fffaf13b,transparent 36%,#d8bb9850 100%),
-      repeating-linear-gradient(110deg,transparent 0 8%,#fff9e526 8.5% 11%,transparent 11.5% 19%);
-    opacity:.8;mix-blend-mode:screen;pointer-events:none;
+      radial-gradient(ellipse 68% 75% at 3% 20%,#fffdf47b,transparent 92%),
+      linear-gradient(180deg,#fff9f11e,transparent 44%,#bfae9240 100%);
+    opacity:.74;mix-blend-mode:normal;pointer-events:none;
   }
   .hero:after{
     content:"";position:absolute;left:0;right:0;bottom:0;
-    z-index:0;height:220px;
-    background:linear-gradient(180deg,transparent,#f6e8d054);
+    z-index:0;height:245px;
+    background:linear-gradient(180deg,transparent 0%,#e7d8bd26 56%,#f6f5ed90 100%);
     pointer-events:none;
   }
   .hero .hero-light{display:none}
   .hero .hero-glow-one,.hero .hero-glow-two{opacity:.14;filter:blur(55px)}
   .hero .hero-decor-books{
-    display:block!important;
-    position:absolute;left:-22px;bottom:5px;z-index:1;
-    width:285px;height:155px;opacity:.67;
-    background:url('/assets/desk-books.webp') left bottom /contain no-repeat!important;
-    filter:saturate(.76);
-    mask-image:linear-gradient(90deg,#000 0 75%,transparent);
-    -webkit-mask-image:linear-gradient(90deg,#000 0 75%,transparent);
+    display:none!important; /* Small cut-out has been retired: full-bleed photograph owns the scene. */
   }
   .hero .hero-decor-leaf{
-    display:block!important;
-    right:0;top:124px;width:124px;height:280px;z-index:1;
-    background:url('/assets/leaf-edge.webp') right top/contain no-repeat!important;
-    opacity:.48;filter:saturate(.78);
-    mask-image:linear-gradient(270deg,#000 50%,transparent);
-    -webkit-mask-image:linear-gradient(270deg,#000 50%,transparent);
+    display:none!important; /* Avoid compositing low-resolution foliage over the photograph. */
   }
   .hero .hero-decor-books:before,.hero .hero-decor-books:after,
   .hero .hero-decor-leaf:before,.hero .hero-decor-leaf:after{content:none!important}
@@ -157,16 +146,14 @@
     filter:blur(25px);
   }
   .hero .stage-disc{
-    width:132%!important;height:184px!important;
-    left:-16%!important;bottom:20px!important;
+    width:120%!important;height:124px!important;
+    left:-10%!important;bottom:35px!important;
     border-radius:50%!important;
-    background:
-      linear-gradient(180deg,#fffaf1b4 0%,#e3d4b98a 47%,#a8987d26 100%),
-      url('/assets/podium.webp') center /cover no-repeat!important;
-    box-shadow:0 22px 32px #6d56492a!important;
-    filter:saturate(.7) contrast(1.07);
-    mask-image:radial-gradient(ellipse 70% 65% at center,#000 55%,transparent 91%)!important;
-    -webkit-mask-image:radial-gradient(ellipse 70% 65% at center,#000 55%,transparent 91%)!important;
+    background:radial-gradient(ellipse at center,#51463452 0%,#594b3929 35%,#594b390e 57%,transparent 75%)!important;
+    box-shadow:none!important;
+    filter:blur(13px)!important;
+    mask-image:none!important;
+    -webkit-mask-image:none!important;
   }
   .hero .stage-disc:after{display:none}
   .hero .phone-mockup{
@@ -204,7 +191,7 @@
   .hero .app-rail{
     position:relative;z-index:4;
     display:flex;flex-direction:column;
-    gap:14px!important;
+    gap:16px!important;
     transform:translateX(-5px);
   }
   .hero .app-panel{
@@ -213,7 +200,7 @@
     border:1px solid #ffffffc9!important;
     border-radius:28px!important;
     background:#faf9f1dc!important;
-    box-shadow:0 23px 44px #4b443222,inset 0 1px #fff,inset 0 -1px #ffffff60!important;
+    box-shadow:0 19px 39px #3d493324,inset 0 1px #fff,inset 0 -1px #ffffff7a!important;
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
     transform:none;
