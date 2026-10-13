@@ -267,7 +267,7 @@
   .footer-nav a:hover{color:#fff}
 }
 @media(min-width:1051px) and (max-width:1399px){
-  .hero .panel-copy p{font-size:12px!important}
+  .hero .panel-copy p{font-size:12px!important;max-width:calc(100% - 112px);word-break:keep-all}
   .overview .product-card-featured{grid-template-columns:minmax(0,1fr) minmax(275px,.97fr)}
   .overview .product-card-featured .product-copy{padding:42px 27px 39px}
   .overview .product-tagline{font-size:25px}
@@ -280,7 +280,7 @@
   .studio .studio-values h3{font-size:26px}
 }
 @media(min-width:1051px) and (max-width:1160px){
-  .hero .panel-copy p{font-size:11.5px!important}
+  .hero .panel-copy p{font-size:11.5px!important;max-width:calc(100% - 102px)}
   .overview .product-card-secondary .product-copy{padding:23px 15px}
   .overview .product-card-featured{grid-template-columns:minmax(0,1fr) 272px}
   .overview .product-card-featured .product-copy{padding:36px 20px 32px 24px}
