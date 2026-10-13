@@ -258,3 +258,18 @@
   .grigle-catalog-sub{font-size:9px}
   .grigle-preview-input strong{font-size:14px}
 }
+
+
+/* Catalog preview must override the legacy three-column keyboard grid. */
+.keyboard-product-visual.grigle-catalog{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:0!important;
+}
+.keyboard-product-visual.grigle-catalog .grigle-catalog-top,
+.keyboard-product-visual.grigle-catalog .grigle-catalog-gesture,
+.keyboard-product-visual.grigle-catalog .grigle-catalog-sub{
+  grid-column:auto;
+}
