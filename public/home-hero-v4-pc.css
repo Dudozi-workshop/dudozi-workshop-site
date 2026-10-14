@@ -53,16 +53,15 @@
   .ddzv4-hero::before{
     content:"";
     position:absolute;inset:0;z-index:-2;
-    background:url("https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2560&q=88") center 55%/cover no-repeat;
+    background:url("/assets/ddz-hero-v4-approved.webp") center 55%/cover no-repeat;
   }
   .ddzv4-hero::after{
     content:"";
     position:absolute;inset:0;z-index:-1;
     pointer-events:none;
     background:
-      linear-gradient(90deg,#fbf8f0b8 0%,#f9f6ecc7 30%,#faf6eb70 58%,#f4eadc30 100%),
-      radial-gradient(ellipse 47% 56% at 8% 6%,#ffffffb5,transparent 80%),
-      linear-gradient(155deg,transparent 57%,#e5d8c74d 100%);
+      linear-gradient(90deg,#fffdf437 0%,#fffdf51c 45%,#fbf8ee08 100%),
+      radial-gradient(ellipse 43% 51% at 5% 5%,#ffffff26,transparent 80%);
   }
   .ddzv4-hero-main{
     width:min(var(--ddzv4-content),calc(100% - 80px));
