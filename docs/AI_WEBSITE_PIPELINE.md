@@ -50,7 +50,7 @@ API 키·쿠키·토큰을 Issue, PR, Git 커밋, AI 프롬프트에 기록하�
 - PC 카드군: **548×400px**. 왼쪽 DZlog **260×400px**; 오른쪽 그리글 **276×194px**, MY LOCK **276×194px**; 간격 **12px**.
 - 1051~1279px 축소 규칙은 기존 CSS 토큰을 기준으로 한다(카드군 500×376px).
 - Hero 높이 정책: **646~780px** 범위에서 화면 높이에 따라 조절. 현재 `public/home-hero-v4-pc.css`의 `clamp` 규칙 유지.
-- 하단 철학 띠: **74px**, 요소 중심 2.5/9·5/9·7.5/9.
+- 하단 철학 띠: **74px**, 요소 중심 **22.22% / 50% / 77.78%** (현재 CSS 규칙 기준).
 - 배경: `public/assets/ddz-hero-v4-approved.webp` (승인한 자연광 공방 사진).
 - 앱 아이콘: `public/assets/app-dzlog-launcher.webp`, `app-grigle-launcher.webp`, `app-mylock-launcher.png`.
 - MY LOCK 카드 아트: `public/assets/mylock-candy-soft-trio.webp` 승인 Candy Soft R2.
