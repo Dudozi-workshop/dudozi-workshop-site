@@ -46,3 +46,16 @@ GitHub 연결만으로 Cloudflare 계정 설정과 도메인을 직접 관리할
 - 로컬 서버는 `127.0.0.1`에만 바인딩되며 `main`이나 실제 웹사이트에 배포하지 않습니다. 종료하려면 터미널 창에서 `Ctrl+C`를 누릅니다.
 - 개발자도구(F12)의 콘솔과 네트워크 탭에서 오류 및 외부 이미지 로딩을 함께 확인하세요.
 
+
+
+## AI 디자인·개발 업무 프로세스
+
+두도지공방 홈페이지는 **ChatGPT(기획·검수) → Stitch(A/B 시안) → 디자인 승인 → Antigravity(코드 반영) → 자동 QA → 요청 시 Vercel Preview → 별도 운영 승인** 순서로 관리합니다.
+
+- [업무 자동화 운영 기준](docs/AI_WEBSITE_PIPELINE.md)
+- [그리글 카드 Stitch 시범 디자인 지시서](docs/GRIGLE_STITCH_PILOT.md)
+- [Antigravity/코드 에이전트 공통 규칙](AGENTS.md)
+- GitHub Issues에서 `홈페이지 UI 개선 작업` 템플릿을 선택해 작업을 등록합니다.
+- Pull Request는 [PR 검수 양식](.github/pull_request_template.md)으로 코드·시각 QA·사용자 승인 상태를 기록합니다.
+
+현재 GitHub 기반 운영 문서/양식/검수는 준비되었지만 **Stitch 및 Antigravity 앱 자체와 MCP 인증은 별도 연결 단계**입니다. 동의 없는 자동 운영 배포는 하지 않습니다.
