@@ -7,6 +7,8 @@
   :root{
     --ddzv4-content:1180px;
     --ddzv4-hero-min:646px;
+    --ddzv4-hero-max:780px;
+    --ddzv4-hero-height:clamp(var(--ddzv4-hero-min),calc(100vh - 74px),var(--ddzv4-hero-max));
     --ddzv4-card-width:548px;
     --ddzv4-card-height:400px;
     --ddzv4-primary-width:260px;
@@ -45,7 +47,7 @@
     display:block;
     position:relative;
     isolation:isolate;
-    min-height:max(var(--ddzv4-hero-min),calc(100vh - 74px));
+    min-height:var(--ddzv4-hero-height);
     overflow:hidden;
     background:#f5eadc;
   }
@@ -65,7 +67,7 @@
   }
   .ddzv4-hero-main{
     width:min(var(--ddzv4-content),calc(100% - 80px));
-    min-height:max(var(--ddzv4-hero-min),calc(100vh - 74px));
+    min-height:var(--ddzv4-hero-height);
     margin-inline:auto;
     padding:96px 0 20px;
     display:flex;align-items:center;justify-content:space-between;gap:32px;
@@ -293,6 +295,12 @@
   .ddzv4-value-icon .icon{width:19px;height:19px}
   .ddzv4-value-text strong{display:block;font-size:11.5px;line-height:1.4;font-weight:700}
   .ddzv4-value-text small{display:block;color:#807e73;font-size:9.5px;line-height:1.5}
+}
+/* Prefer stable visible viewport height on modern browsers while retaining vh fallback. */
+@supports (height:100svh){
+  @media (min-width:1051px){
+    :root{--ddzv4-hero-height:clamp(var(--ddzv4-hero-min),calc(100svh - 74px),var(--ddzv4-hero-max))}
+  }
 }
 @media (min-width:1051px) and (max-width:1279px){
   :root{
