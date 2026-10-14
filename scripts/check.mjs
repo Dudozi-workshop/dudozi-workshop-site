@@ -106,6 +106,9 @@ assert.match(homepage, /id="ddzv4-title"/, 'PC Hero v4 headline missing');
 assert.match(homepage, /class="ddzv4-keyboard"/, 'Grigle keyboard concept missing');
 assert.match(homepage, /ddzv4-direction ddzv4-center/, 'Grigle actual four-direction pad missing');
 assert.match(homepage, /class="ddzv4-finger"/, 'Grigle gesture demonstration missing');
+assert.match(homepage, /ddzv4-frame-corner top-left/, 'DZlog camera frame corners missing');
+assert.match(homepage, /ddzv4-camera-filename/, 'DZlog capture filename preview missing');
+assert.match(homepage, /T1_01\\.jpg/, 'DZlog filename placeholder missing');
 assert.match(homepage, /class="ddzv4-candy-art"/, 'MY LOCK approved art container missing');
 assert.doesNotMatch(homepage, /ddzv4-lock-shapes/, 'MY LOCK must not use redrawn generic shapes in PC hero');
 assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
@@ -142,6 +145,8 @@ for (const [item, text] of [
   ['left value anchor', 'left:22.222222%'],
   ['right value anchor', 'left:77.777778%'],
   ['Grigle movement', '@keyframes ddzv4-swipe'],
+  ['DZlog camera frame', '.ddzv4-frame-corner'],
+  ['DZlog filename', '.ddzv4-camera-filename'],
   ['MY LOCK original art', "mylock-candy-soft-trio.webp"],
   ['desktop boundary', '@media (min-width:1051px)'],
   ['mobile fallback', '@media (max-width:1050px)'],
