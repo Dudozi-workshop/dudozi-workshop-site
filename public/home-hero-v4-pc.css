@@ -172,7 +172,8 @@
   .ddzv4-record-label{position:absolute;z-index:2;top:16px;left:16px;color:#fff;font-weight:700;font-size:9px;letter-spacing:.12em;text-shadow:0 1px 6px #29372b75}
   .ddzv4-shutter{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);width:34px;height:34px;border:3px solid #fff;border-radius:50%;background:#f9faf4d9;box-shadow:0 0 0 2px #ffffff65,0 5px 9px #303b3275}
   .ddzv4-zoom{position:absolute;z-index:3;bottom:22px;right:15px;font-size:10px;color:white}
-  /* Grigle V2 concept: actual brand icon; gesture zones without invented mapping. */
+  /* Grigle preview: current central 4-direction keyboard shown by the user.
+     V2's planned two-zone mapping remains a design concept, not a released screen. */
   .ddzv4-keyboard{
     position:absolute;z-index:2;right:-5px;bottom:-11px;
     width:133px;height:145px;padding:10px;
@@ -183,46 +184,66 @@
   }
   .ddzv4-keyboard-input{height:24px;border-radius:7px;background:#eaf0e6;border:1px solid #c8d6c6;color:#69776a;padding:5px 7px;font-size:8px;white-space:nowrap}
   .ddzv4-input-caret{display:inline-block;height:10px;margin-left:2px;border-right:1px solid #5c8061;vertical-align:middle}
-  .ddzv4-keyboard-zones{height:67px;margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px}
-  .ddzv4-keyboard-zone{position:relative;border:1px solid #c9d8c2;background:#e0ebdc;border-radius:8px;display:grid;place-items:center;color:#607560;font-size:9px;font-weight:700}
-  .ddzv4-keyboard-zone:last-child{background:#e8efde}
-  .ddzv4-keyboard-zone span{position:absolute;top:4px;font-size:7px;opacity:.85}
-  .ddzv4-keyboard-zone b{font-size:17px;font-weight:500;opacity:.8}
+  .ddzv4-keyboard-zones{
+    height:67px;margin-top:8px;position:relative;
+    background:radial-gradient(circle at 50% 50%,#e8f1e7 0 16%,transparent 40%);
+  }
+  .ddzv4-direction{
+    position:absolute;display:block;
+    font-size:13px;line-height:1.2;
+    color:#77786c;text-align:center;
+    font-weight:500;
+  }
+  .ddzv4-up{top:0;left:50%;transform:translateX(-50%)}
+  .ddzv4-down{bottom:0;left:50%;transform:translateX(-50%)}
+  .ddzv4-left{top:46%;left:12px;transform:translateY(-50%)}
+  .ddzv4-right{top:46%;right:12px;transform:translateY(-50%)}
+  .ddzv4-center{top:46%;left:50%;transform:translate(-50%,-50%);font-size:19px;color:#768e74}
   .ddzv4-keyboard-bottom{display:flex;justify-content:space-between;margin-top:5px;gap:4px}
   .ddzv4-keyboard-bottom span{display:block;text-align:center;border-radius:4px;background:#e5eae0;flex:1;color:#73806d;font-size:7px;padding:3px 0}
   .ddzv4-gesture-trail{
-    position:absolute;z-index:3;top:38px;left:19px;width:79px;height:73px;
+    position:absolute;z-index:3;top:43px;left:19px;width:79px;height:73px;
     overflow:visible;filter:drop-shadow(0 2px 3px #5a9b7394);
   }
-  .ddzv4-gesture-trail path{stroke:#6a9b77;stroke-width:5;stroke-linecap:round;fill:none;stroke-dasharray:3 1}
+  .ddzv4-gesture-trail path{stroke:#6a9b77;stroke-width:4;stroke-linecap:round;fill:none;stroke-dasharray:3 1}
   .ddzv4-finger{
-    position:absolute;z-index:4;top:86px;left:72px;width:26px;height:38px;
+    position:absolute;z-index:4;top:87px;left:72px;width:22px;height:33px;
     border-radius:16px 16px 11px 11px;
     background:linear-gradient(115deg,#f6d5bd,#e4bca3);
     border:2px solid #fff6eb;
     box-shadow:0 5px 10px #615b4a46;
     transform:rotate(-37deg);
-    transform-origin:14px 28px;
+    transform-origin:11px 24px;
     animation:ddzv4-swipe 3.2s ease-in-out infinite;
     pointer-events:none;
   }
-  .ddzv4-finger::before{content:"";position:absolute;left:6px;top:6px;width:10px;height:9px;border-radius:7px;background:#e7b49e99}
+  .ddzv4-finger::before{content:"";position:absolute;left:4px;top:5px;width:9px;height:8px;border-radius:7px;background:#e7b49e99}
   @keyframes ddzv4-swipe{0%,18%,100%{transform:translate(-7px,6px) rotate(-37deg)}48%,67%{transform:translate(9px,-8px) rotate(-30deg)}}
-  /* MY LOCK: temporary visual until its standalone card-design phase. */
+
+  /* MY LOCK Candy Soft R2: reuse the site's authorized composite raster.
+     Do not redraw or rearrange the approved circle / triangle / square artwork. */
   .ddzv4-lock-preview{
-    position:absolute;right:18px;bottom:-20px;width:96px;height:141px;
-    border:5px solid #f7faff;border-radius:19px;
-    background:linear-gradient(145deg,#fff9fd,#e1e7f7);
+    position:absolute;right:15px;bottom:-21px;width:104px;height:150px;
+    border:5px solid #f7faff;border-radius:21px;
+    background:linear-gradient(155deg,#fffafc,#e9e8f7 78%);
     box-shadow:0 9px 19px #667c9e48;
     transform:rotate(9deg);
-    display:grid;place-items:center;
+    overflow:hidden;
   }
-  .ddzv4-lock-preview::before{content:"";position:absolute;top:7px;width:25px;height:4px;border-radius:6px;background:#c9cfdf}
-  .ddzv4-lock-shapes{position:relative;width:70px;height:75px}
-  .ddzv4-lock-shapes i{position:absolute;display:block}
-  .ddzv4-lock-shapes i:nth-child(1){left:3px;top:8px;width:24px;height:24px;background:#86cbf2;border-radius:50%}
-  .ddzv4-lock-shapes i:nth-child(2){right:0;top:38px;width:23px;height:23px;background:#9ba9ed;border-radius:6px;transform:rotate(8deg)}
-  .ddzv4-lock-shapes i:nth-child(3){right:4px;top:2px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:24px solid #f1db96}
+  .ddzv4-lock-preview::before{
+    content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:24px;height:4px;border-radius:6px;background:#c9cfdf;
+  }
+  .ddzv4-lock-time{
+    display:block;position:absolute;top:16px;left:0;right:0;
+    text-align:center;font:700 13px/1.1 "Noto Sans KR",sans-serif;
+    color:#6b74a9;letter-spacing:-.04em;
+  }
+  .ddzv4-candy-art{
+    display:block;position:absolute;top:39px;left:1px;right:1px;height:90px;
+    background:url('/assets/mylock-candy-soft-trio.webp') center center / contain no-repeat;
+    filter:drop-shadow(0 4px 5px #6a668032);
+  }
   .ddzv4-values{height:74px;background:#f9f7f1;border-top:1px solid #9d8a7628}
   .ddzv4-values-inner{height:100%;width:min(var(--ddzv4-content),calc(100% - 80px));margin:auto;position:relative}
   .ddzv4-value{position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:11px;white-space:nowrap}
