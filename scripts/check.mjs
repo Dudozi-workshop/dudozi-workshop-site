@@ -29,6 +29,7 @@ const requiredAssets = [
   'public/home-visual-r3.css',
   'public/home-hero-r4.css',
   'public/home-polish-r41.css',
+  'public/home-hero-v4-pc.css',
   'public/home-r2.js',
   'public/apps/app-detail.css',
   'public/apps/app-visual-r3.css',
@@ -98,6 +99,15 @@ assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-concept-note[^>]*>[^<]*ì‹
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
 assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
+assert.match(homepage, /home-hero-v4-pc\\.css/, 'PC Hero v4 style must be linked');
+assert.match(homepage, /class="ddzv4-hero"/, 'PC Hero v4 missing');
+assert.match(homepage, /class="ddzv4-values"/, 'PC Hero v4 values missing');
+assert.match(homepage, /id="ddzv4-title"/, 'PC Hero v4 headline missing');
+assert.match(homepage, /class="ddzv4-keyboard"/, 'Grigle keyboard concept missing');
+assert.match(homepage, /ddzv4-direction ddzv4-center/, 'Grigle actual four-direction pad missing');
+assert.match(homepage, /class="ddzv4-finger"/, 'Grigle gesture demonstration missing');
+assert.match(homepage, /class="ddzv4-candy-art"/, 'MY LOCK approved art container missing');
+assert.doesNotMatch(homepage, /ddzv4-lock-shapes/, 'MY LOCK must not use redrawn generic shapes in PC hero');
 assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
 for (const [name, extension] of [['dzlog', 'webp'], ['grigle', 'webp'], ['mylock', 'png']]) {
   assert.match(homepage, new RegExp('app-' + name + '-launcher\\.' + extension), 'Missing actual launcher mark: ' + name);
@@ -122,6 +132,21 @@ const detailCss = readFileSync('public/apps/app-detail.css', 'utf8');
 const homeVisualCss = readFileSync('public/home-visual-r3.css', 'utf8');
 const heroR4Css = readFileSync('public/home-hero-r4.css', 'utf8');
 const polishR41Css = readFileSync('public/home-polish-r41.css', 'utf8');
+const heroV4Css = readFileSync('public/home-hero-v4-pc.css', 'utf8');
+for (const [selector, pattern] of [
+  ['dimensions', /--ddzv4-card-width:548px[\\s\\S]*--ddzv4-card-height:400px/],
+  ['secondary dimensions', /--ddzv4-secondary-height:194px/],
+  ['value bar', /\\.ddzv4-values\\{height:74px/],
+  ['left value anchor', /\\.ddzv4-value:nth-child\\(1\\)\\{left:22\\.222222%/],
+  ['right value anchor', /\\.ddzv4-value:nth-child\\(3\\)\\{left:77\\.777778%/],
+  ['Grigle movement', /@keyframes ddzv4-swipe/],
+  ['MY LOCK original art', /url\\('\/assets\/mylock-candy-soft-trio\\.webp'\\)/],
+  ['desktop boundary', /@media \\(min-width:1051px\\)/],
+  ['mobile fallback', /@media \\(max-width:1050px\\)/],
+]) {
+  assert.match(heroV4Css, pattern, 'PC Hero v4: missing ' + selector);
+}
+assert.doesNotMatch(heroV4Css, /\\.ddzv4-lock-shapes/, 'MY LOCK generic shape CSS should not return');
 assert.match(heroR4Css, /w=2560&q=88/, 'R4 hero should request high-resolution photographic backdrop');
 assert.match(heroR4Css, /\.hero \.hero-decor-books\{\s*display:none!important/, 'R4 hero should not composite low-resolution desk-book cut-out');
 assert.match(heroR4Css, /\.hero \.hero-decor-leaf\{\s*display:none!important/, 'R4 hero should not composite low-resolution leaf cut-out');
@@ -141,7 +166,7 @@ assert.match(tokens, /--color-green/);
 assert.match(components, /\.button/);
 assert.match(scripts, /Escape/);
 
-for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss], ['home-visual-r3.css', homeVisualCss], ['home-hero-r4.css', heroR4Css], ['home-polish-r41.css', polishR41Css], ['app-visual-r3.css', appVisualCss]]) {
+for (const [file, css] of [['home-r2.css', stylesheet], ['app-detail.css', detailCss], ['home-visual-r3.css', homeVisualCss], ['home-hero-r4.css', heroR4Css], ['home-polish-r41.css', polishR41Css], ['home-hero-v4-pc.css', heroV4Css], ['app-visual-r3.css', appVisualCss]]) {
   for (const match of css.matchAll(/url\(['"]?(\/[^)'"]+)['"]?\)/g)) {
     assert.ok(existsSync(resolveAsset(match[1])), file + ': missing referenced asset ' + match[1]);
   }
