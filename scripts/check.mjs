@@ -110,7 +110,7 @@ assert.match(homepage, /ddzv4-direction ddzv4-center/, 'Grigle actual four-direc
 assert.match(homepage, /class="ddzv4-finger"/, 'Grigle gesture demonstration missing');
 assert.match(homepage, /ddzv4-frame-corner top-left/, 'DZlog camera frame corners missing');
 assert.match(homepage, /ddzv4-camera-filename/, 'DZlog capture filename preview missing');
-assert.match(homepage, /T1_01\\.jpg/, 'DZlog filename placeholder missing');
+assert.ok(homepage.includes('T1_01.jpg'), 'DZlog filename placeholder missing');
 assert.match(homepage, /class="ddzv4-candy-art"/, 'MY LOCK approved art container missing');
 assert.doesNotMatch(homepage, /ddzv4-lock-shapes/, 'MY LOCK must not use redrawn generic shapes in PC hero');
 assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
