@@ -20,11 +20,12 @@
   <link rel="stylesheet" href="/mylock-authored-art-r42.css">
   <link rel="stylesheet" href="/product-concept-r43.css">
   <link rel="stylesheet" href="/styles/app-brand-icons.css">
+  <link rel="stylesheet" href="/home-hero-v4-pc.css">
   <script src="/home-r2.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 이동</a>
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="shell header-content">
       <a class="brand" href="#top" aria-label="두도지공방 홈페이지 맨 위로">
         <span class="brand-mark">
@@ -50,7 +51,63 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
+
+    <!-- Desktop-only Hero v4. Legacy Hero remains the mobile fallback. -->
+    <section class="ddzv4-hero" aria-labelledby="ddzv4-title">
+      <div class="ddzv4-hero-main">
+        <div class="ddzv4-copy">
+          <h1 id="ddzv4-title">일상에 작은 <em>편리함</em>을.<br>취향에 작은 <em>즐거움</em>을.</h1>
+          <div class="ddzv4-actions">
+            <a class="ddzv4-action primary" href="#apps">앱 소개 보기 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></a>
+            <a class="ddzv4-action" href="#studio">두도지공방 이야기 <svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-arrow-right"></use></svg></a>
+          </div>
+        </div>
+        <div class="ddzv4-cards" aria-label="두도지공방의 앱">
+          <a class="ddzv4-card ddzv4-dz" href="/apps/dzlog/" aria-label="DZlog 기록 카메라 소개 보기">
+            <div class="ddzv4-card-head">
+              <div class="ddzv4-app-name"><img class="ddzv4-app-icon" src="/assets/app-dzlog-launcher.webp" alt="" width="33" height="33">DZlog</div>
+              <span class="ddzv4-chevron" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-chevron-right"></use></svg></span>
+            </div>
+            <p class="ddzv4-description">사진 위에 표를 더하는 기록 카메라</p>
+            <div class="ddzv4-camera" role="img" aria-label="사진 위에 품종과 처리구, 날짜를 표로 겹쳐 기록하는 DZlog 기능 구성 예시">
+              <span class="ddzv4-record-label">RECORD</span>
+              <div class="ddzv4-photo-grid" aria-hidden="true"><span>품종</span><span>블루베리</span><span>처리구</span><span>T1 · 01</span><span>날짜</span><span>2026.10.14</span></div>
+              <span class="ddzv4-shutter" aria-hidden="true"></span><span class="ddzv4-zoom" aria-hidden="true">1×</span>
+            </div>
+          </a>
+          <div class="ddzv4-side">
+            <a class="ddzv4-card ddzv4-grigle" href="/apps/grigle/" aria-label="그리글 방향 입력 한글 키보드 소개 보기">
+              <div class="ddzv4-card-head">
+                <div class="ddzv4-app-name"><img class="ddzv4-app-icon" src="/assets/app-grigle-launcher.webp" alt="" width="33" height="33">그리글</div>
+                <span class="ddzv4-chevron" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-chevron-right"></use></svg></span>
+              </div>
+              <p class="ddzv4-description">방향으로 입력하는<br>새로운 한글 키보드</p>
+              <div class="ddzv4-keyboard" aria-hidden="true">
+                <div class="ddzv4-keyboard-input">안녕하세요<span class="ddzv4-input-caret"></span></div>
+                <div class="ddzv4-keyboard-zones">
+                  <div class="ddzv4-keyboard-zone"><span>자음</span><b>↕</b></div>
+                  <div class="ddzv4-keyboard-zone"><span>모음</span><b>↔</b></div>
+                </div>
+                <div class="ddzv4-keyboard-bottom"><span>En</span><span>Space</span><span>Enter</span></div>
+                <svg class="ddzv4-gesture-trail" viewBox="0 0 90 80" aria-hidden="true"><path d="M23 66 Q35 50 42 43 T74 19"/></svg>
+                <span class="ddzv4-finger"></span>
+              </div>
+            </a>
+            <a class="ddzv4-card ddzv4-mylock" href="/apps/mylock/" aria-label="MY LOCK 잠금 화면 꾸미기 앱 소개 보기">
+              <div class="ddzv4-card-head">
+                <div class="ddzv4-app-name"><img class="ddzv4-app-icon" src="/assets/app-mylock-launcher.png" alt="" width="33" height="33">MY LOCK</div>
+                <span class="ddzv4-chevron" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="/vendor/lucide-sprite.svg#icon-chevron-right"></use></svg></span>
+              </div>
+              <p class="ddzv4-description">취향대로 꾸미는<br>나만의 잠금 화면</p>
+              <div class="ddzv4-lock-preview" aria-hidden="true">
+                <div class="ddzv4-lock-shapes"><i></i><i></i><i></i></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero" id="legacy-hero" aria-labelledby="hero-title">
       <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
       <div class="hero-light" aria-hidden="true"></div><div class="hero-decor-books" aria-hidden="true"></div><div class="hero-decor-leaf" aria-hidden="true"></div>
@@ -119,6 +176,23 @@
               </div>
             </a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ddzv4-values" aria-label="두도지공방이 추구하는 가치">
+      <div class="ddzv4-values-inner">
+        <div class="ddzv4-value">
+          <span class="ddzv4-value-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V10M12 15C8 15 4 12 4 6c4 0 8 2 8 7M12 14c0-5 4-8 8-8 0 6-3 9-8 9"/></svg></span>
+          <span class="ddzv4-value-text"><strong>일상의 불편에서 시작</strong><small>작은 불편함에도 귀 기울입니다.</small></span>
+        </div>
+        <div class="ddzv4-value">
+          <span class="ddzv4-value-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M17 14c3 0 4 2 4 5v1"/></svg></span>
+          <span class="ddzv4-value-text"><strong>누구나 쉽게</strong><small>편하고 직관적인 사용 경험</small></span>
+        </div>
+        <div class="ddzv4-value">
+          <span class="ddzv4-value-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+          <span class="ddzv4-value-text"><strong>조금 더 나은 하루</strong><small>일상에 작은 즐거움을 더합니다.</small></span>
         </div>
       </div>
     </section>
