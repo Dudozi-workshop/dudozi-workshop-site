@@ -141,6 +141,10 @@ const heroV4Css = readFileSync('public/home-hero-v4-pc.css', 'utf8');
 for (const [item, text] of [
   ['primary width', '--ddzv4-primary-width:260px'],
   ['secondary width', '--ddzv4-secondary-width:276px'],
+  ['hero minimum', '--ddzv4-hero-min:646px'],
+  ['hero maximum', '--ddzv4-hero-max:780px'],
+  ['bounded hero height', '--ddzv4-hero-height:clamp('],
+  ['hero stable viewport support', '@supports (height:100svh)'],
   ['primary height', '--ddzv4-card-height:400px'],
   ['secondary height', '--ddzv4-secondary-height:194px'],
   ['value bar', '.ddzv4-values{height:74px'],
@@ -158,6 +162,8 @@ for (const [item, text] of [
   assert.ok(heroV4Css.includes(text), 'PC Hero v4: missing ' + item);
 }
 assert.ok(!heroV4Css.includes('.ddzv4-lock-shapes'), 'MY LOCK must not return to generic shapes');
+assert.equal((heroV4Css.match(/min-height:var\(--ddzv4-hero-height\)/g) || []).length, 2, 'PC Hero and content must share bounded height');
+assert.ok(!heroV4Css.includes('min-height:max(var(--ddzv4-hero-min)'), 'Unbounded PC Hero height must not return');
 assert.match(heroR4Css, /w=2560&q=88/, 'R4 hero should request high-resolution photographic backdrop');
 assert.match(heroR4Css, /\.hero \.hero-decor-books\{\s*display:none!important/, 'R4 hero should not composite low-resolution desk-book cut-out');
 assert.match(heroR4Css, /\.hero \.hero-decor-leaf\{\s*display:none!important/, 'R4 hero should not composite low-resolution leaf cut-out');
