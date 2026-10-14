@@ -99,7 +99,7 @@ assert.match(htmlByRoute.get('/apps/mylock/'), /mylock-concept-note[^>]*>[^<]*ì‹
 assert.match(homepage, /home-visual-r3\.css/, 'Homepage R3 visual stylesheet missing');
 assert.match(homepage, /home-hero-r4\.css/, 'Homepage R4 hero stylesheet missing');
 assert.match(homepage, /home-polish-r41\.css/, 'Homepage R4.1 polish stylesheet missing');
-assert.match(homepage, /home-hero-v4-pc\\.css/, 'PC Hero v4 style must be linked');
+assert.ok(homepage.includes('href="/home-hero-v4-pc.css"'), 'PC Hero v4 style must be linked');
 assert.match(homepage, /class="ddzv4-hero"/, 'PC Hero v4 missing');
 assert.match(homepage, /class="ddzv4-values"/, 'PC Hero v4 values missing');
 assert.match(homepage, /id="ddzv4-title"/, 'PC Hero v4 headline missing');
@@ -133,20 +133,22 @@ const homeVisualCss = readFileSync('public/home-visual-r3.css', 'utf8');
 const heroR4Css = readFileSync('public/home-hero-r4.css', 'utf8');
 const polishR41Css = readFileSync('public/home-polish-r41.css', 'utf8');
 const heroV4Css = readFileSync('public/home-hero-v4-pc.css', 'utf8');
-for (const [selector, pattern] of [
-  ['dimensions', /--ddzv4-card-width:548px[\\s\\S]*--ddzv4-card-height:400px/],
-  ['secondary dimensions', /--ddzv4-secondary-height:194px/],
-  ['value bar', /\\.ddzv4-values\\{height:74px/],
-  ['left value anchor', /\\.ddzv4-value:nth-child\\(1\\)\\{left:22\\.222222%/],
-  ['right value anchor', /\\.ddzv4-value:nth-child\\(3\\)\\{left:77\\.777778%/],
-  ['Grigle movement', /@keyframes ddzv4-swipe/],
-  ['MY LOCK original art', /url\\('\/assets\/mylock-candy-soft-trio\\.webp'\\)/],
-  ['desktop boundary', /@media \\(min-width:1051px\\)/],
-  ['mobile fallback', /@media \\(max-width:1050px\\)/],
+for (const [item, text] of [
+  ['primary width', '--ddzv4-primary-width:260px'],
+  ['secondary width', '--ddzv4-secondary-width:276px'],
+  ['primary height', '--ddzv4-card-height:400px'],
+  ['secondary height', '--ddzv4-secondary-height:194px'],
+  ['value bar', '.ddzv4-values{height:74px'],
+  ['left value anchor', 'left:22.222222%'],
+  ['right value anchor', 'left:77.777778%'],
+  ['Grigle movement', '@keyframes ddzv4-swipe'],
+  ['MY LOCK original art', "mylock-candy-soft-trio.webp"],
+  ['desktop boundary', '@media (min-width:1051px)'],
+  ['mobile fallback', '@media (max-width:1050px)'],
 ]) {
-  assert.match(heroV4Css, pattern, 'PC Hero v4: missing ' + selector);
+  assert.ok(heroV4Css.includes(text), 'PC Hero v4: missing ' + item);
 }
-assert.doesNotMatch(heroV4Css, /\\.ddzv4-lock-shapes/, 'MY LOCK generic shape CSS should not return');
+assert.ok(!heroV4Css.includes('.ddzv4-lock-shapes'), 'MY LOCK must not return to generic shapes');
 assert.match(heroR4Css, /w=2560&q=88/, 'R4 hero should request high-resolution photographic backdrop');
 assert.match(heroR4Css, /\.hero \.hero-decor-books\{\s*display:none!important/, 'R4 hero should not composite low-resolution desk-book cut-out');
 assert.match(heroR4Css, /\.hero \.hero-decor-leaf\{\s*display:none!important/, 'R4 hero should not composite low-resolution leaf cut-out');
