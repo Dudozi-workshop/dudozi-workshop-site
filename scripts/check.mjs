@@ -12,6 +12,8 @@ const htmlByRoute = new Map();
 const requiredAssets = [
   'public/assets/ddz-mark.svg',
   'public/assets/mylock-candy-soft-trio.webp',
+  'public/assets/ddz-hero-v4-approved.webp',
+  'public/assets/dzlog-hero-photo-concept.webp',
   'public/mylock-authored-art-r42.css',
   'public/product-concept-r43.css',
   'public/assets/app-dzlog-launcher.webp',
@@ -147,6 +149,8 @@ for (const [item, text] of [
   ['Grigle movement', '@keyframes ddzv4-swipe'],
   ['DZlog camera frame', '.ddzv4-frame-corner'],
   ['DZlog filename', '.ddzv4-camera-filename'],
+  ['approved PC backdrop', '/assets/ddz-hero-v4-approved.webp'],
+  ['approved DZlog photo concept', '/assets/dzlog-hero-photo-concept.webp'],
   ['MY LOCK original art', "mylock-candy-soft-trio.webp"],
   ['desktop boundary', '@media (min-width:1051px)'],
   ['mobile fallback', '@media (max-width:1050px)'],
