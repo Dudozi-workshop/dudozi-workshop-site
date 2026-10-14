@@ -58,29 +58,41 @@ for (const item of pages) {
         const r = el.getBoundingClientRect();
         return { x: Math.round(r.x), y: Math.round(r.y), width: Math.round(r.width), height: Math.round(r.height) };
       };
+      const visible = el => el.getClientRects().length > 0;
       const clipping = selector => [...document.querySelectorAll(selector)]
-        .filter(el => el.scrollWidth > el.clientWidth + 4)
+        .filter(el => visible(el) && el.scrollWidth > el.clientWidth + 4)
         .map(el => el.className || el.tagName).slice(0, 10);
       return {
         viewport: window.innerWidth,
         scrollWidth: document.documentElement.scrollWidth,
         bodyWidth: document.body.scrollWidth,
         title: document.title,
-        heroHeading: rect('.hero-copy h1'),
-        heroPhone: rect('.phone-mockup'),
-        appRail: rect('.app-rail'),
+        heroHeading: rect('.ddzv4-copy h1'),
+        heroPhone: rect('.ddzv4-dz'),
+        appRail: rect('.ddzv4-cards'),
+        heroV4: rect('.ddzv4-hero'),
+        heroCopy: rect('.ddzv4-copy'),
+        heroValues: rect('.ddzv4-values'),
+        heroPrimaryCard: rect('.ddzv4-dz'),
+        heroGrigleCard: rect('.ddzv4-grigle'),
+        heroMylockCard: rect('.ddzv4-mylock'),
+        heroValueCentres: [...document.querySelectorAll('.ddzv4-value')]
+          .filter(visible).map(el => Math.round(el.getBoundingClientRect().x + el.getBoundingClientRect().width / 2)),
+        heroValueInner: rect('.ddzv4-values-inner'),
+        isV4Visible: !!document.querySelector('.ddzv4-hero') && visible(document.querySelector('.ddzv4-hero')),
+        isLegacyVisible: !!document.querySelector('.hero') && visible(document.querySelector('.hero')),
         detailHeading: rect('.detail-title'),
-        clipping: clipping('.hero-copy h1, .panel-topline, .product-copy, .screen-moment'),
+        clipping: clipping('.ddzv4-copy h1, .ddzv4-card-head, .ddzv4-description, .hero-copy h1, .panel-topline, .product-copy, .screen-moment'),
         textOverflow: [...document.querySelectorAll(
-          '.hero-copy h1, .hero-intro, .section-heading h2, .product-title-row h3, .detail-title, .detail-tagline, .screen-story-head h2, .studio-heading-block h2'
-        )].filter(el => el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 4)
+          '.ddzv4-copy h1, .ddzv4-description, .hero-copy h1, .hero-intro, .section-heading h2, .product-title-row h3, .detail-title, .detail-tagline, .screen-story-head h2, .studio-heading-block h2'
+        )].filter(el => visible(el) && el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 4)
           .map(el => ({ selector: el.className || el.tagName.toLowerCase(), difference: el.scrollWidth - el.clientWidth })).slice(0, 12),
-        primaryVisualOutsideViewport: [...document.querySelectorAll('.hero .phone-mockup, .hero .app-rail, .detail-stage .detail-device')]
-          .filter(el => {
+        primaryVisualOutsideViewport: [...document.querySelectorAll('.ddzv4-cards, .hero .phone-mockup, .hero .app-rail, .detail-stage .detail-device')]
+          .filter(el => visible(el)).filter(el => {
             const box = el.getBoundingClientRect();
             return box.left < -4 || box.right > window.innerWidth + 4;
           }).map(el => el.className),
-        posterTextWidths: [...document.querySelectorAll('.hero .app-panel .panel-copy p')].map(el => Math.round(el.getBoundingClientRect().width)),
+        posterTextWidths: [...document.querySelectorAll('.hero .app-panel .panel-copy p')].filter(visible).map(el => Math.round(el.getBoundingClientRect().width)),
         brokenImages: [...document.images].filter(img => img.complete && img.naturalWidth === 0).map(img => img.currentSrc || img.src),
       };
     });
@@ -95,8 +107,36 @@ for (const item of pages) {
     if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
     if (metrics.clipping.length) failures.push(item.path + ' @ ' + width + ': clipped text/card content ' + metrics.clipping.join('; '));
     if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
-    if (metrics.posterTextWidths.some(value => value < 140)) failures.push(item.path + ' @ ' + width + ': poster text too narrow ' + metrics.posterTextWidths.join(','));
+    if (metrics.posterTextWidths.some(value => value < 140)) failures.push(item.path + ' @ ' + width + ': legacy poster text too narrow ' + metrics.posterTextWidths.join(','));
     if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
+
+    // The approved desktop redesign is a different hero from the legacy (mobile) R4 composition.
+    // Guard actual V4 coordinates rather than measuring its display:none predecessor.
+    if (item.path === '/' && width >= 1051) {
+      const r = metrics;
+      const expectedWidth = width >= 1280 ? 548 : 500;
+      const expectedHeight = width >= 1280 ? 400 : 376;
+      if (!r.isV4Visible || r.isLegacyVisible) failures.push('V4 desktop visibility incorrect @ ' + width);
+      if (!r.appRail || Math.abs(r.appRail.width - expectedWidth) > 2 ||
+          Math.abs(r.appRail.height - expectedHeight) > 2) {
+        failures.push('V4 card group size @ ' + width + ': ' + JSON.stringify(r.appRail));
+      }
+      if (!r.heroPrimaryCard || !r.heroGrigleCard || !r.heroMylockCard ||
+          Math.abs(r.heroPrimaryCard.height - r.heroGrigleCard.height - r.heroMylockCard.height - 12) > 2) {
+        failures.push('V4 card height balance @ ' + width);
+      }
+      if (!r.heroValues || Math.abs(r.heroValues.height - 74) > 2) {
+        failures.push('V4 bottom strip height @ ' + width);
+      }
+      if (r.heroValueInner && r.heroValueCentres.length === 3) {
+        const expected = [2/9, 1/2, 7/9].map(frac => r.heroValueInner.x + r.heroValueInner.width * frac);
+        if (r.heroValueCentres.some((x,i) => Math.abs(x - expected[i]) > 3)) {
+          failures.push('V4 bottom icon centres @ ' + width + ': ' + JSON.stringify(r.heroValueCentres));
+        }
+      } else {
+        failures.push('V4 bottom icon structure missing @ ' + width);
+      }
+    }
 
     // Exercise real app-card navigation after screenshot metrics are locked to the homepage.
     // Capture interaction failures separately so detail-page loads are not misattributed to /.
@@ -104,7 +144,12 @@ for (const item of pages) {
       const initial = { js: pageErrors.length, assets: failedAssets.length, images: failedImageRequests.length };
       for (const appName of ['dzlog', 'grigle', 'mylock']) {
         try {
-          await page.locator('a#' + appName).click();
+          const heroSelector = {
+            dzlog: '.ddzv4-card.ddzv4-dz',
+            grigle: '.ddzv4-card.ddzv4-grigle',
+            mylock: '.ddzv4-card.ddzv4-mylock',
+          }[appName];
+          await page.locator(heroSelector).click();
           await page.waitForURL(url => url.pathname === '/apps/' + appName + '/', { timeout: 12000 });
           await page.locator('a.detail-back').click();
           await page.waitForURL(url => url.pathname === '/' && url.hash === '#apps', { timeout: 12000 });
@@ -129,5 +174,5 @@ if (failures.length) {
   console.error('Visual QA failed: ' + failures.join(' | '));
   process.exitCode = 1;
 } else {
-  console.log('Visual QA passed: 1440/1280/1100px homepage and app details, navigation, text fit, images and JS.');
+  console.log('Visual QA passed: 1440/1280/1100px homepage (PC Hero v4) and app details, navigation, text fit, images and JS.');
 }
