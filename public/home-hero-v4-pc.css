@@ -172,6 +172,45 @@
   .ddzv4-record-label{position:absolute;z-index:2;top:16px;left:16px;color:#fff;font-weight:700;font-size:9px;letter-spacing:.12em;text-shadow:0 1px 6px #29372b75}
   .ddzv4-shutter{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);width:34px;height:34px;border:3px solid #fff;border-radius:50%;background:#f9faf4d9;box-shadow:0 0 0 2px #ffffff65,0 5px 9px #303b3275}
   .ddzv4-zoom{position:absolute;z-index:3;bottom:22px;right:15px;font-size:10px;color:white}
+  /* DZlog camera controls follow the approved A composition.
+     Illustrative sample, not an exported app screenshot. */
+  .ddzv4-camera{
+    background:
+      linear-gradient(0deg,#33412c38,#fff7e512 52%),
+      radial-gradient(ellipse 60% 46% at 47% 33%,#91a879cc,transparent 80%),
+      linear-gradient(151deg,#e6dabf,#95a67e 49%,#ad9a7c);
+  }
+  .ddzv4-camera::before{
+    opacity:.78;filter:blur(.7px);transform:scale(1.03);
+    background-position:center 43%;
+  }
+  .ddzv4-camera::after{height:72px;background:linear-gradient(0deg,#1c2c20b0,transparent)}
+  .ddzv4-record-label{
+    display:flex;align-items:center;gap:4px;top:13px;left:14px;
+    font-size:9px;letter-spacing:.045em;
+  }
+  .ddzv4-record-label i{width:5px;height:5px;flex-shrink:0;background:#d7564d;border-radius:50%;box-shadow:0 0 0 2px #fff8}
+  .ddzv4-frame-corner{position:absolute;z-index:2;display:block;top:16px;width:18px;height:18px;border-top:2px solid #ffffffe0}
+  .ddzv4-frame-corner.top-left{left:12px;border-left:2px solid #ffffffe0}
+  .ddzv4-frame-corner.top-right{right:12px;border-right:2px solid #ffffffe0}
+  .ddzv4-photo-grid{
+    top:39%;left:12px;right:12px;
+    grid-template-columns:62px minmax(0,1fr);
+    border-color:#fffefad2;
+    background:#fffef8e1;
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+    box-shadow:0 11px 24px #28392638;
+  }
+  .ddzv4-photo-grid span{font-size:10px;line-height:1.32;padding:9px 8px;color:#333c30}
+  .ddzv4-photo-grid span:nth-child(even){font-weight:500}
+  .ddzv4-camera-filename{
+    position:absolute;z-index:4;left:13px;bottom:22px;
+    display:block;color:#fff9ee;font-size:8.5px;letter-spacing:.015em;
+    text-shadow:0 1px 5px #16241c88;
+  }
+  .ddzv4-shutter{width:36px;height:36px;bottom:12px;background:#fffdfa;border-color:#fff;box-shadow:0 0 0 2px #fff6}
+  .ddzv4-zoom{bottom:25px;right:14px}
   /* Grigle preview: current central 4-direction keyboard shown by the user.
      V2's planned two-zone mapping remains a design concept, not a released screen. */
   .ddzv4-keyboard{
