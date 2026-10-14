@@ -103,7 +103,7 @@ PC 최종 시각 기준은 이 문서와 `docs/PC_HERO_V4_PHASE1.md`의 **최신
 
 ## 현재 구축 범위 및 한계
 
-- 구현됨: 저장소 에이전트 지침, 작업 접수용 Issue 양식, PR 검수 양식, 그리글 시범 디자인 지시서, 기존 빌드 및 Playwright QA 재사용.
+- 작업 브랜치에 준비됨: 저장소 에이전트 지침, Issue 양식, PR 검수 양식, 그리글 시범 디자인 지시서, 기존 빌드 및 Playwright QA 재사용. **Issue/PR 양식이 GitHub의 생성 UI에서 자동 표시되려면 기본 브랜치(main)에 별도 승인 후 반영해야 한다. 현재 시범 작업은 실제로 생성된 Issue #2를 사용한다.**
 - 미연결: Stitch 계정/디자인 프로젝트, Antigravity 사용자 로컬 앱, Stitch↔Antigravity MCP 인증, Notion 자동 상태 동기화.
 - 이 문서만으로 Stitch에서 자동 시안을 만들거나 Antigravity를 원격 조종하지는 않는다.
 - 실제 연결 완료 여부는 시범 1회 수행하고 결과물을 확인한 뒤 기록한다.
