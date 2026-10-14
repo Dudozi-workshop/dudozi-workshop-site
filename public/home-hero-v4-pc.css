@@ -1,0 +1,256 @@
+/*
+ * DDZ PC Hero v4 — isolated layout implementation.
+ * The original R4 hero remains available below 1051px.
+ * Tune dimensions here; app screenshots/art can change independently.
+ */
+@media (min-width:1051px){
+  :root{
+    --ddzv4-content:1180px;
+    --ddzv4-hero-min:646px;
+    --ddzv4-card-width:548px;
+    --ddzv4-card-height:400px;
+    --ddzv4-primary-width:260px;
+    --ddzv4-secondary-width:276px;
+    --ddzv4-secondary-height:194px;
+    --ddzv4-gap:12px;
+    --ddzv4-sage:#506548;
+    --ddzv4-ink:#35382e;
+  }
+  .site-header{
+    position:absolute!important;
+    top:0;left:0;right:0;z-index:30;
+    background:transparent!important;
+    border-bottom:1px solid #ffffff73;
+  }
+  .site-header .header-content{
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:96px;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+  }
+  .site-header .brand{flex:0 0 auto}
+  .site-header .desktop-nav{margin-left:auto;gap:32px}
+  .site-header .desktop-nav a{font-size:14px;font-weight:600;color:#3f443e}
+  .site-header .header-cta{
+    margin-left:0;min-height:44px;
+    background:var(--ddzv4-sage);
+    color:#fff;border-color:var(--ddzv4-sage);
+    box-shadow:0 7px 20px #4e624631;
+    padding:9px 17px;font-size:13px;font-weight:650;
+  }
+  .site-header .header-cta:hover{background:#3c5136;color:#fff}
+  .hero{display:none!important}
+  .ddzv4-hero{
+    display:block;
+    position:relative;
+    isolation:isolate;
+    min-height:max(var(--ddzv4-hero-min),calc(100vh - 74px));
+    overflow:hidden;
+    background:#f5eadc;
+  }
+  /* Keep the already-audited R4 photo source; new imagery is a separate approval. */
+  .ddzv4-hero::before{
+    content:"";
+    position:absolute;inset:0;z-index:-2;
+    background:url("https://images.unsplash.com/photo-1653463174218-d18958c2dcfa?auto=format&fit=crop&w=2560&q=88") center 55%/cover no-repeat;
+  }
+  .ddzv4-hero::after{
+    content:"";
+    position:absolute;inset:0;z-index:-1;
+    pointer-events:none;
+    background:
+      linear-gradient(90deg,#fbf8f0b8 0%,#f9f6ecc7 30%,#faf6eb70 58%,#f4eadc30 100%),
+      radial-gradient(ellipse 47% 56% at 8% 6%,#ffffffb5,transparent 80%),
+      linear-gradient(155deg,transparent 57%,#e5d8c74d 100%);
+  }
+  .ddzv4-hero-main{
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:max(var(--ddzv4-hero-min),calc(100vh - 74px));
+    margin-inline:auto;
+    padding:96px 0 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
+  }
+  .ddzv4-copy{flex:1;min-width:0;position:relative;z-index:1}
+  .ddzv4-copy h1{
+    margin:0;
+    font-family:"Noto Serif KR","Batang",serif;
+    font-weight:600;
+    font-size:38px;
+    line-height:1.42;
+    letter-spacing:-.048em;
+    white-space:nowrap;
+    color:var(--ddzv4-ink);
+    text-shadow:0 1px 13px #fff9ee75;
+  }
+  .ddzv4-copy h1 em{font-style:normal;color:#526b4d}
+  .ddzv4-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:34px}
+  .ddzv4-action{
+    min-height:46px;display:inline-flex;align-items:center;justify-content:center;
+    gap:10px;text-decoration:none;border-radius:999px;
+    border:1px solid #8a9b87;
+    background:#fffdf7a6;color:#3e533b;
+    padding:10px 18px;
+    font-size:13px;font-weight:650;line-height:1.4;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .ddzv4-action:hover{transform:translateY(-2px);box-shadow:0 8px 18px #77706123}
+  .ddzv4-action.primary{background:var(--ddzv4-sage);border-color:var(--ddzv4-sage);color:white}
+  .ddzv4-action .icon{width:15px;height:15px}
+  .ddzv4-cards{
+    flex:0 0 var(--ddzv4-card-width);
+    width:var(--ddzv4-card-width);height:var(--ddzv4-card-height);
+    display:grid;
+    grid-template-columns:var(--ddzv4-primary-width) var(--ddzv4-secondary-width);
+    gap:var(--ddzv4-gap);
+    transform:translateY(-8px);
+  }
+  .ddzv4-side{display:flex;flex-direction:column;gap:var(--ddzv4-gap);min-height:0}
+  .ddzv4-card{
+    position:relative;display:block;
+    overflow:hidden;
+    color:#343a31;text-decoration:none;
+    border:1px solid #ffffffd5;
+    border-radius:22px;
+    box-shadow:0 15px 34px #594d361e,0 3px 8px #594d3610;
+    backdrop-filter:blur(11px);
+    -webkit-backdrop-filter:blur(11px);
+    transition:transform .2s,box-shadow .2s;
+    isolation:isolate;
+  }
+  .ddzv4-card:hover{transform:translateY(-3px);box-shadow:0 22px 40px #594d3629}
+  .ddzv4-card:focus-visible,.ddzv4-action:focus-visible{outline:3px solid #396244;outline-offset:4px}
+  .ddzv4-dz{height:var(--ddzv4-card-height);width:var(--ddzv4-primary-width);padding:19px 17px;background:linear-gradient(150deg,#fff7e9e8,#eddcc4eb)}
+  .ddzv4-grigle,.ddzv4-mylock{width:var(--ddzv4-secondary-width);height:var(--ddzv4-secondary-height);padding:18px 17px}
+  .ddzv4-grigle{background:linear-gradient(110deg,#eaf1e3f5,#d8e9d2ef)}
+  .ddzv4-mylock{background:linear-gradient(115deg,#eaf1faf5,#dbe8f6eb)}
+  .ddzv4-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;position:relative;z-index:4}
+  .ddzv4-app-name{display:flex;align-items:center;gap:8px;font-size:17px;font-weight:750;letter-spacing:-.05em}
+  .ddzv4-side .ddzv4-app-name{font-size:16px}
+  .ddzv4-app-icon{
+    display:block;width:33px;height:33px;object-fit:cover;
+    border-radius:10px;
+    background:#fffef8;box-shadow:0 2px 7px #5c634021;
+  }
+  .ddzv4-chevron{
+    width:26px;height:26px;border-radius:50%;
+    display:grid;place-items:center;background:#ffffff7d;
+    border:1px solid #56724e40;
+    flex:0 0 auto;
+  }
+  .ddzv4-chevron .icon{width:14px;height:14px}
+  .ddzv4-description{position:relative;z-index:3;margin:10px 0 0;font-size:11.5px;line-height:1.55;color:#5a6555;font-weight:550}
+  .ddzv4-grigle .ddzv4-description,.ddzv4-mylock .ddzv4-description{max-width:133px;font-size:11px;margin-top:11px}
+  /* Photo-first DZlog concept: the approved internal composition, not a screenshot. */
+  .ddzv4-camera{
+    position:absolute;top:106px;bottom:12px;left:12px;right:12px;
+    overflow:hidden;border-radius:15px;
+    background:
+      radial-gradient(ellipse 53% 43% at 31% 39%,#87a279a3,transparent 76%),
+      radial-gradient(ellipse 47% 48% at 74% 58%,#6c8b68b3,transparent 83%),
+      linear-gradient(151deg,#dddfbb,#94a882 54%,#c5b99c);
+    box-shadow:inset 0 0 0 1px #ffffffad;
+  }
+  .ddzv4-camera::before{
+    content:"";position:absolute;inset:0;
+    background:url('/assets/scene.webp') center/cover no-repeat;opacity:.45;filter:blur(2px);
+    transform:scale(1.08);
+  }
+  .ddzv4-camera::after{
+    content:"";position:absolute;bottom:0;left:0;right:0;height:70px;
+    background:linear-gradient(0deg,#1f2b248c,transparent);pointer-events:none;
+  }
+  .ddzv4-photo-grid{
+    position:absolute;z-index:2;left:18px;right:18px;top:104px;
+    display:grid;grid-template-columns:58px 1fr;
+    border:1px solid #ffffffd4;border-radius:5px;overflow:hidden;
+    background:#fffefbe0;box-shadow:0 8px 18px #2e403328;
+  }
+  .ddzv4-photo-grid span{font-size:10px;line-height:1.3;padding:9px 7px;border-bottom:1px solid #838f7955}
+  .ddzv4-photo-grid span:nth-child(odd){font-weight:700;border-right:1px solid #838f7955}
+  .ddzv4-photo-grid span:nth-last-child(-n+2){border-bottom:0}
+  .ddzv4-record-label{position:absolute;z-index:2;top:16px;left:16px;color:#fff;font-weight:700;font-size:9px;letter-spacing:.12em;text-shadow:0 1px 6px #29372b75}
+  .ddzv4-shutter{position:absolute;z-index:3;bottom:12px;left:50%;transform:translateX(-50%);width:34px;height:34px;border:3px solid #fff;border-radius:50%;background:#f9faf4d9;box-shadow:0 0 0 2px #ffffff65,0 5px 9px #303b3275}
+  .ddzv4-zoom{position:absolute;z-index:3;bottom:22px;right:15px;font-size:10px;color:white}
+  /* Grigle V2 concept: actual brand icon; gesture zones without invented mapping. */
+  .ddzv4-keyboard{
+    position:absolute;z-index:2;right:-5px;bottom:-11px;
+    width:133px;height:145px;padding:10px;
+    border:1px solid #ffffffd9;border-radius:17px;
+    background:linear-gradient(165deg,#fefefaf5,#f2f5e9f3);
+    box-shadow:-9px 12px 19px #667c6540;
+    transform:rotate(7deg);
+  }
+  .ddzv4-keyboard-input{height:24px;border-radius:7px;background:#eaf0e6;border:1px solid #c8d6c6;color:#69776a;padding:5px 7px;font-size:8px;white-space:nowrap}
+  .ddzv4-input-caret{display:inline-block;height:10px;margin-left:2px;border-right:1px solid #5c8061;vertical-align:middle}
+  .ddzv4-keyboard-zones{height:67px;margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .ddzv4-keyboard-zone{position:relative;border:1px solid #c9d8c2;background:#e0ebdc;border-radius:8px;display:grid;place-items:center;color:#607560;font-size:9px;font-weight:700}
+  .ddzv4-keyboard-zone:last-child{background:#e8efde}
+  .ddzv4-keyboard-zone span{position:absolute;top:4px;font-size:7px;opacity:.85}
+  .ddzv4-keyboard-zone b{font-size:17px;font-weight:500;opacity:.8}
+  .ddzv4-keyboard-bottom{display:flex;justify-content:space-between;margin-top:5px;gap:4px}
+  .ddzv4-keyboard-bottom span{display:block;text-align:center;border-radius:4px;background:#e5eae0;flex:1;color:#73806d;font-size:7px;padding:3px 0}
+  .ddzv4-gesture-trail{
+    position:absolute;z-index:3;top:38px;left:19px;width:79px;height:73px;
+    overflow:visible;filter:drop-shadow(0 2px 3px #5a9b7394);
+  }
+  .ddzv4-gesture-trail path{stroke:#6a9b77;stroke-width:5;stroke-linecap:round;fill:none;stroke-dasharray:3 1}
+  .ddzv4-finger{
+    position:absolute;z-index:4;top:86px;left:72px;width:26px;height:38px;
+    border-radius:16px 16px 11px 11px;
+    background:linear-gradient(115deg,#f6d5bd,#e4bca3);
+    border:2px solid #fff6eb;
+    box-shadow:0 5px 10px #615b4a46;
+    transform:rotate(-37deg);
+    transform-origin:14px 28px;
+    animation:ddzv4-swipe 3.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .ddzv4-finger::before{content:"";position:absolute;left:6px;top:6px;width:10px;height:9px;border-radius:7px;background:#e7b49e99}
+  @keyframes ddzv4-swipe{0%,18%,100%{transform:translate(-7px,6px) rotate(-37deg)}48%,67%{transform:translate(9px,-8px) rotate(-30deg)}}
+  /* MY LOCK: temporary visual until its standalone card-design phase. */
+  .ddzv4-lock-preview{
+    position:absolute;right:18px;bottom:-20px;width:96px;height:141px;
+    border:5px solid #f7faff;border-radius:19px;
+    background:linear-gradient(145deg,#fff9fd,#e1e7f7);
+    box-shadow:0 9px 19px #667c9e48;
+    transform:rotate(9deg);
+    display:grid;place-items:center;
+  }
+  .ddzv4-lock-preview::before{content:"";position:absolute;top:7px;width:25px;height:4px;border-radius:6px;background:#c9cfdf}
+  .ddzv4-lock-shapes{position:relative;width:70px;height:75px}
+  .ddzv4-lock-shapes i{position:absolute;display:block}
+  .ddzv4-lock-shapes i:nth-child(1){left:3px;top:8px;width:24px;height:24px;background:#86cbf2;border-radius:50%}
+  .ddzv4-lock-shapes i:nth-child(2){right:0;top:38px;width:23px;height:23px;background:#9ba9ed;border-radius:6px;transform:rotate(8deg)}
+  .ddzv4-lock-shapes i:nth-child(3){right:4px;top:2px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:24px solid #f1db96}
+  .ddzv4-values{height:74px;background:#f9f7f1;border-top:1px solid #9d8a7628}
+  .ddzv4-values-inner{height:100%;width:min(var(--ddzv4-content),calc(100% - 80px));margin:auto;position:relative}
+  .ddzv4-value{position:absolute;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:11px;white-space:nowrap}
+  .ddzv4-value:nth-child(1){left:22.222222%}
+  .ddzv4-value:nth-child(2){left:50%}
+  .ddzv4-value:nth-child(3){left:77.777778%}
+  .ddzv4-value-icon{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;background:#e9efe4;color:#53734e;flex-shrink:0}
+  .ddzv4-value:last-child .ddzv4-value-icon{background:#f2e8e4;color:#a5746e}
+  .ddzv4-value-icon .icon{width:19px;height:19px}
+  .ddzv4-value-text strong{display:block;font-size:11.5px;line-height:1.4;font-weight:700}
+  .ddzv4-value-text small{display:block;color:#807e73;font-size:9.5px;line-height:1.5}
+}
+@media (min-width:1051px) and (max-width:1279px){
+  :root{
+    --ddzv4-card-width:500px;--ddzv4-card-height:376px;
+    --ddzv4-primary-width:236px;--ddzv4-secondary-width:252px;--ddzv4-secondary-height:182px;
+  }
+  .ddzv4-copy h1{font-size:clamp(31px,3vw,36px)}
+  .ddzv4-hero-main{gap:24px}
+  .ddzv4-keyboard{transform:scale(.92) rotate(7deg);transform-origin:right bottom}
+  .ddzv4-photo-grid{top:93px}
+  .ddzv4-camera{top:100px}
+  .ddzv4-values .ddzv4-value-text small{display:none}
+}
+@media (max-width:1050px){
+  .ddzv4-hero,.ddzv4-values{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .ddzv4-finger{animation:none}
+  .ddzv4-card,.ddzv4-action{transition:none}
+}
