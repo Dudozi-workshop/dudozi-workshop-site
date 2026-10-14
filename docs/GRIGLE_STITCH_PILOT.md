@@ -5,6 +5,13 @@
 기준 브랜치: `feat/homepage-visual-r3-hifi`
 관련 규칙: `docs/AI_WEBSITE_PIPELINE.md`
 
+## 2026-10-15 연결 및 실행 자료
+
+- Stitch에 복사할 A/B 프롬프트: [STITCH_GRIGLE_COPY_PROMPT.md](STITCH_GRIGLE_COPY_PROMPT.md)
+- Stitch↔Antigravity 최초 연결 절차: [STITCH_ANTIGRAVITY_CONNECT.md](STITCH_ANTIGRAVITY_CONNECT.md)
+- GitHub 작업대장: [Issue #2](https://github.com/Dudozi-workshop/dudozi-workshop-site/issues/2)
+- 현재 상태: **Stitch 개인 로그인 및 A/B 생성 대기. 외부 서비스 연동은 아직 완료되지 않음.**
+
 ## Stitch에 입력할 디자인 요청
 
 두도지공방 웹사이트 PC Hero에 들어가는 그리글 카드의 **시각적 완성도만** 높여주세요. 새로운 홈페이지·새 앱을 만들지 마세요.
