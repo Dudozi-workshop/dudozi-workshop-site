@@ -1,156 +1,179 @@
 /*
- * 두도지공방 PC Hero v4 - A안 시각 정밀 개선 (2026-10-21)
- * 승인 전 비운영 디자인 시안. 기존 사진, 공식 앱 아이콘, 카드 크기 및 구성 유지.
- * DOZ 원본 확보 전 DDZ 헤더 심벌은 임의 수정하지 않음.
- * 대상: PC 1051px 이상 첫 화면만 / 모바일 및 앱 상세 페이지 비변경.
+ * Dudozi Workshop · PC Hero R5.1
+ * 2026-10-21 user screenshot review: quieter brand mark, stronger stage,
+ * larger aligned 1+2 app showcase, and one integrated frosted values panel.
+ * Only >=1051px homepage hero; all official photo/app assets preserved.
+ * DOZ logo artwork must not be recreated from the generated mockup.
  */
 @media (min-width:1051px) {
-  /* 작은 본문과 가치 띠의 실제 PC 가독성 개선 */
-  .ddzv4-description {
-    font-size:13px;
-    line-height:1.55;
-    letter-spacing:-.025em;
-    color:#414c40;
-    font-weight:575;
+  :root {
+    --ddzv4-content:1280px;
+    --ddzv4-card-width:612px;
+    --ddzv4-card-height:448px;
+    --ddzv4-primary-width:294px;
+    --ddzv4-secondary-width:302px;
+    --ddzv4-secondary-height:216px;
+    --ddzv4-gap:16px;
   }
-  .ddzv4-dz .ddzv4-description { max-width:219px; }
-  .ddzv4-grigle .ddzv4-description,
-  .ddzv4-mylock .ddzv4-description {
-    max-width:124px;
-    font-size:12.5px;
-    line-height:1.52;
-    margin-top:10px;
-    color:#465347;
-  }
-  .ddzv4-app-name { color:#303a30; letter-spacing:-.04em; }
-  .ddzv4-value-text strong {
-    font-size:12.5px;
-    line-height:1.38;
-    color:#344134;
-  }
-  .ddzv4-value-text small {
-    font-size:11px;
-    line-height:1.4;
-    color:#65695f;
-  }
-  /* 브랜드 CTA 위계는 기존 구성을 보존하고 읽기 편하게 */
-  .ddzv4-action {
-    min-height:48px;
-    font-size:14px;
-    letter-spacing:-.02em;
-    box-shadow:0 3px 11px #615a4913;
-  }
-  .ddzv4-action.primary {
-    box-shadow:0 8px 18px #3d56352d;
-  }
-  .ddzv4-action:hover {
-    box-shadow:0 10px 20px #615a4923;
-  }
-  /* 합성 느낌을 줄이고 세 카드의 광원/그림자 일관성 확보 */
-  .ddzv4-card {
-    border-color:#fffdf3cc;
-    box-shadow:0 14px 32px #53473720,0 2px 7px #53473710,inset 0 1px #ffffffb8;
-  }
-  .ddzv4-card:hover {
-    box-shadow:0 20px 36px #53473729,0 3px 11px #53473718,inset 0 1px #ffffffb8;
-  }
-  .ddzv4-dz {
-    background:linear-gradient(150deg,#fff9edec,#ecddc7ef);
-  }
-  .ddzv4-grigle {
-    background:linear-gradient(135deg,#f1f6eae9,#dcead7ed);
-  }
-  .ddzv4-mylock {
-    background:linear-gradient(135deg,#f4f7fce9,#dfeaf5ef);
-  }
-  .ddzv4-hero::after {
-    background:
-      linear-gradient(90deg,#fffdf45e 0%,#fffdf52b 42%,#fbf8ee06 100%),
-      radial-gradient(ellipse 43% 51% at 5% 5%,#ffffff2a,transparent 80%);
-  }
-}
-@media (min-width:1051px) and (max-width:1279px) {
-  /* 500px 카드군 구간에서 텍스트-미리보기 충돌 예방 */
-  .ddzv4-grigle .ddzv4-description,
-  .ddzv4-mylock .ddzv4-description {
-    max-width:107px;
-    font-size:12px;
-    line-height:1.5;
-  }
-  .ddzv4-value-text strong { font-size:12px; }
-  .ddzv4-action { font-size:13.5px; }
-}
-@media (prefers-reduced-motion:reduce) {
-  .ddzv4-card,.ddzv4-action { transition:none; }
-}
 
-/* R5 approved: warm photographic hero and ONE integrated translucent value strip. */
-@media (min-width:1051px) {
+  /* Shrink the original logo as one unit; do not replace its artwork. */
+  .site-header .header-content {
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:84px;
+  }
+  .site-header .brand { gap:9px; }
+  .site-header .brand-mark { width:79px; }
+  .site-header .brand-mark img { width:76px;height:33px; }
+  .site-header .brand-signature { font-size:6px; }
+  .site-header .brand-korean { font-size:16px;font-weight:750;letter-spacing:-.045em; }
+  .site-header .desktop-nav { gap:31px; }
+
+  /* Restore real photographed light and desk grain from approved source. */
   .ddzv4-hero {
-    --ddzv4-hero-height:clamp(710px,calc(100svh - 24px),850px);
+    --ddzv4-hero-height:clamp(700px,calc(100svh - 90px),820px);
     overflow:visible;
   }
   .ddzv4-hero::before {
-    background-position:center 55%;
-    filter:saturate(.93) sepia(.045);
+    background-position:center 54%;
+    filter:saturate(1.02) contrast(1.055);
   }
   .ddzv4-hero::after {
     background:
-      linear-gradient(90deg,#fffdf4a0 0%,#fffdf568 36%,#fbf8ee08 76%),
-      radial-gradient(ellipse 60% 38% at 18% 16%,#ffffff59,transparent 80%);
+      linear-gradient(90deg,#fffdf48a 0%,#fffdf44d 36%,#fffaf211 74%,transparent 100%),
+      radial-gradient(ellipse 43% 49% at 14% 14%,#ffffff31,transparent 82%),
+      radial-gradient(ellipse 43% 35% at 38% 82%,#fff2d722,transparent 80%);
   }
-  .ddzv4-hero-main { min-height:var(--ddzv4-hero-height); padding-top:112px; padding-bottom:64px; }
-  .ddzv4-cards { align-self:center; }
-  .ddzv4-side { display:grid;grid-template-rows:repeat(2,minmax(0,1fr)); }
+  .ddzv4-hero-main {
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:var(--ddzv4-hero-height);
+    padding:104px 0 82px;
+    gap:36px;
+  }
+  .ddzv4-copy { transform:translateY(-5px); }
+  .ddzv4-copy h1 { font-size:40px;line-height:1.43;letter-spacing:-.055em; }
+  .ddzv4-copy h1 em { color:#4c6548; }
+  .ddzv4-actions { margin-top:32px;gap:12px; }
+  .ddzv4-action {
+    min-height:48px;
+    padding:10px 19px;
+    font-size:14px;letter-spacing:-.02em;
+    box-shadow:0 4px 14px #615a4914;
+  }
+  .ddzv4-action.primary { box-shadow:0 9px 18px #3d56352a; }
+  .ddzv4-action:hover { box-shadow:0 10px 22px #615a4925; }
+
+  /* Fixed equations: 294+16+302=612, and 216+16+216=448. */
+  .ddzv4-cards { align-self:center;transform:translateY(-3px); }
+  .ddzv4-side {
+    display:grid;grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:var(--ddzv4-gap);
+    min-height:0;
+  }
   .ddzv4-side > .ddzv4-card { min-height:0; }
+  .ddzv4-card {
+    border-radius:24px;
+    border-color:#fffdf2e3;
+    box-shadow:0 17px 36px #55473726,0 3px 9px #55473711,inset 0 1px #fff9;
+  }
+  .ddzv4-card:hover { box-shadow:0 22px 44px #5547372e,0 4px 12px #55473717,inset 0 1px #fff9; }
+  .ddzv4-dz {
+    padding:21px 18px;
+    background:linear-gradient(150deg,#fff9edee,#f1e1c7ed);
+  }
+  .ddzv4-grigle,.ddzv4-mylock { padding:20px 19px; }
+  .ddzv4-grigle { background:linear-gradient(135deg,#f2f6eaf5,#dcebd6eb); }
+  .ddzv4-mylock { background:linear-gradient(135deg,#f4f7fced,#dee9f7f2); }
+  .ddzv4-app-name { color:#2e392f;font-size:18px;letter-spacing:-.035em; }
+  .ddzv4-side .ddzv4-app-name { font-size:17px; }
+  .ddzv4-app-icon { width:35px;height:35px; }
+  .ddzv4-description {
+    font-size:13.5px;line-height:1.55;
+    color:#414d41;letter-spacing:-.023em;font-weight:570;
+  }
+  .ddzv4-dz .ddzv4-description { max-width:248px; }
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:145px;font-size:13px;line-height:1.55;
+    color:#435044;margin-top:11px;
+  }
+  .ddzv4-camera { top:109px;left:13px;right:13px;bottom:13px; }
+  .ddzv4-photo-grid { top:39%; }
+  .ddzv4-keyboard { transform:rotate(6deg);right:-5px;bottom:-10px; }
+  .ddzv4-lock-preview { right:16px;bottom:-19px;transform:rotate(7deg); }
+
+  /* The user's chosen first option: ONE continuous frosted strip, not cards. */
   .ddzv4-values {
-    position:relative;
-    z-index:5;
-    height:auto;
-    min-height:100px;
-    margin-top:-52px;
-    padding:0 24px 20px;
-    border:0;
-    background:transparent;
+    position:relative;z-index:5;
+    min-height:0;height:auto;
+    margin-top:-100px;
+    padding:0 24px 27px;
+    border:0;background:transparent;
   }
   .ddzv4-values-inner {
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    width:min(var(--ddzv4-content),100%);
+    height:auto;min-height:108px;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
     align-items:center;
     position:relative;
-    width:min(var(--ddzv4-content),100%);
-    min-height:102px;
-    height:auto;
-    padding:18px 21px;
-    border:1px solid #fffdf3da;
-    border-radius:24px;
-    background:linear-gradient(110deg,#fffdf6df,#fff9efd4 62%,#f7f1eadd);
-    box-shadow:0 15px 30px #5e4e3830,inset 0 1px #fff;
-    -webkit-backdrop-filter:blur(18px);
-    backdrop-filter:blur(18px);
+    padding:18px 22px;
+    border:1px solid #fffdf2ec;
+    border-radius:26px;
+    background:linear-gradient(112deg,#fffdf8df,#fff9f0d6 66%,#f7f0e7db);
+    box-shadow:0 15px 36px #6859402c,inset 0 1px #fff;
+    -webkit-backdrop-filter:blur(17px);
+    backdrop-filter:blur(17px);
   }
-  .ddzv4-value,.ddzv4-value:nth-child(1),.ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3) {
-    position:relative;
-    left:auto;top:auto;transform:none;
+  .ddzv4-value,.ddzv4-value:nth-child(1),
+  .ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3) {
+    position:relative;left:auto;top:auto;transform:none;
     display:flex;align-items:center;justify-content:center;
-    min-width:0;
-    gap:13px;
-    padding:0 12px;
-    white-space:normal;
+    min-width:0;gap:13px;padding:0 12px;white-space:normal;
   }
-  .ddzv4-value + .ddzv4-value { border-left:1px solid #8d89773c; }
+  .ddzv4-value + .ddzv4-value { border-left:1px solid #8d89773d; }
   .ddzv4-value-icon { width:46px;height:46px;flex:0 0 46px; }
   .ddzv4-value-icon .icon { width:23px;height:23px; }
   .ddzv4-value-text { min-width:0; }
-  .ddzv4-value-text strong { font-size:14px;line-height:1.45; }
-  .ddzv4-value-text small { font-size:11.5px;line-height:1.5; }
+  .ddzv4-value-text strong {
+    display:block;font-size:14px;line-height:1.45;
+    color:#334235;
+  }
+  .ddzv4-value-text small {
+    display:block;font-size:11.5px;line-height:1.5;
+    color:#65685e;
+  }
   .overview { position:relative; }
 }
+
 @media (min-width:1051px) and (max-width:1279px) {
-  .ddzv4-hero-main { padding-top:116px;padding-bottom:64px; }
-  .ddzv4-values-inner { padding:15px 10px;min-height:96px; }
-  .ddzv4-value { gap:8px!important;padding:0 8px!important; }
-  .ddzv4-value-icon { width:38px;height:38px;flex-basis:38px; }
+  :root {
+    --ddzv4-card-width:540px;
+    --ddzv4-card-height:408px;
+    --ddzv4-primary-width:260px;
+    --ddzv4-secondary-width:264px;
+    --ddzv4-secondary-height:196px;
+  }
+  .site-header .desktop-nav { gap:23px; }
+  .site-header .header-cta { font-size:12px;padding:9px 14px; }
+  .ddzv4-hero { --ddzv4-hero-height:clamp(700px,calc(100svh - 90px),790px); }
+  .ddzv4-hero-main { gap:25px;padding-top:106px;padding-bottom:73px; }
+  .ddzv4-copy h1 { font-size:clamp(31px,3.0vw,36px); }
+  .ddzv4-dz { padding:18px 15px; }
+  .ddzv4-grigle,.ddzv4-mylock { padding:17px 15px; }
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:114px;font-size:12px;line-height:1.5;
+  }
+  .ddzv4-camera { top:102px; }
+  .ddzv4-keyboard { transform:scale(.93) rotate(6deg);transform-origin:right bottom; }
+  .ddzv4-values { margin-top:-79px;padding:0 24px 24px; }
+  .ddzv4-values-inner { padding:15px 11px;min-height:100px; }
+  .ddzv4-value { gap:9px!important;padding:0 8px!important; }
+  .ddzv4-value-icon { width:40px;height:40px;flex-basis:40px; }
   .ddzv4-value-text strong { font-size:12.5px; }
   .ddzv4-value-text small { display:block!important;font-size:10.5px; }
+  .ddzv4-action { font-size:13.5px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .ddzv4-card,.ddzv4-action { transition:none; }
 }
