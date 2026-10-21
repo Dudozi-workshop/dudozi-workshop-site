@@ -83,3 +83,74 @@
 @media (prefers-reduced-motion:reduce) {
   .ddzv4-card,.ddzv4-action { transition:none; }
 }
+
+/* R5 approved: warm photographic hero and ONE integrated translucent value strip. */
+@media (min-width:1051px) {
+  .ddzv4-hero {
+    --ddzv4-hero-height:clamp(710px,calc(100svh - 24px),850px);
+    overflow:visible;
+  }
+  .ddzv4-hero::before {
+    background-position:center 55%;
+    filter:saturate(.93) sepia(.045);
+  }
+  .ddzv4-hero::after {
+    background:
+      linear-gradient(90deg,#fffdf4a0 0%,#fffdf568 36%,#fbf8ee08 76%),
+      radial-gradient(ellipse 60% 38% at 18% 16%,#ffffff59,transparent 80%);
+  }
+  .ddzv4-hero-main { min-height:var(--ddzv4-hero-height); padding-top:112px; padding-bottom:64px; }
+  .ddzv4-cards { align-self:center; }
+  .ddzv4-side { display:grid;grid-template-rows:repeat(2,minmax(0,1fr)); }
+  .ddzv4-side > .ddzv4-card { min-height:0; }
+  .ddzv4-values {
+    position:relative;
+    z-index:5;
+    height:auto;
+    min-height:100px;
+    margin-top:-52px;
+    padding:0 24px 20px;
+    border:0;
+    background:transparent;
+  }
+  .ddzv4-values-inner {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    align-items:center;
+    position:relative;
+    width:min(var(--ddzv4-content),100%);
+    min-height:102px;
+    height:auto;
+    padding:18px 21px;
+    border:1px solid #fffdf3da;
+    border-radius:24px;
+    background:linear-gradient(110deg,#fffdf6df,#fff9efd4 62%,#f7f1eadd);
+    box-shadow:0 15px 30px #5e4e3830,inset 0 1px #fff;
+    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(18px);
+  }
+  .ddzv4-value,.ddzv4-value:nth-child(1),.ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3) {
+    position:relative;
+    left:auto;top:auto;transform:none;
+    display:flex;align-items:center;justify-content:center;
+    min-width:0;
+    gap:13px;
+    padding:0 12px;
+    white-space:normal;
+  }
+  .ddzv4-value + .ddzv4-value { border-left:1px solid #8d89773c; }
+  .ddzv4-value-icon { width:46px;height:46px;flex:0 0 46px; }
+  .ddzv4-value-icon .icon { width:23px;height:23px; }
+  .ddzv4-value-text { min-width:0; }
+  .ddzv4-value-text strong { font-size:14px;line-height:1.45; }
+  .ddzv4-value-text small { font-size:11.5px;line-height:1.5; }
+  .overview { position:relative; }
+}
+@media (min-width:1051px) and (max-width:1279px) {
+  .ddzv4-hero-main { padding-top:116px;padding-bottom:64px; }
+  .ddzv4-values-inner { padding:15px 10px;min-height:96px; }
+  .ddzv4-value { gap:8px!important;padding:0 8px!important; }
+  .ddzv4-value-icon { width:38px;height:38px;flex-basis:38px; }
+  .ddzv4-value-text strong { font-size:12.5px; }
+  .ddzv4-value-text small { display:block!important;font-size:10.5px; }
+}
