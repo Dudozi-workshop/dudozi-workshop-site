@@ -1,0 +1,85 @@
+/*
+ * 두도지공방 PC Hero v4 - A안 시각 정밀 개선 (2026-10-21)
+ * 승인 전 비운영 디자인 시안. 기존 사진, 공식 앱 아이콘, 카드 크기 및 구성 유지.
+ * DOZ 원본 확보 전 DDZ 헤더 심벌은 임의 수정하지 않음.
+ * 대상: PC 1051px 이상 첫 화면만 / 모바일 및 앱 상세 페이지 비변경.
+ */
+@media (min-width:1051px) {
+  /* 작은 본문과 가치 띠의 실제 PC 가독성 개선 */
+  .ddzv4-description {
+    font-size:13px;
+    line-height:1.55;
+    letter-spacing:-.025em;
+    color:#414c40;
+    font-weight:575;
+  }
+  .ddzv4-dz .ddzv4-description { max-width:219px; }
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:124px;
+    font-size:12.5px;
+    line-height:1.52;
+    margin-top:10px;
+    color:#465347;
+  }
+  .ddzv4-app-name { color:#303a30; letter-spacing:-.04em; }
+  .ddzv4-value-text strong {
+    font-size:12.5px;
+    line-height:1.38;
+    color:#344134;
+  }
+  .ddzv4-value-text small {
+    font-size:11px;
+    line-height:1.4;
+    color:#65695f;
+  }
+  /* 브랜드 CTA 위계는 기존 구성을 보존하고 읽기 편하게 */
+  .ddzv4-action {
+    min-height:48px;
+    font-size:14px;
+    letter-spacing:-.02em;
+    box-shadow:0 3px 11px #615a4913;
+  }
+  .ddzv4-action.primary {
+    box-shadow:0 8px 18px #3d56352d;
+  }
+  .ddzv4-action:hover {
+    box-shadow:0 10px 20px #615a4923;
+  }
+  /* 합성 느낌을 줄이고 세 카드의 광원/그림자 일관성 확보 */
+  .ddzv4-card {
+    border-color:#fffdf3cc;
+    box-shadow:0 14px 32px #53473720,0 2px 7px #53473710,inset 0 1px #ffffffb8;
+  }
+  .ddzv4-card:hover {
+    box-shadow:0 20px 36px #53473729,0 3px 11px #53473718,inset 0 1px #ffffffb8;
+  }
+  .ddzv4-dz {
+    background:linear-gradient(150deg,#fff9edec,#ecddc7ef);
+  }
+  .ddzv4-grigle {
+    background:linear-gradient(135deg,#f1f6eae9,#dcead7ed);
+  }
+  .ddzv4-mylock {
+    background:linear-gradient(135deg,#f4f7fce9,#dfeaf5ef);
+  }
+  .ddzv4-hero::after {
+    background:
+      linear-gradient(90deg,#fffdf45e 0%,#fffdf52b 42%,#fbf8ee06 100%),
+      radial-gradient(ellipse 43% 51% at 5% 5%,#ffffff2a,transparent 80%);
+  }
+}
+@media (min-width:1051px) and (max-width:1279px) {
+  /* 500px 카드군 구간에서 텍스트-미리보기 충돌 예방 */
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:107px;
+    font-size:12px;
+    line-height:1.5;
+  }
+  .ddzv4-value-text strong { font-size:12px; }
+  .ddzv4-action { font-size:13.5px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .ddzv4-card,.ddzv4-action { transition:none; }
+}
