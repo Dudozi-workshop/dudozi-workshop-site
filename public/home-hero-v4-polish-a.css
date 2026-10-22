@@ -177,3 +177,24 @@
 @media (prefers-reduced-motion:reduce) {
   .ddzv4-card,.ddzv4-action { transition:none; }
 }
+
+/* R5.2: approved restrained logo, compact value bar and peripheral workshop objects. */
+@media (min-width:1051px){
+.site-header .brand-mark{width:61px}.site-header .brand-mark img{width:57px;height:25px}.site-header .brand-signature{font-size:5px}.site-header .brand{gap:12px}.site-header .brand-korean{font-size:18px}
+.ddzv4-values{margin-top:-102px;padding:0 24px 30px}
+.ddzv4-values-inner{width:min(960px,100%);min-height:95px;padding:13px 16px;border-radius:24px;background:linear-gradient(110deg,#fffdf7e4,#fff9f0dc 65%,#f9f1e9df);box-shadow:0 14px 30px #69543829,inset 0 1px #fff}
+.ddzv4-value,.ddzv4-value:nth-child(1),.ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3){gap:11px;padding:0 10px}
+.ddzv4-value-icon{width:42px;height:42px;flex:0 0 42px}.ddzv4-value-icon .icon{width:21px;height:21px}
+.ddzv4-value-text strong{font-size:13.5px}.ddzv4-value-text small{font-size:11px}
+.ddzv4-hero{overflow:hidden}
+.ddzv4-hero::after{background:linear-gradient(90deg,#fffdf473 0%,#fffdf43b 36%,#fffaf208 77%,transparent 100%),radial-gradient(ellipse 44% 43% at 18% 16%,#ffffff1d,transparent 80%)}
+.ddzv4-decor{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ddzv4-decor .studio-note{position:absolute;bottom:65px;left:-31px;width:250px;height:73px;transform:rotate(-11deg);border-radius:5px 10px 3px 4px;border:1px solid #d7c5a76b;background:linear-gradient(177deg,#fffbf0f2,#e9dac4f2);box-shadow:0 11px 17px #614d343d,0 -7px 0 -4px #fffdf1}
+.ddzv4-decor .studio-note::after{content:"";position:absolute;top:18px;left:5px;width:235px;height:1px;background:#c6b89c55;box-shadow:0 17px #c6b89c44,0 34px #c6b89c38}
+.ddzv4-decor .studio-pencil{position:absolute;left:18px;bottom:170px;width:180px;height:7px;border-radius:7px;transform:rotate(-10deg);background:linear-gradient(90deg,#cab186 0 9%,#4c6a58 11% 89%,#d0b681 90% 97%,#76644e 99%);box-shadow:1px 4px 4px #43372234}
+.ddzv4-decor .studio-cup{position:absolute;right:-30px;bottom:132px;width:112px;height:119px;border-radius:8px 8px 35px 35px / 12px 12px 23px 23px;background:linear-gradient(104deg,#f9f5eadd,#f3e4d1a8 60%,#d7c5adca);box-shadow:inset 6px 1px 13px #ffffffa6,4px 20px 22px #57473029;opacity:.8;filter:blur(1.2px)}
+.ddzv4-decor .studio-cup::after{content:"";position:absolute;right:-30px;top:19px;width:49px;height:59px;border:11px solid #e9ddc8b5;border-left:0;border-radius:0 50% 50% 0}
+.ddzv4-decor .studio-frame{position:absolute;right:-39px;top:88px;width:182px;height:175px;transform:rotate(4deg);border:11px solid #dac2a5a1;background:linear-gradient(135deg,#fbf7ebbc,#e9e6d5a6);box-shadow:0 5px 19px #8c78643a,inset 0 0 0 7px #fff9e9a8;opacity:.37;filter:blur(2px)}
+.ddzv4-decor .studio-leaf{position:absolute;left:-40px;bottom:8px;width:180px;height:125px;border-radius:50% 0 60% 0;transform:rotate(-27deg);background:radial-gradient(ellipse at 40% 42%,#71895167,#7b985329 57%,transparent 75%);filter:blur(13px);opacity:.65}
+}
+@media(min-width:1051px) and (max-width:1279px){.ddzv4-values-inner{width:min(910px,100%)}.ddzv4-values{margin-top:-83px}.ddzv4-value-text strong{font-size:12.5px}.ddzv4-value-text small{font-size:10.5px}.ddzv4-decor .studio-frame{display:none}}
