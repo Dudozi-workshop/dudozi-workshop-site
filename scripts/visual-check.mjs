@@ -79,7 +79,7 @@ for (const item of pages) {
         heroValueCentres: [...document.querySelectorAll('.ddzv4-value')]
           .filter(visible).map(el => Math.round(el.getBoundingClientRect().x + el.getBoundingClientRect().width / 2)),
         heroValueInner: rect('.ddzv4-values-inner'),
-        heroBackgroundImage: getComputedStyle(document.querySelector('.ddzv4-hero'), '::before').backgroundImage,
+        heroBackgroundImage: document.querySelector('.ddzv4-hero') ? getComputedStyle(document.querySelector('.ddzv4-hero'), '::before').backgroundImage : '',
         isV4Visible: !!document.querySelector('.ddzv4-hero') && visible(document.querySelector('.ddzv4-hero')),
         isLegacyVisible: !!document.querySelector('.hero') && visible(document.querySelector('.hero')),
         detailHeading: rect('.detail-title'),
