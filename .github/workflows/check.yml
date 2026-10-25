@@ -1,0 +1,58 @@
+name: Check website preview
+
+on:
+  push:
+    branches:
+      - feat/homepage-hero-r2
+      - feat/homepage-visual-r3-hifi
+      - feat/homepage-pc-hero-a-r5-20261021
+    paths:
+      - 'public/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/check.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'public/**'
+      - 'scripts/**'
+      - 'package.json'
+      - '.github/workflows/check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  website-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check homepage and app detail routes
+        run: npm run check
+      - name: Build static site
+        run: npm run build
+      - name: Install PC browser QA tools
+        run: |
+          npm install --no-save playwright
+          npx playwright install chromium --with-deps
+      - name: Screenshot and geometry QA
+        run: |
+          python3 -m http.server 4173 --directory dist > /tmp/ddz-site.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID' EXIT
+          sleep 2
+          SITE_URL=http://127.0.0.1:4173 node scripts/visual-check.mjs
+      - name: Save PC screenshot set
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pc-visual-qa
+          path: artifacts/pc-visual-qa/
+          retention-days: 14
+          if-no-files-found: ignore

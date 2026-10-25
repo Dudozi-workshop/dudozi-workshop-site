@@ -1,0 +1,218 @@
+/* PC Hero R5.3: photographed studio background; no CSS props. Desktop only. */
+@media (min-width:1051px) {
+  :root {
+    --ddzv4-content:1280px;
+    --ddzv4-card-width:612px;
+    --ddzv4-card-height:448px;
+    --ddzv4-primary-width:294px;
+    --ddzv4-secondary-width:302px;
+    --ddzv4-secondary-height:216px;
+    --ddzv4-gap:16px;
+  }
+
+  /* Shrink the original logo as one unit; do not replace its artwork. */
+  .site-header .header-content {
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:84px;
+  }
+  .site-header .brand { gap:9px; }
+  .site-header .brand-mark { width:79px; }
+  .site-header .brand-mark img { width:76px;height:33px; }
+  .site-header .brand-signature { font-size:6px; }
+  .site-header .brand-korean { font-size:16px;font-weight:750;letter-spacing:-.045em; }
+  .site-header .desktop-nav { gap:31px; }
+
+  /* Restore real photographed light and desk grain from approved source. */
+  .ddzv4-hero {
+    --ddzv4-hero-height:clamp(700px,calc(100svh - 90px),820px);
+    overflow:visible;
+  }
+  .ddzv4-hero::before {
+    background-position:center 54%;
+    filter:saturate(1.02) contrast(1.055);
+  }
+  .ddzv4-hero::after {
+    background:
+      linear-gradient(90deg,#fffdf48a 0%,#fffdf44d 36%,#fffaf211 74%,transparent 100%),
+      radial-gradient(ellipse 43% 49% at 14% 14%,#ffffff31,transparent 82%),
+      radial-gradient(ellipse 43% 35% at 38% 82%,#fff2d722,transparent 80%);
+  }
+  .ddzv4-hero-main {
+    width:min(var(--ddzv4-content),calc(100% - 80px));
+    min-height:var(--ddzv4-hero-height);
+    padding:104px 0 82px;
+    gap:36px;
+  }
+  .ddzv4-copy { transform:translateY(-5px); }
+  .ddzv4-copy h1 { font-size:40px;line-height:1.43;letter-spacing:-.055em; }
+  .ddzv4-copy h1 em { color:#4c6548; }
+  .ddzv4-actions { margin-top:32px;gap:12px; }
+  .ddzv4-action {
+    min-height:48px;
+    padding:10px 19px;
+    font-size:14px;letter-spacing:-.02em;
+    box-shadow:0 4px 14px #615a4914;
+  }
+  .ddzv4-action.primary { box-shadow:0 9px 18px #3d56352a; }
+  .ddzv4-action:hover { box-shadow:0 10px 22px #615a4925; }
+
+  /* Fixed equations: 294+16+302=612, and 216+16+216=448. */
+  .ddzv4-cards { align-self:center;transform:translateY(-3px); }
+  .ddzv4-side {
+    display:grid;grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:var(--ddzv4-gap);
+    min-height:0;
+  }
+  .ddzv4-side > .ddzv4-card { min-height:0; }
+  .ddzv4-card {
+    border-radius:24px;
+    border-color:#fffdf2e3;
+    box-shadow:0 17px 36px #55473726,0 3px 9px #55473711,inset 0 1px #fff9;
+  }
+  .ddzv4-card:hover { box-shadow:0 22px 44px #5547372e,0 4px 12px #55473717,inset 0 1px #fff9; }
+  .ddzv4-dz {
+    padding:21px 18px;
+    background:linear-gradient(150deg,#fff9edee,#f1e1c7ed);
+  }
+  .ddzv4-grigle,.ddzv4-mylock { padding:20px 19px; }
+  .ddzv4-grigle { background:linear-gradient(135deg,#f2f6eaf5,#dcebd6eb); }
+  .ddzv4-mylock { background:linear-gradient(135deg,#f4f7fced,#dee9f7f2); }
+  .ddzv4-app-name { color:#2e392f;font-size:18px;letter-spacing:-.035em; }
+  .ddzv4-side .ddzv4-app-name { font-size:17px; }
+  .ddzv4-app-icon { width:35px;height:35px; }
+  .ddzv4-description {
+    font-size:13.5px;line-height:1.55;
+    color:#414d41;letter-spacing:-.023em;font-weight:570;
+  }
+  .ddzv4-dz .ddzv4-description { max-width:248px; }
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:145px;font-size:13px;line-height:1.55;
+    color:#435044;margin-top:11px;
+  }
+  .ddzv4-camera { top:109px;left:13px;right:13px;bottom:13px; }
+  .ddzv4-photo-grid { top:39%; }
+  .ddzv4-keyboard { transform:rotate(6deg);right:-5px;bottom:-10px; }
+  .ddzv4-lock-preview { right:16px;bottom:-19px;transform:rotate(7deg); }
+
+  /* The user's chosen first option: ONE continuous frosted strip, not cards. */
+  .ddzv4-values {
+    position:relative;z-index:5;
+    min-height:0;height:auto;
+    margin-top:-100px;
+    padding:0 24px 27px;
+    border:0;background:transparent;
+  }
+  .ddzv4-values-inner {
+    width:min(var(--ddzv4-content),100%);
+    height:auto;min-height:108px;
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    align-items:center;
+    position:relative;
+    padding:18px 22px;
+    border:1px solid #fffdf2ec;
+    border-radius:26px;
+    background:linear-gradient(112deg,#fffdf8df,#fff9f0d6 66%,#f7f0e7db);
+    box-shadow:0 15px 36px #6859402c,inset 0 1px #fff;
+    -webkit-backdrop-filter:blur(17px);
+    backdrop-filter:blur(17px);
+  }
+  .ddzv4-value,.ddzv4-value:nth-child(1),
+  .ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3) {
+    position:relative;left:auto;top:auto;transform:none;
+    display:flex;align-items:center;justify-content:center;
+    min-width:0;gap:13px;padding:0 12px;white-space:normal;
+  }
+  .ddzv4-value + .ddzv4-value { border-left:1px solid #8d89773d; }
+  .ddzv4-value-icon { width:46px;height:46px;flex:0 0 46px; }
+  .ddzv4-value-icon .icon { width:23px;height:23px; }
+  .ddzv4-value-text { min-width:0; }
+  .ddzv4-value-text strong {
+    display:block;font-size:14px;line-height:1.45;
+    color:#334235;
+  }
+  .ddzv4-value-text small {
+    display:block;font-size:11.5px;line-height:1.5;
+    color:#65685e;
+  }
+  .overview { position:relative; }
+}
+
+@media (min-width:1051px) and (max-width:1279px) {
+  :root {
+    --ddzv4-card-width:540px;
+    --ddzv4-card-height:408px;
+    --ddzv4-primary-width:260px;
+    --ddzv4-secondary-width:264px;
+    --ddzv4-secondary-height:196px;
+  }
+  .site-header .desktop-nav { gap:23px; }
+  .site-header .header-cta { font-size:12px;padding:9px 14px; }
+  .ddzv4-hero { --ddzv4-hero-height:clamp(700px,calc(100svh - 90px),790px); }
+  .ddzv4-hero-main { gap:25px;padding-top:106px;padding-bottom:73px; }
+  .ddzv4-copy h1 { font-size:clamp(31px,3.0vw,36px); }
+  .ddzv4-dz { padding:18px 15px; }
+  .ddzv4-grigle,.ddzv4-mylock { padding:17px 15px; }
+  .ddzv4-grigle .ddzv4-description,
+  .ddzv4-mylock .ddzv4-description {
+    max-width:114px;font-size:12px;line-height:1.5;
+  }
+  .ddzv4-camera { top:102px; }
+  .ddzv4-keyboard { transform:scale(.93) rotate(6deg);transform-origin:right bottom; }
+  .ddzv4-values { margin-top:-79px;padding:0 24px 24px; }
+  .ddzv4-values-inner { padding:15px 11px;min-height:100px; }
+  .ddzv4-value { gap:9px!important;padding:0 8px!important; }
+  .ddzv4-value-icon { width:40px;height:40px;flex-basis:40px; }
+  .ddzv4-value-text strong { font-size:12.5px; }
+  .ddzv4-value-text small { display:block!important;font-size:10.5px; }
+  .ddzv4-action { font-size:13.5px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .ddzv4-card,.ddzv4-action { transition:none; }
+}
+
+
+/* 2026-10-23: selected first background photo, one real optimized WebP asset. */
+@media (min-width:1051px) {
+  .site-header .brand-mark { width:61px; }
+  .site-header .brand-mark img { width:57px; height:25px; }
+  .site-header .brand { gap:12px; }
+  .site-header .brand-signature { font-size:5px; }
+  .site-header .brand-korean { font-size:18px; font-weight:750; }
+  .ddzv4-hero { overflow:hidden; background:#f3e8d8; }
+  .ddzv4-hero::before {
+    background:url('/assets/dudozi-hero-r53-workspace.webp') center center / cover no-repeat;
+    filter:none;
+  }
+  .ddzv4-hero::after {
+    background:linear-gradient(90deg,
+      rgba(255,250,239,.33) 0%,
+      rgba(255,250,239,.15) 34%,
+      rgba(255,250,239,.04) 65%,
+      rgba(255,250,239,.07) 100%);
+  }
+  .ddzv4-copy h1 { text-shadow:0 2px 18px #fffaf0b0; }
+  .ddzv4-values { margin-top:-98px; padding-bottom:27px; }
+  .ddzv4-values-inner {
+    width:min(960px,100%);
+    min-height:95px;
+    padding:13px 16px;
+    border-radius:24px;
+    background:linear-gradient(110deg,#fffdf7e4,#fff9f0da 65%,#f9f1e9df);
+    box-shadow:0 14px 30px #69543829,inset 0 1px #fff;
+  }
+  .ddzv4-value,.ddzv4-value:nth-child(1),.ddzv4-value:nth-child(2),.ddzv4-value:nth-child(3) {
+    gap:11px; padding:0 10px;
+  }
+  .ddzv4-value-icon { width:42px; height:42px; flex:0 0 42px; }
+  .ddzv4-value-icon .icon { width:21px; height:21px; }
+  .ddzv4-value-text strong { font-size:13.5px; }
+  .ddzv4-value-text small { font-size:11px; }
+}
+@media (min-width:1051px) and (max-width:1279px) {
+  .ddzv4-values { margin-top:-83px; }
+  .ddzv4-values-inner { width:min(910px,100%); min-height:96px; }
+  .ddzv4-value-text strong { font-size:12.5px; }
+  .ddzv4-value-text small { font-size:10.5px; }
+}

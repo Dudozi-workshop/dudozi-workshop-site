@@ -1,0 +1,70 @@
+name: "홈페이지 UI 개선 작업"
+description: "Stitch 디자인 → 승인 → 단일 작성자 코드 반영 → QA를 위한 표준 작업 접수"
+title: "[WEB UI] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **작업 시작 전** `docs/AI_WEBSITE_PIPELINE.md`와 현재 승인된 디자인 규격을 확인해 주세요.
+        디자인 시안 승인 전에는 실제 HTML/CSS를 수정하지 않습니다.
+  - type: dropdown
+    id: area
+    attributes:
+      label: 작업 영역
+      options:
+        - "PC Hero - 그리글"
+        - "PC Hero - DZlog"
+        - "PC Hero - MY LOCK"
+        - "PC Hero - 공통 배경/타이포"
+        - "앱 상세 페이지"
+        - "모바일"
+        - "기타"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: 개선 목표·현재 문제
+      description: "무엇이 불편하고 무엇이 달라져야 하는지 설명"
+      placeholder: "현재 카드에서 손가락 제스처의 의미가 작게 보여..."
+    validations:
+      required: true
+  - type: textarea
+    id: baseline
+    attributes:
+      label: 현재 스크린샷·Preview URL·기준 커밋
+      description: "모르면 미확인이라고 적고 확인 후 구현"
+      placeholder: "프리뷰 주소 / commit SHA / 캡처 링크"
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 변경 가능한 요소 / 변경 금지 요소
+      value: |
+        변경 가능:
+        -
+        
+        변경 금지:
+        - 운영 main, Cloudflare 배포
+        - 현재 승인된 Hero v4 카드 외곽 규격
+    validations:
+      required: true
+  - type: textarea
+    id: variants
+    attributes:
+      label: A/B 디자인 후보와 승인 결과
+      description: "디자인 후 채우기. 미승인이면 코드 수정 불가"
+      placeholder: "A: ... / B: ... / 승인: 대기"
+  - type: checkboxes
+    id: gates
+    attributes:
+      label: 완료 조건
+      options:
+        - label: "A/B 시안 비교 후 사용자 디자인 승인"
+        - label: "수정 범위 내 코드 변경 및 변경 diff 검토"
+        - label: "npm run build 및 정적 QA 통과"
+        - label: "PC 1440/1280/1100px 브라우저 QA·스크린샷"
+        - label: "비운영 Preview 확인(요청 시)"
+        - label: "운영 배포는 별도 사용자 승인"

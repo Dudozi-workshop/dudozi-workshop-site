@@ -1,0 +1,275 @@
+/*
+ * Dudozi Workshop — source-aligned product UI concepts R4.3
+ * GRIGLE: DirSeqToJamoMapper.kt (L,U => ㄱ; U,R => ㅏ).
+ * DZlog: camera preview/table overlay and file/folder naming flow.
+ * Concept renders only — do not represent as real Android screenshots.
+ */
+
+/* GRIGLE — compact gesture-driven artwork for the app rail. */
+.hero .grigle-poster{
+  padding:12px 9px 7px!important;
+  overflow:hidden;
+  color:#573f30;
+  background:linear-gradient(155deg,#fdf8ef,#f3e9d9)!important;
+}
+.grigle-poster-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:3px;font-size:8px;font-weight:850;line-height:1.3;color:#604733;
+}
+.grigle-poster-top span{font-size:6px;font-weight:700;color:#8f816f}
+.grigle-poster-write{
+  margin-top:6px;padding:5px 4px;
+  background:#fffdf8;border:1px solid #d8cabb;
+  border-radius:5px;font-size:7px;font-weight:600;
+  white-space:nowrap;color:#574c3e;
+}
+.grigle-poster-pad{
+  position:relative;height:69px;
+  background:linear-gradient(158deg,#eae1d2,#f9f5ed);
+  border:1px solid #d9c7b2;border-radius:12px;
+  margin-top:6px;
+}
+.grigle-poster-origin{
+  position:absolute;left:50%;top:54%;
+  width:10px;height:10px;border:3px solid #b97c57;
+  background:#fffcf7;transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+.grigle-poster-pad:before{
+  content:"";position:absolute;left:22%;top:30%;
+  width:33%;height:24%;border-bottom:3px solid #bd815f;
+  border-left:3px solid #bd815f;
+  border-radius:0 0 0 8px;
+  transform:rotate(180deg);
+}
+.grigle-poster-direction{
+  position:absolute;left:12%;top:47%;
+  font-size:17px;font-weight:850;color:#a96b48;
+}
+.grigle-poster-direction.up{left:28%;top:8%}
+.grigle-poster-pad strong{
+  position:absolute;right:10%;top:26%;
+  width:27px;height:28px;
+  display:grid;place-items:center;
+  border-radius:8px;color:#fff;
+  background:#77573c;font-size:17px;
+}
+.grigle-poster-caption{
+  margin-top:6px;color:#786958;font-size:9px;font-weight:850;text-align:center;
+}
+.grigle-poster-caption span{margin-inline:2px;color:#bd7b55}
+.grigle-poster .input-preview,.grigle-poster .keyboard-keys,.grigle-poster .swipe-path{display:none}
+
+/* GRIGLE — clearer source-aligned app catalog artwork. */
+.grigle-catalog{padding:20px 13px 15px!important}
+.grigle-catalog>span,.grigle-catalog>i{display:none}
+.grigle-catalog-top{
+  display:flex;justify-content:space-between;align-items:center;
+  color:#6a4f3a;font-size:13px;font-weight:850;letter-spacing:.03em;
+}
+.grigle-catalog-top span{font-size:9px;letter-spacing:.11em;color:#af9a82}
+.grigle-catalog-gesture{
+  display:flex;align-items:center;justify-content:space-evenly;
+  margin-top:21px;padding:15px 5px;
+  background:#fffaf2d9;border:1px solid #d7c5af;
+  border-radius:17px;box-shadow:0 9px 22px #8c675621;
+}
+.grigle-catalog-gesture span{
+  display:grid;place-items:center;width:30px;height:35px;
+  border-radius:10px;background:#f0e1cf;color:#956b4c;font-size:24px;font-weight:800;
+}
+.grigle-catalog-gesture strong{
+  display:grid;place-items:center;
+  width:42px;height:43px;border-radius:13px;
+  background:#72513b;color:#fff;font-size:25px;
+}
+.grigle-catalog-sub{
+  color:#776956;text-align:center;font-size:10px;
+  margin-top:14px;white-space:nowrap;
+}
+
+/* GRIGLE — detail device visual: a gesture surface, not a generic 3x3 keyboard. */
+.app-grigle .grigle-device-preview{
+  display:flex;flex-direction:column;
+  padding:0;background:#fbf7f1;
+  color:#3f352e;
+  overflow:hidden;
+}
+.app-grigle .grigle-device-preview:before,
+.app-grigle .grigle-device-preview:after{display:none!important;content:none!important}
+.grigle-preview-status{
+  display:flex;align-items:center;justify-content:space-between;
+  flex:0 0 35px;padding:7px 17px 0;
+  font-size:11px;color:#746252;
+}
+.grigle-preview-status span{color:#b0a594;font-size:9px;letter-spacing:3px}
+.grigle-preview-title{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 18px 13px;border-bottom:1px solid #ece0d4;
+  font-size:19px;letter-spacing:-.06em;font-weight:850;color:#6f503b;
+}
+.grigle-preview-title span{font-size:9px;letter-spacing:.12em;color:#b49579;font-weight:750}
+.grigle-preview-input{
+  margin:16px 15px 11px;
+  border-radius:16px;border:1px solid #e5d9cb;
+  background:#fffdfa;
+  box-shadow:0 10px 25px #9e806312;
+  padding:12px 13px;
+}
+.grigle-preview-input small{display:block;margin-bottom:8px;color:#a38a73;font-size:9px}
+.grigle-preview-input strong{font-size:16px;font-weight:700;letter-spacing:-.06em;white-space:nowrap}
+.grigle-preview-input i{
+  display:inline-block;width:2px;height:17px;background:#916e4a;vertical-align:-3px;
+  margin-left:3px;animation:grigleCaret 1.15s step-end infinite;
+}
+@keyframes grigleCaret{50%{opacity:0}}
+.grigle-preview-surface{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  margin-top:4px;
+  background:linear-gradient(165deg,#f7f2e9,#e9dece);
+  border-top:1px solid #e2d2c0;
+  padding:15px 14px 12px;
+}
+.grigle-preview-surface-head{
+  display:flex;justify-content:space-between;
+  font-size:11px;color:#7b624c;font-weight:800;
+}
+.grigle-preview-surface-head span{
+  border-radius:9px;border:1px solid #d2bca1;background:#fffbf3;
+  padding:3px 7px;letter-spacing:.07em;
+}
+.grigle-direction-stage{
+  position:relative;align-self:center;
+  flex:0 0 181px;width:181px;
+  margin:7px auto 6px;
+  border-radius:32px;
+  background:radial-gradient(circle at 50% 53%,#fffdf4 0 35%,#efe3d1 84%);
+  box-shadow:inset 0 0 0 1px #d8cbb9,0 15px 26px #9d816b17;
+}
+.grigle-center-dot{
+  position:absolute;left:50%;top:54%;z-index:3;
+  width:21px;height:21px;transform:translate(-50%,-50%);
+  border-radius:50%;border:5px solid #d1a788;
+  background:#fffdf9;box-shadow:0 0 0 4px #ffffffa0;
+}
+.grigle-direction-left,.grigle-direction-up{
+  position:absolute;z-index:3;color:#a66a43;font-weight:800;font-size:29px;
+}
+.grigle-direction-left{left:11px;top:75px}
+.grigle-direction-up{left:23px;top:10px}
+.grigle-direction-path{
+  position:absolute;inset:0;width:100%;height:100%;
+  overflow:visible;
+}
+.grigle-direction-path path{
+  fill:none;stroke:#c47d50;stroke-width:7;
+  stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:8 3;
+  filter:drop-shadow(0 2px 3px #ab795741);
+}
+.grigle-direction-path circle{fill:#c47d50;stroke:#fff7ec;stroke-width:3}
+.grigle-direction-result{
+  display:flex;justify-content:center;align-items:center;gap:10px;
+  font-size:19px;font-weight:800;color:#946f56;
+}
+.grigle-direction-result span{background:#fff9f0;border:1px solid #e3c9ae;border-radius:9px;padding:5px 9px}
+.grigle-direction-result i{font-style:normal;color:#a79685}
+.grigle-direction-result strong{
+  background:#6b4f3a;color:#fff;border-radius:13px;padding:8px 13px;font-size:23px;
+}
+.grigle-direction-foot{text-align:center;margin-top:10px;color:#8b7661;font-size:9px;line-height:1.5}
+.grigle-preview-bottom{
+  text-align:center;background:#eae0d3;color:#937a64;
+  padding:9px 8px;font-size:9px;font-weight:750;
+}
+.grigle-source-note,.dzlog-concept-note{
+  color:#615e54;font-size:12px;line-height:1.7;
+  max-width:380px;margin-top:12px;
+}
+@media(prefers-reduced-motion:reduce){.grigle-preview-input i{animation:none}}
+
+/* DZlog — field photography, table recording and filename workflow. */
+.dzlog-record-heading{
+  position:absolute;left:7%;right:7%;top:10%;
+  display:flex;align-items:center;justify-content:space-between;
+  color:#29452c;background:#f9fff1e9;
+  padding:9px 11px;
+  border-radius:9px;border:1px solid #fffef2b0;
+  font-size:11px;font-weight:850;
+  box-shadow:0 7px 18px #415a3f1b;
+}
+.dzlog-record-heading span{font-size:9px;font-weight:700;color:#687d69}
+.dzlog-overlay-note{
+  position:absolute;bottom:9%;left:50%;transform:translateX(-50%);
+  white-space:nowrap;padding:7px 12px;border-radius:999px;
+  color:#fcfff9;background:#354e3cbe;
+  font-size:9px;font-weight:850;letter-spacing:.09em;
+}
+.featured-capture-hint{
+  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+  z-index:4;white-space:nowrap;
+  color:#d3e6d6;background:#243b2bb5;
+  padding:3px 9px;border-radius:30px;
+  font-size:8px;letter-spacing:.03em;font-weight:800;
+}
+.moment-gallery .moment-screen{
+  display:grid;place-items:center;
+  background:linear-gradient(152deg,#eef3e8,#d7e3d4);
+}
+.dzlog-folder-demo{
+  width:calc(100% - 26px);
+  padding:18px 15px 22px;border-radius:19px;
+  background:#fffcf6;
+  border:1px solid #dde7d7;
+  box-shadow:0 18px 30px #4a5f4b20;
+}
+.dzlog-folder-title{
+  display:flex;align-items:center;gap:8px;
+  padding-bottom:13px;margin-bottom:12px;
+  border-bottom:1px solid #e6eadf;
+  font-size:12px;font-weight:850;color:#435945;
+}
+.dzlog-folder-title>span{font-size:15px;color:#7da17a}
+.dzlog-folder-title small{
+  font-size:9px;font-weight:650;margin-left:auto;color:#939e8c;
+}
+.dzlog-folder-level{
+  display:flex;gap:9px;align-items:center;
+  font-size:11px;color:#49634e;font-weight:800;margin:4px 0 15px;
+}
+.dzlog-folder-icon{font-size:17px;color:#93af81}
+.dzlog-file-level{
+  position:relative;
+  display:grid;grid-template-columns:21px minmax(0,1fr);
+  gap:2px 7px;margin-left:19px;margin-bottom:7px;padding:11px 9px;
+  border-radius:10px;background:#eff3ea;color:#4d6250;
+}
+.dzlog-file-level.second{background:#f6f7f2}
+.dzlog-file-icon{grid-row:1/span 2;color:#729078;font-size:18px}
+.dzlog-file-level strong{
+  font-size:10px;overflow-wrap:anywhere;font-weight:800;
+}
+.dzlog-file-level small{color:#8f9d90;font-size:9px}
+@media(max-width:1050px){
+  .grigle-catalog{padding:14px 10px!important}
+  .grigle-catalog-gesture{margin-top:13px;gap:5px;padding:8px 3px}
+  .grigle-catalog-gesture span{width:26px;height:29px;font-size:18px}
+  .grigle-catalog-gesture strong{width:33px;height:34px;font-size:20px}
+  .grigle-catalog-sub{font-size:9px}
+  .grigle-preview-input strong{font-size:14px}
+}
+
+
+/* Catalog preview must override the legacy three-column keyboard grid. */
+.keyboard-product-visual.grigle-catalog{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:0!important;
+}
+.keyboard-product-visual.grigle-catalog .grigle-catalog-top,
+.keyboard-product-visual.grigle-catalog .grigle-catalog-gesture,
+.keyboard-product-visual.grigle-catalog .grigle-catalog-sub{
+  grid-column:auto;
+}
