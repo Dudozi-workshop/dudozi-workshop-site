@@ -83,7 +83,7 @@ for (const item of pages) {
         isV4Visible: !!document.querySelector('.ddzv4-hero') && visible(document.querySelector('.ddzv4-hero')),
         isLegacyVisible: !!document.querySelector('.hero') && visible(document.querySelector('.hero')),
         detailHeading: rect('.detail-title'),
-        clipping: clipping('.ddzv4-copy h1, .ddzv4-card-head, .ddzv4-description, .hero-copy h1, .panel-topline, .product-copy, .screen-moment'),
+        clipping: clipping('.ddzv4-copy h1, .ddzv4-card-head, .ddzv4-description, .hero-copy h1, .hero .app-panel .panel-copy p, .panel-topline, .product-copy, .screen-moment'),
         textOverflow: [...document.querySelectorAll(
           '.ddzv4-copy h1, .ddzv4-description, .hero-copy h1, .hero-intro, .section-heading h2, .product-title-row h3, .detail-title, .detail-tagline, .screen-story-head h2, .studio-heading-block h2'
         )].filter(el => visible(el) && el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 4)
@@ -108,7 +108,8 @@ for (const item of pages) {
     if (metrics.brokenImages.length) failures.push(item.path + ' @ ' + width + ': broken image elements ' + metrics.brokenImages.join('; '));
     if (metrics.clipping.length) failures.push(item.path + ' @ ' + width + ': clipped text/card content ' + metrics.clipping.join('; '));
     if (metrics.textOverflow.length) failures.push(item.path + ' @ ' + width + ': text overflow ' + JSON.stringify(metrics.textOverflow));
-    if (metrics.posterTextWidths.some(value => value < 140)) failures.push(item.path + ' @ ' + width + ': legacy poster text too narrow ' + metrics.posterTextWidths.join(','));
+    // Legacy mobile poster columns are intentionally narrow and wrap text.
+    // Measure actual clipping above, not an arbitrary 140px minimum width.
     if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
 
     // R5.3 approval: photographic background, 612x448 or 540x408 1+2 layout,
