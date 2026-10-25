@@ -192,4 +192,20 @@ for (const file of ['public/home-r2.js', 'scripts/check.mjs', 'scripts/build.mjs
   const result = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
   assert.equal(result.status, 0, file + ': invalid JavaScript\n' + result.stderr);
 }
+
+/* R5.3: desktop background photo replaces all hand-built CSS studio props. */
+const r53Css = readFileSync('public/home-hero-v4-polish-a.css', 'utf8');
+const r53Image = 'public/assets/dudozi-hero-r53-workspace.webp';
+assert.ok(existsSync(r53Image), 'R5.3 approved image is required');
+const r53Binary = readFileSync(r53Image);
+assert.equal(r53Binary.toString('ascii', 0, 4), 'RIFF', 'R5.3 image must be RIFF');
+assert.equal(r53Binary.toString('ascii', 8, 12), 'WEBP', 'R5.3 image must be WebP');
+assert.ok(r53Binary.length < 200000, 'R5.3 background too large');
+assert.ok(homepage.includes('href="/assets/dudozi-hero-r53-workspace.webp"'), 'R5.3 preload missing');
+assert.match(r53Css, /url\('\/assets\/dudozi-hero-r53-workspace\.webp'\)/, 'Selected background image not referenced');
+assert.match(r53Css, /width:\s*min\(960px,\s*100%\)/, 'Single compact values bar missing');
+assert.doesNotMatch(homepage, /ddzv4-decor|class="(?:studio-pencil|studio-cup|studio-frame|studio-leaf)"/, 'R5.2 synthetic hero props must be removed; studio section notes are unrelated');
+assert.doesNotMatch(r53Css, /studio-note|studio-pencil|studio-cup|studio-frame|studio-leaf/, 'Synthetic studio props must be removed from CSS');
+assert.match(r53Css, /@media \(min-width:1051px\)/, 'R5.3 must apply only to desktop');
+
 console.log('Static QA passed: homepage, three app pages, navigation, local assets and JS syntax.');

@@ -5,6 +5,7 @@ on:
     branches:
       - feat/homepage-hero-r2
       - feat/homepage-visual-r3-hifi
+      - feat/homepage-pc-hero-a-r5-20261021
     paths:
       - 'public/**'
       - 'scripts/**'
