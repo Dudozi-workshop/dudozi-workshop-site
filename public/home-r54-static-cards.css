@@ -2,7 +2,7 @@
  * R5.4 image-only desktop cards (Issue #6).
  * Final art is approved for non-production implementation only.
  * Preserve R5.3 hero photograph, headline, CTA, values, and mobile fallback.
- * No image regeneration, object-fit:fill, cropping, or inner UI recreation.
+ * Do not regenerate imagery, stretch, crop, or recreate inner UI.
  */
 @media (min-width:1051px) {
   /* Natural-ratio 1+2 tiles. Outer width and established 16px gutter stay R5.3. */
