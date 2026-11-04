@@ -112,24 +112,34 @@ for (const item of pages) {
     // Measure actual clipping above, not an arbitrary 140px minimum width.
     if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
 
-    // R5.3 approval: photographic background, 612x448 or 540x408 1+2 layout,
-    // compact single-panel values bar; mobile retains the earlier hero.
+    // R5.4 review: R5.3 photographic background and value bar remain unchanged.
+    // Non-production static artwork tiles follow original aspect ratios; mobile stays R5.3.
     if (item.path === '/') {
       const r = metrics;
       if (width >= 1051) {
         const expectedWidth = width >= 1280 ? 612 : 540;
-        const expectedHeight = width >= 1280 ? 448 : 408;
+        const expectedHeight = width >= 1280 ? 341 : 301;
         if (!r.isV4Visible || r.isLegacyVisible) failures.push('R5.3 desktop hero visibility incorrect @ ' + width);
         if (!r.heroBackgroundImage.includes('dudozi-hero-r53-workspace.webp')) {
           failures.push('R5.3 approved photo background missing @ ' + width);
         }
         if (!r.appRail || Math.abs(r.appRail.width - expectedWidth) > 2 ||
             Math.abs(r.appRail.height - expectedHeight) > 2) {
-          failures.push('R5.3 app-card group size @ ' + width + ': ' + JSON.stringify(r.appRail));
+          failures.push('R5.4 app-card group size @ ' + width + ': ' + JSON.stringify(r.appRail));
         }
         if (!r.heroPrimaryCard || !r.heroGrigleCard || !r.heroMylockCard ||
             Math.abs(r.heroPrimaryCard.height - r.heroGrigleCard.height - r.heroMylockCard.height - 16) > 2) {
-          failures.push('R5.3 app-card height balance @ ' + width);
+          failures.push('R5.4 app-card height balance @ ' + width);
+        }
+        const cardImages = await page.locator('.ddzv4-cards.r54-cards .r54-card-image').count();
+        if (cardImages !== 3) failures.push('R5.4 missing desktop source art @ ' + width);
+        const cardFit = await page.locator('.ddzv4-cards.r54-cards .r54-card-image')
+          .evaluateAll(images => images.map(img => ({
+            loaded: img.complete && img.naturalWidth > 0,
+            fit: getComputedStyle(img).objectFit,
+          })));
+        if (cardFit.some(x => !x.loaded || x.fit !== 'contain')) {
+          failures.push('R5.4 image fit or load failure @ ' + width + ': ' + JSON.stringify(cardFit));
         }
         if (!r.heroValueInner || r.heroValueInner.width > 963 ||
             !r.heroValues || r.heroValues.height < 75) {
