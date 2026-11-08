@@ -1,14 +1,18 @@
 /*
- * DOZ R5.4 Desktop Master | review patch v0.1 | 2026-11-08
+ * DOZ R5.4 Desktop Master | review patch v0.2 | 2026-11-08
  * Scope: PC >= 1200px only. Append after home-r54-static-cards.css.
  * Never overwrite or regenerate the three approved card images.
  * DO NOT ship to production until visual QA and explicit approval.
  */
 @media (min-width: 1200px) {
-  /* Same stable left edge for the logo and hero content. */
+  /* 1440px reference: 40px on either edge.
+     At 1920px only ~48px outside; growing width becomes internal white space.
+     Keep logo/copy aligned; the card group hugs the right design grid. */
+  --doz-pc-total-gutter: clamp(80px, 5vw, 128px);
   .site-header .header-content,
   .ddzv4-hero-main {
-    width: min(var(--content-max, 1400px), calc(100% - 80px));
+    width: calc(100% - var(--doz-pc-total-gutter));
+    max-width: none;
   }
 
   /* Comfortable rhythm without changing content, page background, or CTA copy. */
@@ -48,10 +52,17 @@
     object-position: center center;
   }
 
-  /* Settle the value strip near the visual floor of the first viewport. */
+  /* Full-screen picture including the value strip:
+     the 95px panel overlaps the 100svh hero; 32px stays below it.
+     (95 + 32)px negative overlap balances panel + padding, so the next
+     section begins AFTER the first viewport without a cropped footer. */
+  .ddzv4-hero,
+  .ddzv4-hero-main {
+    min-height: max(700px, 100svh);
+  }
   .ddzv4-values {
-    margin-top: -92px;
-    padding-bottom: 20px;
+    margin-top: -127px;
+    padding: 0 24px 32px;
   }
   .ddzv4-values-inner {
     min-height: 95px;
@@ -60,6 +71,7 @@
 
 /* 4.6% larger card family only where the copy still has ample width. */
 @media (min-width: 1440px) {
+  .ddzv4-copy h1 { font-size: 38px; }
   .ddzv4-cards.r54-cards {
     width: 680px;
     height: 400px;

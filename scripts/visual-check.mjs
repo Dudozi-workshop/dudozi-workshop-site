@@ -82,6 +82,14 @@ for (const item of pages) {
         heroValueCentres: [...document.querySelectorAll('.ddzv4-value')]
           .filter(visible).map(el => Math.round(el.getBoundingClientRect().x + el.getBoundingClientRect().width / 2)),
         heroValueInner: rect('.ddzv4-values-inner'),
+        firstFollowingSection: rect('.overview'),
+        titleInkRight: (() => {
+          const el = document.querySelector('.ddzv4-copy h1');
+          if (!el) return null;
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          return Math.round(range.getBoundingClientRect().right);
+        })(),
         heroBackgroundImage: document.querySelector('.ddzv4-hero') ? getComputedStyle(document.querySelector('.ddzv4-hero'), '::before').backgroundImage : '',
         isV4Visible: !!document.querySelector('.ddzv4-hero') && visible(document.querySelector('.ddzv4-hero')),
         isLegacyVisible: !!document.querySelector('.hero') && visible(document.querySelector('.hero')),
@@ -170,6 +178,28 @@ for (const item of pages) {
           failures.push('R5.4 first-screen value bar end @ ' + width + 'x' +
                         viewportHeight + ': ' + JSON.stringify(r.heroValues));
         }
+        if (width >= 1200) {
+          const expectedOuter = Math.min(64, Math.max(40, width * 0.025));
+          const actualLeft = r.heroCopy?.x;
+          const actualRight = r.appRail ? width - r.appRail.x - r.appRail.width : null;
+          if (actualLeft === null || actualRight === null ||
+              Math.abs(actualLeft - expectedOuter) > 4 ||
+              Math.abs(actualRight - expectedOuter) > 4) {
+            failures.push('R5.4 PC edge gutters @ ' + width + ': ' +
+                          JSON.stringify({ expectedOuter, actualLeft, actualRight }));
+          }
+          const panelBottom = r.heroValueInner?.y + r.heroValueInner?.height;
+          if (!Number.isFinite(panelBottom) ||
+              Math.abs(viewportHeight - panelBottom - 32) > 4) {
+            failures.push('R5.4 PC values safety margin @ ' + width + ': ' +
+                          JSON.stringify({ panelBottom, viewportHeight }));
+          }
+          if (!r.firstFollowingSection ||
+              Math.abs(r.firstFollowingSection.y - viewportHeight) > 4) {
+            failures.push('R5.4 hero follow-on section starts inside viewport @ ' +
+                          width + ': ' + JSON.stringify(r.firstFollowingSection));
+          }
+        }
       }
       if (width >= 768 && r.heroCopy && r.heroHeader &&
           Math.abs(r.heroCopy.x - r.heroHeader.x) > 3) {
@@ -204,6 +234,18 @@ for (const item of pages) {
     }
 
     await page.close();
+  }
+}
+// The 1920px PC expands the space BETWEEN copy and cards, not outer margins.
+const wide = report.find(x => x.page === '/' && x.width === 1920);
+const baseline = report.find(x => x.page === '/' && x.width === 1440);
+if (wide && baseline) {
+  const gap = x => x.titleInkRight === null || !x.appRail
+    ? null : x.appRail.x - x.titleInkRight;
+  if (gap(wide) === null || gap(baseline) === null ||
+      gap(wide) - gap(baseline) < 300) {
+    failures.push('R5.4 wide-screen inner gap did not expand enough: ' +
+                  JSON.stringify({ at1440: gap(baseline), at1920: gap(wide) }));
   }
 }
 await browser.close();

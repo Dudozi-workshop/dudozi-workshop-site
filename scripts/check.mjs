@@ -20,7 +20,7 @@ const requiredAssets = [
   'public/assets/app-grigle-launcher.webp',
   'public/assets/app-mylock-launcher.png',
   'public/home-r54-static-cards.css',
-  'public/home-r54-desktop-master-v01.css',
+  'public/home-r54-desktop-master-v02.css',
   'public/assets/home-r54-dzlog.webp',
   'public/assets/home-r54-grigle.webp',
   'public/assets/home-r54-mylock.webp',
@@ -112,7 +112,7 @@ assert.match(homepage, /class="ddzv4-values"/, 'PC Hero v4 values missing');
 assert.match(homepage, /id="ddzv4-title"/, 'PC Hero v4 headline missing');
 assert.match(homepage, /class="ddzv4-cards r54-cards"/, 'R5.4 1+2 card layout missing');
 assert.ok(homepage.includes('href="/home-r54-static-cards.css"'), 'R5.4 stylesheet missing');
-assert.ok(homepage.includes('href="/home-r54-desktop-master-v01.css"'), 'Desktop Master stylesheet missing');
+assert.ok(homepage.includes('href="/home-r54-desktop-master-v02.css"'), 'Desktop Master stylesheet missing');
 for (const [app, width, height] of [
   ['dzlog', 710, 866], ['grigle', 1672, 941], ['mylock', 839, 390]
 ]) {
@@ -136,9 +136,12 @@ const liveTokens = readFileSync('public/styles/tokens.css', 'utf8');
 for (const token of ['--doz-button-height:48px', '--radius-card:24px', '--content-max:1400px']) {
   assert.ok(liveTokens.includes(token), 'DOZ shared token missing: ' + token);
 }
-const desktopMasterCss = readFileSync('public/home-r54-desktop-master-v01.css', 'utf8');
+const desktopMasterCss = readFileSync('public/home-r54-desktop-master-v02.css', 'utf8');
 assert.match(desktopMasterCss, /@media \(min-width: 1440px\)/, 'Desktop Master must only enlarge wide PC');
 assert.match(desktopMasterCss, /width: 680px/, 'Desktop Master enlarged card group missing');
+assert.match(desktopMasterCss, /--doz-pc-total-gutter: clamp\(80px, 5vw, 128px\)/, 'Responsive outer gutter token missing');
+assert.match(desktopMasterCss, /margin-top: -127px/, 'Full-screen first-fold value strip overlap missing');
+
 assert.match(desktopMasterCss, /grid-template-rows: repeat\(2, minmax\(0, 1fr\)\)/, 'Desktop Master equal side card height missing');
 assert.match(desktopMasterCss, /object-fit: contain/, 'Desktop Master must not crop approved art');
 const r54Css = readFileSync('public/home-r54-static-cards.css', 'utf8');
