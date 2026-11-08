@@ -1,8 +1,14 @@
 name: Preview workshop website
 
-# Publish preview only when manually approved; avoids a deployment on every design commit.
+# One-time user-requested R5.4 PC 1440 Master v0.2 preview.
+# Restore manual-only operation as soon as deployment completes.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - feat/homepage-r54-static-cards-20261104
+    paths:
+      - '.github/workflows/preview.yml'
 
 permissions:
   contents: read
@@ -13,6 +19,7 @@ concurrency:
 
 jobs:
   preview:
+    if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/feat/homepage-r54-static-cards-20261104' && contains(github.event.head_commit.message, '[r54-pc-1440-master-v02]'))
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
