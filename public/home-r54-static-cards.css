@@ -162,6 +162,7 @@
   .ddzv4-cards.r54-cards {
     align-self:center;
     width:min(650px,100%);height:auto;aspect-ratio:650 / 382;
+    flex:0 0 auto;
     grid-template-rows:minmax(0,1fr);
   }
   .ddzv4-cards.r54-cards .ddzv4-side {height:100%;width:100%;}
