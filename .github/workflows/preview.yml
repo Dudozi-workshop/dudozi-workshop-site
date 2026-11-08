@@ -1,15 +1,8 @@
 name: Preview workshop website
 
-# User-approved one-time nonproduction preview for PR #7 (2026-11-07).
-# Trigger only on this exact branch + workflow file, with an explicit commit marker.
-# Restore the original manual-only workflow after deployment.
+# Publish preview only when manually approved; avoids a deployment on every design commit.
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feat/homepage-r54-static-cards-20261104
-    paths:
-      - '.github/workflows/preview.yml'
 
 permissions:
   contents: read
@@ -20,7 +13,6 @@ concurrency:
 
 jobs:
   preview:
-    if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/feat/homepage-r54-static-cards-20261104' && contains(github.event.head_commit.message, '[r54-preview-approved]'))
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
