@@ -11,7 +11,7 @@ const report = [];
 const failures = [];
 
 const pages = [
-  { path: '/', label: 'home', widths: [1440, 1280, 1100, 1050, 768, 390] },
+  { path: '/', label: 'home', widths: [1920, 1650, 1440, 1280, 1200, 1100, 1050, 1024, 820, 768, 767, 430, 390, 360] },
   { path: '/apps/dzlog/', label: 'dzlog', widths: [1440, 1280, 1100] },
   { path: '/apps/grigle/', label: 'grigle', widths: [1440, 1280, 1100] },
   { path: '/apps/mylock/', label: 'mylock', widths: [1440, 1280, 1100] },
@@ -19,7 +19,9 @@ const pages = [
 
 for (const item of pages) {
   for (const width of item.widths) {
-    const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
+    const viewportHeight = item.path === '/' && width === 1920 ? 1080
+      : item.path === '/' && width === 1280 ? 800 : 900;
+    const page = await browser.newPage({ viewport: { width, height: viewportHeight }, deviceScaleFactor: 1 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const pageErrors = [];
     const failedAssets = [];
@@ -72,6 +74,7 @@ for (const item of pages) {
         appRail: rect('.ddzv4-cards'),
         heroV4: rect('.ddzv4-hero'),
         heroCopy: rect('.ddzv4-copy'),
+        heroHeader: rect('.site-header .header-content'),
         heroValues: rect('.ddzv4-values'),
         heroPrimaryCard: rect('.ddzv4-dz'),
         heroGrigleCard: rect('.ddzv4-grigle'),
@@ -79,6 +82,14 @@ for (const item of pages) {
         heroValueCentres: [...document.querySelectorAll('.ddzv4-value')]
           .filter(visible).map(el => Math.round(el.getBoundingClientRect().x + el.getBoundingClientRect().width / 2)),
         heroValueInner: rect('.ddzv4-values-inner'),
+        firstFollowingSection: rect('.overview'),
+        titleInkRight: (() => {
+          const el = document.querySelector('.ddzv4-copy h1');
+          if (!el) return null;
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          return Math.round(range.getBoundingClientRect().right);
+        })(),
         heroBackgroundImage: document.querySelector('.ddzv4-hero') ? getComputedStyle(document.querySelector('.ddzv4-hero'), '::before').backgroundImage : '',
         isV4Visible: !!document.querySelector('.ddzv4-hero') && visible(document.querySelector('.ddzv4-hero')),
         isLegacyVisible: !!document.querySelector('.hero') && visible(document.querySelector('.hero')),
@@ -112,39 +123,87 @@ for (const item of pages) {
     // Measure actual clipping above, not an arbitrary 140px minimum width.
     if (metrics.primaryVisualOutsideViewport.length) failures.push(item.path + ' @ ' + width + ': central showcase outside viewport ' + metrics.primaryVisualOutsideViewport.join('; '));
 
-    // R5.3 approval: photographic background, 612x448 or 540x408 1+2 layout,
-    // compact single-panel values bar; mobile retains the earlier hero.
+    // DOZ R5.4: the same approved artwork and hero information on all widths.
     if (item.path === '/') {
       const r = metrics;
-      if (width >= 1051) {
-        const expectedWidth = width >= 1280 ? 612 : 540;
-        const expectedHeight = width >= 1280 ? 448 : 408;
-        if (!r.isV4Visible || r.isLegacyVisible) failures.push('R5.3 desktop hero visibility incorrect @ ' + width);
-        if (!r.heroBackgroundImage.includes('dudozi-hero-r53-workspace.webp')) {
-          failures.push('R5.3 approved photo background missing @ ' + width);
-        }
-        if (!r.appRail || Math.abs(r.appRail.width - expectedWidth) > 2 ||
-            Math.abs(r.appRail.height - expectedHeight) > 2) {
-          failures.push('R5.3 app-card group size @ ' + width + ': ' + JSON.stringify(r.appRail));
-        }
-        if (!r.heroPrimaryCard || !r.heroGrigleCard || !r.heroMylockCard ||
-            Math.abs(r.heroPrimaryCard.height - r.heroGrigleCard.height - r.heroMylockCard.height - 16) > 2) {
-          failures.push('R5.3 app-card height balance @ ' + width);
-        }
-        if (!r.heroValueInner || r.heroValueInner.width > 963 ||
-            !r.heroValues || r.heroValues.height < 75) {
-          failures.push('R5.3 compact value panel dimensions @ ' + width);
-        }
-        if (r.heroValueInner && r.heroValueCentres.length === 3) {
-          const expected = [1/6, 1/2, 5/6].map(frac => r.heroValueInner.x + r.heroValueInner.width * frac);
-          if (r.heroValueCentres.some((x, i) => Math.abs(x - expected[i]) > 12)) {
-            failures.push('R5.3 value icon centres @ ' + width + ': ' + JSON.stringify(r.heroValueCentres));
-          }
-        } else {
-          failures.push('R5.3 values must stay in one three-column panel @ ' + width);
-        }
+      if (!r.isV4Visible || r.isLegacyVisible) {
+        failures.push('R5.4 unified hero visibility @ ' + width);
+      }
+      if (!r.heroBackgroundImage.includes('dudozi-hero-r53-workspace.webp')) {
+        failures.push('R5.4 approved photographic hero background missing @ ' + width);
+      }
+      if (!r.appRail || !r.heroPrimaryCard || !r.heroGrigleCard || !r.heroMylockCard || !r.heroValues) {
+        failures.push('R5.4 visible app card geometry/value bar missing @ ' + width);
       } else {
-        if (r.isV4Visible || !r.isLegacyVisible) failures.push('Legacy mobile hero visibility incorrect @ ' + width);
+        const expectedWidth = width >= 1440 ? 680 : width >= 768 ? 650 : null;
+        if (expectedWidth && Math.abs(r.appRail.width - expectedWidth) > 2) {
+          failures.push('R5.4 card group width @ ' + width + ': ' + JSON.stringify(r.appRail));
+        }
+        if (width >= 768) {
+          const expectedHeight = width >= 1440 ? 400 : 382;
+          if (Math.abs(r.appRail.height - expectedHeight) > 3) {
+            failures.push('R5.4 group height @ ' + width + ': ' + JSON.stringify(r.appRail));
+          }
+          if (Math.abs(r.heroGrigleCard.height - r.heroMylockCard.height) > 1) {
+            failures.push('R5.4 side cards must have equal height @ ' + width);
+          }
+          if (Math.abs(r.heroPrimaryCard.height - r.heroGrigleCard.height -
+                       r.heroMylockCard.height - 16) > 2) {
+            failures.push('R5.4 1+2 vertical balance @ ' + width);
+          }
+        } else if (!(r.heroPrimaryCard.y < r.heroGrigleCard.y &&
+                     r.heroGrigleCard.y < r.heroMylockCard.y)) {
+          failures.push('R5.4 mobile cards must stack @ ' + width);
+        }
+      }
+      const cards = await page.locator('.ddzv4-cards.r54-cards .r54-card-image')
+        .evaluateAll(images => images.map(img => ({
+          loaded: img.complete && img.naturalWidth > 0,
+          fit: getComputedStyle(img).objectFit,
+        })));
+      if (cards.length !== 3 || cards.some(img => !img.loaded || img.fit !== 'contain')) {
+        failures.push('R5.4 image assets/fitting incorrect @ ' + width + ': ' + JSON.stringify(cards));
+      }
+      if (!r.heroValueInner || r.heroValueCentres.length !== 3) {
+        failures.push('R5.4 unified values panel missing @ ' + width);
+      }
+      if (width >= 1200 && r.heroValueInner && r.heroValues) {
+        const expectedCentres = [1/6, 1/2, 5/6]
+          .map(frac => r.heroValueInner.x + r.heroValueInner.width * frac);
+        if (r.heroValueCentres.some((x, i) => Math.abs(x - expectedCentres[i]) > 15)) {
+          failures.push('R5.4 value centres @ ' + width);
+        }
+        if (width >= 1200 &&
+            Math.abs(r.heroValues.y + r.heroValues.height - viewportHeight) > 10) {
+          failures.push('R5.4 first-screen value bar end @ ' + width + 'x' +
+                        viewportHeight + ': ' + JSON.stringify(r.heroValues));
+        }
+        if (width >= 1200) {
+          const expectedOuter = Math.min(64, Math.max(40, width * 0.025));
+          const actualLeft = r.heroCopy?.x;
+          const actualRight = r.appRail ? width - r.appRail.x - r.appRail.width : null;
+          if (actualLeft === null || actualRight === null ||
+              Math.abs(actualLeft - expectedOuter) > 4 ||
+              Math.abs(actualRight - expectedOuter) > 4) {
+            failures.push('R5.4 PC edge gutters @ ' + width + ': ' +
+                          JSON.stringify({ expectedOuter, actualLeft, actualRight }));
+          }
+          const panelBottom = r.heroValueInner?.y + r.heroValueInner?.height;
+          if (!Number.isFinite(panelBottom) ||
+              Math.abs(viewportHeight - panelBottom - 32) > 4) {
+            failures.push('R5.4 PC values safety margin @ ' + width + ': ' +
+                          JSON.stringify({ panelBottom, viewportHeight }));
+          }
+          if (!r.firstFollowingSection ||
+              Math.abs(r.firstFollowingSection.y - viewportHeight) > 4) {
+            failures.push('R5.4 hero follow-on section starts inside viewport @ ' +
+                          width + ': ' + JSON.stringify(r.firstFollowingSection));
+          }
+        }
+      }
+      if (width >= 768 && r.heroCopy && r.heroHeader &&
+          Math.abs(r.heroCopy.x - r.heroHeader.x) > 3) {
+        failures.push('R5.4 heading/header misaligned @ ' + width);
       }
     }
 
@@ -177,6 +236,18 @@ for (const item of pages) {
     await page.close();
   }
 }
+// The 1920px PC expands the space BETWEEN copy and cards, not outer margins.
+const wide = report.find(x => x.page === '/' && x.width === 1920);
+const baseline = report.find(x => x.page === '/' && x.width === 1440);
+if (wide && baseline) {
+  const gap = x => x.titleInkRight === null || !x.appRail
+    ? null : x.appRail.x - x.titleInkRight;
+  if (gap(wide) === null || gap(baseline) === null ||
+      gap(wide) - gap(baseline) < 300) {
+    failures.push('R5.4 wide-screen inner gap did not expand enough: ' +
+                  JSON.stringify({ at1440: gap(baseline), at1920: gap(wide) }));
+  }
+}
 await browser.close();
 writeFileSync(output + '/report.json', JSON.stringify(report, null, 2));
 report.forEach(x => console.log(JSON.stringify(x)));
@@ -184,5 +255,5 @@ if (failures.length) {
   console.error('Visual QA failed: ' + failures.join(' | '));
   process.exitCode = 1;
 } else {
-  console.log('Visual QA passed: R5.3 PC 1440/1280/1100 + mobile 1050/768/390, app detail routes, navigation, text fit, assets and JS.');
+  console.log('Visual QA passed: R5.4 unified hero, responsive 1+2/stacked cards, app navigation, image fitting and R5.3 art preserved.');
 }

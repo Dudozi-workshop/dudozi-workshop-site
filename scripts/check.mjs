@@ -19,6 +19,11 @@ const requiredAssets = [
   'public/assets/app-dzlog-launcher.webp',
   'public/assets/app-grigle-launcher.webp',
   'public/assets/app-mylock-launcher.png',
+  'public/home-r54-static-cards.css',
+  'public/home-r54-desktop-master-v02.css',
+  'public/assets/home-r54-dzlog.webp',
+  'public/assets/home-r54-grigle.webp',
+  'public/assets/home-r54-mylock.webp',
   'public/styles/app-brand-icons.css',
   'public/vendor/modern-normalize.css',
   'public/vendor/modern-normalize.LICENSE',
@@ -105,13 +110,51 @@ assert.ok(homepage.includes('href="/home-hero-v4-pc.css"'), 'PC Hero v4 style mu
 assert.match(homepage, /class="ddzv4-hero"/, 'PC Hero v4 missing');
 assert.match(homepage, /class="ddzv4-values"/, 'PC Hero v4 values missing');
 assert.match(homepage, /id="ddzv4-title"/, 'PC Hero v4 headline missing');
-assert.match(homepage, /class="ddzv4-keyboard"/, 'Grigle keyboard concept missing');
-assert.match(homepage, /ddzv4-direction ddzv4-center/, 'Grigle actual four-direction pad missing');
-assert.match(homepage, /class="ddzv4-finger"/, 'Grigle gesture demonstration missing');
-assert.match(homepage, /ddzv4-frame-corner top-left/, 'DZlog camera frame corners missing');
-assert.match(homepage, /ddzv4-camera-filename/, 'DZlog capture filename preview missing');
-assert.ok(homepage.includes('T1_01.jpg'), 'DZlog filename placeholder missing');
-assert.match(homepage, /class="ddzv4-candy-art"/, 'MY LOCK approved art container missing');
+assert.match(homepage, /class="ddzv4-cards r54-cards"/, 'R5.4 1+2 card layout missing');
+assert.ok(homepage.includes('href="/home-r54-static-cards.css"'), 'R5.4 stylesheet missing');
+assert.ok(homepage.includes('href="/home-r54-desktop-master-v02.css"'), 'Desktop Master stylesheet missing');
+for (const [app, width, height] of [
+  ['dzlog', 710, 866], ['grigle', 1672, 941], ['mylock', 839, 390]
+]) {
+  const path = 'public/assets/home-r54-' + app + '.webp';
+  assert.ok(existsSync(path), 'R5.4 missing source image ' + path);
+  const blob = readFileSync(path);
+  assert.equal(blob.toString('ascii', 0, 4), 'RIFF', 'R5.4 image must be WebP: ' + app);
+  assert.equal(blob.toString('ascii', 8, 12), 'WEBP', 'R5.4 image must be WebP: ' + app);
+  assert.ok(blob.length < 400000, 'R5.4 image too large: ' + app);
+  assert.match(homepage, new RegExp('src="/assets/home-r54-' + app + '\\.webp"[^>]*width="' + width + '" height="' + height + '"'), 'R5.4 image mapping incorrect: ' + app);
+}
+const dozUi = readFileSync('docs/design-system/DOZ_UI_SYSTEM_V1_0.md', 'utf8');
+const dozCard = readFileSync('docs/design-system/DOZ_CARD_ART_STANDARD_V1_0.md', 'utf8');
+const dozHero = readFileSync('docs/design-system/HOMEPAGE_R54_HERO_REVISION_SPEC.md', 'utf8');
+const repoRules = readFileSync('AGENTS.md', 'utf8');
+assert.match(repoRules, /DOZ UI System v1.0/, 'Mandatory design system AGENTS reference missing');
+assert.match(dozUi, /--color-green/, 'UI design tokens reference incomplete');
+assert.match(dozCard, /공식 앱 아이콘/, 'Card design source-accuracy policy missing');
+assert.match(dozHero, /우측/, 'Hero revision spec missing');
+const liveTokens = readFileSync('public/styles/tokens.css', 'utf8');
+for (const token of ['--doz-button-height:48px', '--radius-card:24px', '--content-max:1400px']) {
+  assert.ok(liveTokens.includes(token), 'DOZ shared token missing: ' + token);
+}
+const desktopMasterCss = readFileSync('public/home-r54-desktop-master-v02.css', 'utf8');
+assert.match(desktopMasterCss, /@media \(min-width: 1440px\)/, 'Desktop Master must only enlarge wide PC');
+assert.match(desktopMasterCss, /width: 680px/, 'Desktop Master enlarged card group missing');
+assert.match(desktopMasterCss, /--doz-pc-total-gutter: clamp\(80px, 5vw, 128px\)/, 'Responsive outer gutter token missing');
+assert.match(desktopMasterCss, /margin-top: -127px/, 'Full-screen first-fold value strip overlap missing');
+
+assert.match(desktopMasterCss, /grid-template-rows: repeat\(2, minmax\(0, 1fr\)\)/, 'Desktop Master equal side card height missing');
+assert.match(desktopMasterCss, /object-fit: contain/, 'Desktop Master must not crop approved art');
+const r54Css = readFileSync('public/home-r54-static-cards.css', 'utf8');
+assert.match(r54Css, /object-fit:contain/, 'R5.4 cards must not crop artwork');
+assert.doesNotMatch(r54Css, /object-fit:(?:cover|fill)/, 'R5.4 should not crop or stretch image');
+
+
+
+
+
+
+
+
 assert.doesNotMatch(homepage, /ddzv4-lock-shapes/, 'MY LOCK must not use redrawn generic shapes in PC hero');
 assert.match(homepage, /product-small-link/, 'Supporting app detail links missing');
 for (const [name, extension] of [['dzlog', 'webp'], ['grigle', 'webp'], ['mylock', 'png']]) {
