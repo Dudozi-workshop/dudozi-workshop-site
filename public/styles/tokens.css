@@ -8,13 +8,24 @@
   --color-edge:#d5d8cb;
   --color-paper:#fffdf8;
   --radius-pill:999px;
-  --radius-card:28px;
+  --radius-card:24px;
+  --radius-panel:16px;
+  --doz-button-height:48px;
+  --doz-header-height:84px;
+  --doz-mobile-gutter:18px;
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
   --radius-card-small:20px;
   --shadow-soft:0 14px 38px #5d665915;
   --shadow-hover:0 22px 48px #545d5024;
   --section-space:118px;
-  --content-max:1460px;
-  --content-gutter:100px;
+  --content-max:1400px;
+  --content-gutter:80px;
   --focus-ring:#537b55;
 }
 @media(max-width:1360px){:root{--content-max:1300px;--content-gutter:64px}}

@@ -122,6 +122,18 @@ for (const [app, width, height] of [
   assert.ok(blob.length < 400000, 'R5.4 image too large: ' + app);
   assert.match(homepage, new RegExp('src="/assets/home-r54-' + app + '\\.webp"[^>]*width="' + width + '" height="' + height + '"'), 'R5.4 image mapping incorrect: ' + app);
 }
+const dozUi = readFileSync('docs/design-system/DOZ_UI_SYSTEM_V1_0.md', 'utf8');
+const dozCard = readFileSync('docs/design-system/DOZ_CARD_ART_STANDARD_V1_0.md', 'utf8');
+const dozHero = readFileSync('docs/design-system/HOMEPAGE_R54_HERO_REVISION_SPEC.md', 'utf8');
+const repoRules = readFileSync('AGENTS.md', 'utf8');
+assert.match(repoRules, /DOZ UI System v1.0/, 'Mandatory design system AGENTS reference missing');
+assert.match(dozUi, /--color-green/, 'UI design tokens reference incomplete');
+assert.match(dozCard, /공식 앱 아이콘/, 'Card design source-accuracy policy missing');
+assert.match(dozHero, /우측/, 'Hero revision spec missing');
+const liveTokens = readFileSync('public/styles/tokens.css', 'utf8');
+for (const token of ['--doz-button-height:48px', '--radius-card:24px', '--content-max:1400px']) {
+  assert.ok(liveTokens.includes(token), 'DOZ shared token missing: ' + token);
+}
 const r54Css = readFileSync('public/home-r54-static-cards.css', 'utf8');
 assert.match(r54Css, /object-fit:contain/, 'R5.4 cards must not crop artwork');
 assert.doesNotMatch(r54Css, /object-fit:(?:cover|fill)/, 'R5.4 should not crop or stretch image');

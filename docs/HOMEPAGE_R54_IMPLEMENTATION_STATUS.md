@@ -25,3 +25,11 @@
 - Confirm real card pixel appearance, alignment, links, mobile legacy visibility, external image/font requests.
 - This implementation branch / draft PR **must not be merged or deployed** until the user separately approves final web preview.
 - Homepage operational version remains **R5.3**. Production deployment is out of scope.
+
+## 2026-11-08 · DOZ UI System v1.0 non-production design normalization
+
+- Required references: `AGENTS.md` plus `docs/design-system/{DOZ_UI_SYSTEM_V1_0,DOZ_CARD_ART_STANDARD_V1_0,HOMEPAGE_R54_HERO_REVISION_SPEC}.md`; future agents must read before site or card-generation work.
+- Shared CSS tokens (24px radius, 48px button, 1400px max content and spacing scale) drive R5.4 hero/header/cards; the three artwork image files and links are unchanged.
+- Layout for non-production review: >=1200px copy left + 650×382 image group right, two right tiles equal-height. 768–1199px same image group beneath copy. <=767px independent cards stacked. R5.3 photo/background and user-approved copy maintained.
+- Hero + value strip designed to fill a typical 900px desktop viewport, while shorter/mobile screens naturally scroll. App detail sections are outside this first migration step.
+- Status: **Draft PR #7; user visual QA pending**. Production `main`, Cloudflare R5.3, and previous approved image assets preserved. Any later deploy needs separate approval.
