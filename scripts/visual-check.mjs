@@ -11,7 +11,7 @@ const report = [];
 const failures = [];
 
 const pages = [
-  { path: '/', label: 'home', widths: [1650, 1440, 1280, 1200, 1100, 1050, 1024, 820, 768, 767, 430, 390, 360] },
+  { path: '/', label: 'home', widths: [1920, 1650, 1440, 1280, 1200, 1100, 1050, 1024, 820, 768, 767, 430, 390, 360] },
   { path: '/apps/dzlog/', label: 'dzlog', widths: [1440, 1280, 1100] },
   { path: '/apps/grigle/', label: 'grigle', widths: [1440, 1280, 1100] },
   { path: '/apps/mylock/', label: 'mylock', widths: [1440, 1280, 1100] },
@@ -19,7 +19,9 @@ const pages = [
 
 for (const item of pages) {
   for (const width of item.widths) {
-    const page = await browser.newPage({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
+    const viewportHeight = item.path === '/' && width === 1920 ? 1080
+      : item.path === '/' && width === 1280 ? 800 : 900;
+    const page = await browser.newPage({ viewport: { width, height: viewportHeight }, deviceScaleFactor: 1 });
     await page.emulateMedia({ reducedMotion: 'reduce' });
     const pageErrors = [];
     const failedAssets = [];
@@ -125,12 +127,13 @@ for (const item of pages) {
       if (!r.appRail || !r.heroPrimaryCard || !r.heroGrigleCard || !r.heroMylockCard || !r.heroValues) {
         failures.push('R5.4 visible app card geometry/value bar missing @ ' + width);
       } else {
-        const expectedWidth = width >= 768 ? 650 : null;
+        const expectedWidth = width >= 1440 ? 680 : width >= 768 ? 650 : null;
         if (expectedWidth && Math.abs(r.appRail.width - expectedWidth) > 2) {
           failures.push('R5.4 card group width @ ' + width + ': ' + JSON.stringify(r.appRail));
         }
         if (width >= 768) {
-          if (Math.abs(r.appRail.height - 382) > 3) {
+          const expectedHeight = width >= 1440 ? 400 : 382;
+          if (Math.abs(r.appRail.height - expectedHeight) > 3) {
             failures.push('R5.4 group height @ ' + width + ': ' + JSON.stringify(r.appRail));
           }
           if (Math.abs(r.heroGrigleCard.height - r.heroMylockCard.height) > 1) {
@@ -162,8 +165,10 @@ for (const item of pages) {
         if (r.heroValueCentres.some((x, i) => Math.abs(x - expectedCentres[i]) > 15)) {
           failures.push('R5.4 value centres @ ' + width);
         }
-        if (width >= 1280 && r.heroValues.y + r.heroValues.height < 875) {
-          failures.push('R5.4 hero does not fill the first 900px viewport @ ' + width);
+        if (width >= 1200 &&
+            Math.abs(r.heroValues.y + r.heroValues.height - viewportHeight) > 10) {
+          failures.push('R5.4 first-screen value bar end @ ' + width + 'x' +
+                        viewportHeight + ': ' + JSON.stringify(r.heroValues));
         }
       }
       if (width >= 768 && r.heroCopy && r.heroHeader &&

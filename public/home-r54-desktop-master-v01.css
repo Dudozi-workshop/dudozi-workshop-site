@@ -1,0 +1,81 @@
+/*
+ * DOZ R5.4 Desktop Master | review patch v0.1 | 2026-11-08
+ * Scope: PC >= 1200px only. Append after home-r54-static-cards.css.
+ * Never overwrite or regenerate the three approved card images.
+ * DO NOT ship to production until visual QA and explicit approval.
+ */
+@media (min-width: 1200px) {
+  /* Same stable left edge for the logo and hero content. */
+  .site-header .header-content,
+  .ddzv4-hero-main {
+    width: min(var(--content-max, 1400px), calc(100% - 80px));
+  }
+
+  /* Comfortable rhythm without changing content, page background, or CTA copy. */
+  .ddzv4-hero-main {
+    gap: clamp(36px, 3.4vw, 56px);
+  }
+  .ddzv4-copy {
+    transform: none;
+  }
+  .ddzv4-copy h1 {
+    font-size: clamp(38px, 2.25vw, 42px);
+    line-height: 1.43;
+    letter-spacing: -0.05em;
+  }
+  .ddzv4-actions {
+    margin-top: 30px;
+    gap: 12px;
+  }
+  .ddzv4-action,
+  .site-header .header-cta {
+    min-height: var(--doz-button-height, 48px);
+  }
+
+  /* Preserve ratio and the same-height right cards. */
+  .ddzv4-cards.r54-cards {
+    transform: none;
+  }
+  .ddzv4-cards.r54-cards .ddzv4-side {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  .ddzv4-cards.r54-cards .r54-card {
+    border-radius: var(--radius-card, 24px);
+    box-shadow: var(--shadow-soft, 0 14px 38px #5d665915);
+  }
+  .ddzv4-cards.r54-cards .r54-card-image {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  /* Settle the value strip near the visual floor of the first viewport. */
+  .ddzv4-values {
+    margin-top: -92px;
+    padding-bottom: 20px;
+  }
+  .ddzv4-values-inner {
+    min-height: 95px;
+  }
+}
+
+/* 4.6% larger card family only where the copy still has ample width. */
+@media (min-width: 1440px) {
+  .ddzv4-cards.r54-cards {
+    width: 680px;
+    height: 400px;
+    flex: 0 0 680px;
+    grid-template-columns: 326px 338px;
+    grid-template-rows: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .ddzv4-cards.r54-cards .ddzv4-side {
+    width: 338px;
+    height: 400px;
+    gap: 16px;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ddzv4-cards.r54-cards .r54-card { transition: none; }
+}

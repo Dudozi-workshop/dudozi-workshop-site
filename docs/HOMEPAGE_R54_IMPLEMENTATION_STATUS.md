@@ -33,3 +33,10 @@
 - Layout for non-production review: >=1200px copy left + 650×382 image group right, two right tiles equal-height. 768–1199px same image group beneath copy. <=767px independent cards stacked. R5.3 photo/background and user-approved copy maintained.
 - Hero + value strip designed to fill a typical 900px desktop viewport, while shorter/mobile screens naturally scroll. App detail sections are outside this first migration step.
 - Status: **Draft PR #7; user visual QA pending**. Production `main`, Cloudflare R5.3, and previous approved image assets preserved. Any later deploy needs separate approval.
+
+## 2026-11-08 · PC Desktop Master v0.1 (비운영 시험)
+
+- 기존 `r54_desktop_master_patch_v01.zip`에서 PC 전용 CSS를 `public/home-r54-desktop-master-v01.css`로 반영, 카드 CSS 뒤에서 적용. 범위 `>=1200px`만 변경; 태블릿·모바일 및 원본 이미지/링크/문구는 유지.
+- `>=1440px` 그룹 650×382 → **680×400** (DZlog 326×400, 그리글/MY LOCK 338×192 + gap 16); 오른쪽 높이 동일. 1200~1439px 규격은 650×382 유지.
+- CTA 48px, 로고/카피 좌측 기준선, 가치 바 하단 위치 미세 조정. 브라우저 QA 확대: 1920×1080, 1650×900, 1440×900, 1280×800와 중간/모바일 회귀.
+- 사용자 PC 화면 최종 검수 전 **Desktop Master 마감/운영 배포 승인 아님**. PR #7 Draft 유지, 운영 R5.3 불변.
