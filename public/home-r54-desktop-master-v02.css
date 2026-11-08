@@ -8,7 +8,7 @@
   /* 1440px reference: 40px on either edge.
      At 1920px only ~48px outside; growing width becomes internal white space.
      Keep logo/copy aligned; the card group hugs the right design grid. */
-  --doz-pc-total-gutter: clamp(80px, 5vw, 128px);
+  :root { --doz-pc-total-gutter: clamp(80px, 5vw, 128px); }
   .site-header .header-content,
   .ddzv4-hero-main {
     width: calc(100% - var(--doz-pc-total-gutter));
